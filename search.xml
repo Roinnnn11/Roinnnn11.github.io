@@ -18,4 +18,23 @@
 <p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>PyTorch101 --PyTorch基本框架</title>
+    <url>/2024/11/12/PyTorch101/</url>
+    <content><![CDATA[<h3 id="一、Tensor-张量"><a href="#一、Tensor-张量" class="headerlink" title="一、Tensor 张量"></a>一、Tensor 张量</h3><p>定义：The number of dimensions is the <strong>rank</strong> of the tensor；例：tensor([1,2,3])的秩为1</p>
+<p>​		the <strong>shape</strong> of a tensor is a tuple of integers giving the size of the array along each dimension 例：tensor([1,2,3])的shape为[3]</p>
+<h4 id="1-构建-访问tensor"><a href="#1-构建-访问tensor" class="headerlink" title="1.构建&amp;访问tensor"></a>1.构建&amp;访问tensor</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">x=torch.tensor([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])<span class="comment">#构建tensor张量</span></span><br><span class="line">x.dim()<span class="comment">#返回纬度值</span></span><br><span class="line">x.shape<span class="comment">#返回：torch.Size([3,3]),可以当作turple使用</span></span><br><span class="line">x[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span><span class="comment">#赋值操作</span></span><br><span class="line">x[<span class="number">0</span>][<span class="number">0</span>].item()<span class="comment">#将PyTorch的标量转换为python标量</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="2-帮助构建tensor的函数"><a href="#2-帮助构建tensor的函数" class="headerlink" title="2.帮助构建tensor的函数"></a>2.帮助构建tensor的函数</h4><p>常用的函数有：</p>
+<ul>
+<li><strong>torch.zeros</strong>（*size） 全为0的tensor</li>
+<li><strong>torch.ones</strong>(*size)全为1的tensor</li>
+<li><strong>torch.rand</strong>(*size)为0-1随机数</li>
+<li><strong>torch.full</strong>（<em>size</em>， <em>fill_value</em>， ***， <em>out</em> <em>&#x3D;</em> <em>None</em>， <em>dtype</em> <em>&#x3D;</em> None， <em>layout</em> <em>&#x3D;</em> <em>torch.strided</em>， <em>device</em> <em>&#x3D;</em> <em>None</em>， <em>requires_grad</em> <em>&#x3D;</em> <em>False</em>）→ <em>Tensor</em></li>
+<li><strong>torch.from_numpy</strong> ( ndarray ) → Tensor</li>
+<li><strong>torch.arange</strong> ( <em>start&#x3D;0</em> , <em>end</em> , <em>step&#x3D;1</em> , * , out&#x3D;None , <em>dtype&#x3D;None</em> , layout <em>&#x3D;torch.strided</em> , <em>device&#x3D;None</em> , <em>require_grad&#x3D;False</em> ) → Tensor <u>#左闭右开区间</u>（torch.range <u>#左闭右闭</u>）</li>
+</ul>
+<p>You can find a <strong>full list of tensor creation operations</strong> <a class="link"   href="https://www.google.com/url?q=https://pytorch.org/docs/stable/torch.html%23creation-ops" >in the documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+]]></content>
+  </entry>
 </search>
