@@ -52,7 +52,8 @@
   <entry>
     <title></title>
     <url>/2024/11/19/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8/</url>
-    <content><![CDATA[<h1 id="Linear-Classifiers–线性分类器"><a href="#Linear-Classifiers–线性分类器" class="headerlink" title="Linear Classifiers–线性分类器"></a>Linear Classifiers–线性分类器</h1><h3 id="一、如何理解线性分类器"><a href="#一、如何理解线性分类器" class="headerlink" title="一、如何理解线性分类器"></a>一、如何理解线性分类器</h3><h5 id="一、代数观点分析"><a href="#一、代数观点分析" class="headerlink" title="一、代数观点分析"></a>一、代数观点分析</h5><p>线性分类器：权重矩阵W和像素X之间的矩阵相乘，再加上b</p>
+    <content><![CDATA[<hr>
+<h2 id="title-CS231N-Lecture1-Linear-Classifiers–线性分类器"><a href="#title-CS231N-Lecture1-Linear-Classifiers–线性分类器" class="headerlink" title="title:CS231N Lecture1:Linear Classifiers–线性分类器"></a>title:CS231N Lecture1:Linear Classifiers–线性分类器</h2><h1 id="Linear-Classifiers–线性分类器"><a href="#Linear-Classifiers–线性分类器" class="headerlink" title="Linear Classifiers–线性分类器"></a>Linear Classifiers–线性分类器</h1><h3 id="一、如何理解线性分类器"><a href="#一、如何理解线性分类器" class="headerlink" title="一、如何理解线性分类器"></a>一、如何理解线性分类器</h3><h5 id="一、代数观点分析"><a href="#一、代数观点分析" class="headerlink" title="一、代数观点分析"></a>一、代数观点分析</h5><p>线性分类器：权重矩阵W和像素X之间的矩阵相乘，再加上b</p>
 <p><em>如果输入数据具有native vector form，可以将b合并至W矩阵中处理**（针对线性分类是好的方法，对于卷积并非）</em></p>
 <p><u>feature：预测也是线性的，放大&#x2F;缩小所有像素，会让所有预测值都放大&#x2F;缩小</u></p>
 <p>（如下图）</p>
@@ -134,6 +135,124 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/IMG_0518.PNG"
+                      alt="image"
+                ></p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2024/12/07/%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<hr>
+<h2 id="title-CS231N-Lecture2-Optimization–优化"><a href="#title-CS231N-Lecture2-Optimization–优化" class="headerlink" title="title:CS231N Lecture2:Optimization–优化"></a>title:CS231N Lecture2:Optimization–优化</h2><p>2️⃣ follow the slope</p>
+<p>直接计算导数、使用导数（deltaloss&#x2F;delta-h）</p>
+<p>缺点：对求导计算缓慢，如果矩阵&#x2F;维度过大</p>
+<p>&#x3D;&#x3D;&#x3D;用一个方程表示梯度（反向传播 第六节中讲述）</p>
+<p><strong>Computing Gradients(计算梯度)</strong></p>
+<p>numeric&#x2F;analytic （计算出值&#x2F;分析）</p>
+<p>一般使用数字梯度来检验对解析梯度的推导</p>
+<p>（pytorch提供了一个函数gradcheck、实现相似的功能）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0531.PNG"
+                      alt="image"
+                ></p>
+<h3 id="gradient-descent梯度下降"><a href="#gradient-descent梯度下降" class="headerlink" title="gradient descent梯度下降"></a><u>gradient descent梯度下降</u></h3><p>包含的超参：</p>
+<p><u>1️⃣初始化权重的方法</u></p>
+<p><u>2️⃣循环次数：受计算预算和时间限制</u></p>
+<p><u>3️⃣学习率learning rate：</u></p>
+<p>较大：收敛较快</p>
+<p>较小：不容易数字爆炸、但时间较长</p>
+<p>梯度下降的feature：使用全部数据，当数据集较大时，不适用</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0532.PNG"
+                      alt="image"
+                ></p>
+<h3 id="batch-gradient-descent（批量梯度下降）"><a href="#batch-gradient-descent（批量梯度下降）" class="headerlink" title="batch gradient descent（批量梯度下降）"></a><u>batch gradient descent（批量梯度下降）</u></h3><p>选择批量，进行求loss和计算梯度</p>
+<p>SGD随机梯度下降</p>
+<h3 id="stochastic-gradient-descentSGD随机梯度下降"><a href="#stochastic-gradient-descentSGD随机梯度下降" class="headerlink" title="stochastic gradient descentSGD随机梯度下降"></a><u>stochastic gradient descentSGD随机梯度下降</u></h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0533.PNG"
+                      alt="image"
+                ></p>
+<p>存在的问题：</p>
+<p><u>局部最小、鞍点&#x2F;收敛速度一方过大一方过小</u></p>
+<p><strong>更智能的方法：</strong></p>
+<h4 id="1-sgd-动量更新"><a href="#1-sgd-动量更新" class="headerlink" title="1.sgd+动量更新"></a>1.sgd+动量更新</h4><p>初始化相同、用梯度算出”dw”的值，用来更新速度向量，（想象球滚落）（类似于对梯度计算历史平均值）</p>
+<p>超参数：<strong>rho– decay rate</strong></p>
+<p><u>（当抵达局部最小&#x2F;鞍点，仍有残余速度去跳出局部，更平滑地处理高纬度问题）</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0555.PNG"
+                      alt="image"
+                ></p>
+<h4 id="2-Nesterov-动量更新"><a href="#2-Nesterov-动量更新" class="headerlink" title="2.Nesterov 动量更新"></a>2.Nesterov 动量更新</h4><p>如图</p>
+<p>“Look ahead”会对下一时刻的梯度进行预测</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0559.PNG"
+                      alt="image"
+                ></p>
+<p>两者对比：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0557.PNG"
+                      alt="image"
+                ></p>
+<p><u>sgd特征：1.可能会overshoot（到达底端后，会有反向动量存在，往回走一段距离，如下图）</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0560.PNG"
+                      alt="image"
+                ></p>
+<h3 id="Adaptive-learning-rates自适应学习率"><a href="#Adaptive-learning-rates自适应学习率" class="headerlink" title="Adaptive learning rates自适应学习率"></a>Adaptive learning rates自适应学习率</h3><h4 id="1-AdaGrad算法"><a href="#1-AdaGrad算法" class="headerlink" title="1.AdaGrad算法"></a>1.AdaGrad算法</h4><p>（通过<strong>除以梯度</strong>，抑制&#x2F;提高运动速度）</p>
+<p><u>问题：grad—squared不断增加（趋于无限大），学习率不断下降，可能在达到结果前停止</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0561.PNG"
+                      alt="image"
+                ></p>
+<h4 id="2-RMSprop（对AdaGrad的改善）"><a href="#2-RMSprop（对AdaGrad的改善）" class="headerlink" title="2.RMSprop（对AdaGrad的改善）"></a>2.RMSprop（对AdaGrad的改善）</h4><p>添加参数decay_rate 来降低grad_squared,  类似加入摩擦系数</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0562.PNG"
+                      alt="image"
+                ></p>
+<h3 id="Adam（RMSProp-动量）"><a href="#Adam（RMSProp-动量）" class="headerlink" title="Adam（RMSProp+动量）"></a>Adam（RMSProp+动量）</h3><p>——非常强大的优化算法，适用于不同的任务，超参的调整范围也较小</p>
+<p>将两种算法结合，存在问题：如果beta2趋于1，那么优化第一步可能走出很大一步（除以近似0的数）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0563.PNG"
+                      alt="image"
+                ></p>
+<p>对其进行改善：添加<strong>Bias Corection（偏差校正）</strong>，让其更稳健。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0564.PNG"
+                      alt="image"
+                ></p>
+<h3 id="二阶优化方法：L-BFGS（准确但不实际）"><a href="#二阶优化方法：L-BFGS（准确但不实际）" class="headerlink" title="二阶优化方法：L-BFGS（准确但不实际）"></a>二阶优化方法：L-BFGS（准确但不实际）</h3><p>使用Hessian矩阵，可以使对学习率&#x2F;步长的选择更加合理。但数据量巨大，只适合低维优化问题</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0567.PNG"
+                      alt="image"
+                ></p>
+<h3 id="总结（对优化算法的比较）"><a href="#总结（对优化算法的比较）" class="headerlink" title="总结（对优化算法的比较）"></a>总结（对优化算法的比较）</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0566.PNG"
                       alt="image"
                 ></p>
 ]]></content>
