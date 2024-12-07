@@ -25,21 +25,20 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Linear Classifiers–线性分类器一、如何理解线性分类器一、代数观点分析线性分类器：权重矩阵W和像素X之间的矩阵相乘，再加上b 如果输入数据具有native vector form，可以将b合并至W矩阵中处理**（针对线性分类是好的方法，对于卷积并非） feature：预测也是线性的，放大&#x2F;缩小所有像素，会让所有预测值都放大&#x2F;缩小 （如下图）  二、视觉角度分析另">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="f:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\image-20241119183936618.png">
-<meta property="og:image" content="c:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20241119185502507.png">
-<meta property="og:image" content="c:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20241119185949191.png">
-<meta property="og:image" content="c:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20241119191101704.png">
-<meta property="og:image" content="f:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\IMG_0514.PNG">
-<meta property="og:image" content="f:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\IMG_0522.PNG">
-<meta property="og:image" content="f:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\IMG_0523.PNG">
-<meta property="og:image" content="f:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\IMG_0516.PNG">
-<meta property="og:image" content="f:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\IMG_0517.PNG">
-<meta property="og:image" content="https://github.com/images/IMG_0518.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/image-20241119183936618.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/image-20241119185407644.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/image-20241119191101704.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0514.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0522.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0523.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0516.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0517.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/IMG_0518.PNG">
 <meta property="article:published_time" content="2024-11-19T10:32:56.177Z">
-<meta property="article:modified_time" content="2024-12-05T12:47:21.744Z">
+<meta property="article:modified_time" content="2024-12-07T02:44:18.667Z">
 <meta property="article:author" content="Roin">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="f:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\image-20241119183936618.png">
+<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/image-20241119183936618.png">
     
     
     <!--- Icon Part-->
@@ -313,8 +312,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-12-05 20:47:21</span>
-            <span class="mobile">2024-12-05 20:47:21</span>
+            <span class="desktop">2024-12-07 10:44:18</span>
+            <span class="mobile">2024-12-07 10:44:18</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -325,7 +324,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>617 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>621 Words</span>
         </span>
     
     
@@ -356,40 +355,34 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="F:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\image-20241119183936618.png"
-                      alt="\images\image-20241119183936618.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/image-20241119183936618.png"
+                      alt="image"
                 ></p>
 <h5 id="二、视觉角度分析"><a href="#二、视觉角度分析" class="headerlink" title="二、视觉角度分析"></a>二、视觉角度分析</h5><p>另一种处理方法：<u>将权重矩阵reshape到跟输入图像一样，实现<strong>“template matching”</strong></u></p>
 <p>例：取每一行数字，组成2x2 shape（图像假设为2x2），同时b也分类。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20241119185502507.png"
-                      alt="\images\image-20241119185502507.png"
-                ></p>
-<p><strong>“template matching”</strong></p>
+<p><strong>“template matching”</strong>(模式匹配)</p>
 <p>按上述处理之后，每一行都是一个种类，当他们匹配上时，值会最大。有一种视觉上的模式匹配（如下图）</p>
 <p>（visual viewpoint）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20241119185949191.png"
-                      alt="\images\image-20241119185949191.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/image-20241119185407644.png"
+                      alt="image"
                 ></p>
 <p><u>（缺点：对input图像的依赖严重，对其content（环境）依赖，旋转图片后无法识别）</u></p>
 <h5 id="三、几何观点"><a href="#三、几何观点" class="headerlink" title="三、几何观点"></a>三、几何观点</h5><p>可以认为，像素图像是一个高维欧几里得空间，每个种类都有对应的一个超平面，将空间切割。（如下图）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20241119191101704.png"
-                      alt="\images\image-20241119191101704.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/image-20241119191101704.png"
+                      alt="image"
                 ></p>
 <h3 id="二、如何选择矩阵W-——使用损失函数来量化评估W"><a href="#二、如何选择矩阵W-——使用损失函数来量化评估W" class="headerlink" title="二、如何选择矩阵W ——使用损失函数来量化评估W"></a>二、如何选择矩阵W ——使用损失函数来量化评估W</h3><h5 id="1️⃣loss：multi-class-SVM损失（图像分类）"><a href="#1️⃣loss：multi-class-SVM损失（图像分类）" class="headerlink" title="1️⃣loss：multi-class SVM损失（图像分类）"></a>1️⃣loss：multi-class SVM损失（图像分类）</h5><p>特征：如果一个种类被正确区分，那么改变预测分数，不再影响损失。（达到零损失）</p>
 <p>（如图，图中为铰链损失）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="F:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\IMG_0514.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0514.PNG"
                       alt="\images\IMG_0514.PNG"
                 ></p>
 <h5 id="2️⃣Cross-Entropy-Loss（multinomial-logistic-regression）"><a href="#2️⃣Cross-Entropy-Loss（multinomial-logistic-regression）" class="headerlink" title="2️⃣Cross- Entropy Loss（multinomial logistic regression）"></a>2️⃣Cross- Entropy Loss（multinomial logistic regression）</h5><p>want to interpret raw classifier scores as probabilities.（使用概率来评分）</p>
@@ -399,7 +392,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="F:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\IMG_0522.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0522.PNG"
                       alt="\images\IMG_0522.PNG"
                 ></p>
 <p>对预测值和理论值进行评估<strong>（Kullback-Leibler divergence）</strong></p>
@@ -407,7 +400,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="F:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\IMG_0523.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0523.PNG"
                       alt="\images\IMG_0523.PNG"
                 ></p>
 <h3 id="三、对矩阵进行优化"><a href="#三、对矩阵进行优化" class="headerlink" title="三、对矩阵进行优化"></a>三、对矩阵进行优化</h3><p>Regularization（正则化）—— prevent the model from doing too well</p>
@@ -416,7 +409,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="F:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\IMG_0516.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0516.PNG"
                       alt="\images\IMG_0516.PNG"
                 ></p>
 <p>正则化简单实例：L2、L1、Elastic net（L1+L2）（如上图左下）</p>
@@ -428,12 +421,17 @@
 <p>如果有噪声或者很多特征,也适用。<img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="F:\AAAworkplace\BLOG\Roin-blog.deploy_git\images\IMG_0517.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0517.PNG"
                       alt="images\IMG_0517.PNG"
                 ></p>
 <p>2️⃣</p>
 <p>避免过拟合。如图，曲线是添加正则化后，合理地减少了噪声干扰</p>
-<p><img src="/images/IMG_0518.PNG" alt="/images/IMG_0518.PNG"></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/IMG_0518.PNG"
+                      alt="image"
+                ></p>
 
         </div>
 
@@ -448,7 +446,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-12-05 20:47:21
+                    :</strong> 2024-12-07 10:44:18
             </li>
         
         <li>
