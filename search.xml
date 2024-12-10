@@ -396,4 +396,127 @@
                 ></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>CS231N Lecture6 反向传播</title>
+    <url>/2024/12/10/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/</url>
+    <content><![CDATA[<h1 id="Lecture6–反向传播"><a href="#Lecture6–反向传播" class="headerlink" title="Lecture6–反向传播"></a>Lecture6–反向传播</h1><p><em>如何为神经网络计算梯度？</em></p>
+<p>bad idea：在纸上推导</p>
+<p>better：计算图</p>
+<p>以svm  loss举例</p>
+<p>蓝色节点：x与W的矩阵乘法</p>
+<p>红色节点：铰链损失（针对SVMloss）</p>
+<p>绿色：正则化项</p>
+<p>相加得到L（loss）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image1.png"
+                      alt="image"
+                ></p>
+<h2 id="Backpropagation-反向传播"><a href="#Backpropagation-反向传播" class="headerlink" title="Backpropagation 反向传播"></a>Backpropagation 反向传播</h2><p>构成：</p>
+<p>1<u>.Forward pass</u> “前向传递”计算输出值</p>
+<p>2.<u>backward pass</u> “反向传递”计算每个参数的导数</p>
+<p><u>下游梯度 &#x3D; 局部梯度 x 上游梯度</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image2.png"
+                      alt="image"
+                ></p>
+<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a><u>优点：</u></h5><p><u>将对梯度的计算<strong>模块化</strong>。不需要知道全局架构，只需要知道这个节点里对应的三个梯度数值（上游&#x2F;本地&#x2F;下游），从而推出<strong>全局梯度</strong>。</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image3.png"
+                      alt="image"
+                ></p>
+<h5 id="全局图be-like："><a href="#全局图be-like：" class="headerlink" title="全局图be like："></a>全局图be like：</h5><p>（trick: 蓝色框内为sigmoid函数，可以直接计算其local gradient得到简单表达式,跳过中间步骤)</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image4.png"
+                      alt="image"
+                ></p>
+<h3 id="梯度流动时一些有趣的pattern："><a href="#梯度流动时一些有趣的pattern：" class="headerlink" title="梯度流动时一些有趣的pattern："></a>梯度流动时一些有趣的pattern：</h3><p>加法：downstream gradient &#x3D; upstream gradient</p>
+<p>复制：downstream gradient &#x3D; sum(upstream gradient)</p>
+<p>乘法：“交换”downstream gradient &#x3D; other diwnstream gradient * upstream</p>
+<p>max：最大值downstream &#x3D; upstream，其余downstream&#x3D;0（不常见）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image5.png"
+                      alt="image"
+                ></p>
+<p>实际处理问题时，我们通常是对<strong>向量</strong>进行求梯度等操作（最后得到的loss仍然是标量）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image6.png"
+                      alt="image"
+                ></p>
+<p>由于只考虑upstream和downstream的关系，Jocobian矩阵将会是一个<em>非常大的稀疏矩阵</em>，<em>只有对角线上元素可能不为0</em>.所以在使用中，从来不会真正形成矩阵，而是对其<strong>隐式表达</strong>。</p>
+<p>如下图，对RELU函数，可以理解为：</p>
+<p>根据input符号，决定downstream是0还是具体值</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image7.png"
+                      alt="image"
+                ></p>
+<p>当使用的是<strong>tensor</strong>，更复杂了.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image8.png"
+                      alt="image"
+                ></p>
+<h3 id="简化求解反向传播"><a href="#简化求解反向传播" class="headerlink" title="简化求解反向传播"></a>简化求解反向传播</h3><p>推导：分解问题，尝试对每个x的导数求解</p>
+<p>如图，dL&#x2F;dx1,1 &#x3D; (dy&#x2F;dx1,1)(dL&#x2F;dy)</p>
+<p>计算dy&#x2F;dx1,1，发现其为第一行等于权重矩阵第一行，其余行为0的矩阵；</p>
+<p>所以，dL&#x2F;dx1,1等于权重第一行与dL&#x2F;dy第一行的内积；</p>
+<p>其他同理。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image9.png"
+                      alt="image"
+                ></p>
+<p>最后推得关系式如下：dL&#x2F;dx  &#x3D; (dL&#x2F;dy)wT</p>
+<p>（详细证明：<a class="link"   href="http://cs231n.stanford.edu/handouts/linear-backprop.pdf%EF%BC%89" >http://cs231n.stanford.edu/handouts/linear-backprop.pdf） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image10.png"
+                      alt="image"
+                ></p>
+<h3 id="另一个观点：反向自动微分"><a href="#另一个观点：反向自动微分" class="headerlink" title="另一个观点：反向自动微分"></a>另一个观点：反向自动微分</h3><h5 id="反向自动微分"><a href="#反向自动微分" class="headerlink" title="反向自动微分"></a>反向自动微分</h5><p>认为jacobian矩阵可以累乘，最后得到一个标量。（对于所有的与求导&#x2F;微分相关的程序都有效，局限性小）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image11.png"
+                      alt="image"
+                ></p>
+<h5 id="前向自动微分"><a href="#前向自动微分" class="headerlink" title="前向自动微分"></a>前向自动微分</h5><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image12.png"
+                      alt="image"
+                ></p>
+<p><u>缺点：前向不被大框架支持；不好用</u></p>
+<h3 id="反向传播另一个功能：求高阶导数"><a href="#反向传播另一个功能：求高阶导数" class="headerlink" title="反向传播另一个功能：求高阶导数"></a>反向传播另一个功能：求高阶导数</h3><p>（比如计算hessian矩阵）</p>
+<p>使用反向传播扩展计算图。在计算loss之后，使用f2’计算梯度相对于x1的损失，用f1’计算loss相对于x0的损失（f1’\f2’是f的反向传递）</p>
+<p>再点积向量 v，就会得到v关于x的导数。</p>
+<p>再Backprop，可以得到x关于v的导数。</p>
+<p>（图中举例：二阶导数）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image13.png"
+                      alt="image"
+                ></p>
+]]></content>
+      <tags>
+        <tag>CS231N</tag>
+      </tags>
+  </entry>
 </search>
