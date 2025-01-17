@@ -687,4 +687,96 @@
         <tag>计算机视觉</tag>
       </tags>
   </entry>
+  <entry>
+    <title>CS231N Lecture8 CNN经典架构</title>
+    <url>/2025/01/17/8%20CNN%E6%9E%B6%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="Lecture8-CNN经典架构"><a href="#Lecture8-CNN经典架构" class="headerlink" title="Lecture8 CNN经典架构"></a>Lecture8 CNN经典架构</h1><h3 id="Alexnet"><a href="#Alexnet" class="headerlink" title="Alexnet"></a>Alexnet</h3><p>input：227x227x3</p>
+<p>① CONV1: 96 11x11 filters at stride 4 pad 2.</p>
+<p>输出？W’ &#x3D; (W-k+2p)&#x2F;s +1&#x3D;55 [55x55x96]</p>
+<p>总参数？(11<em>11</em>3+1)<em>96 &#x3D; 35k 一层有：（输入通道</em>内核大小+偏差）</p>
+<p>浮点运算（乘法和加法）? （C_out<em>H’<em>W’）</em>(C_in</em>k*k)</p>
+<p>② POOL1:  3x3 filters at stride 2 pad 1</p>
+<p>输出？[27x27x96]向下取整</p>
+<p>浮点运算？(C_out<em>H’<em>W’)</em>(K</em>K)</p>
+<p>不改变通道数量</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image1.png"
+                      alt="image"
+                ></p>
+<p>总结规律：1.<u>池化的计算次数远小于卷积</u><br><u>2.主要的内存使用在早期卷积层</u><br><u>3.参数主要在全连接层中</u><br><u>4.主要的浮点运算在卷积层</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image2.png"
+                      alt="image"
+                ></p>
+<h3 id="VGGNet"><a href="#VGGNet" class="headerlink" title="VGGNet"></a>VGGNet</h3><p><strong>设计规则</strong>：</p>
+<ol>
+<li><ol>
+<li><ol>
+<li><strong>All conv 3x3 stride 1 pad 1</strong></li>
+<li><strong>All max pool 2x2 stride 2</strong></li>
+<li><strong>After pool, double channels.</strong></li>
+</ol>
+</li>
+<li></li>
+</ol>
+</li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image3.png"
+                      alt="image"
+                ></p>
+<p>为什么使用小卷积层？<u>三个3x3层与一个7x7层的概念域相等，计算更少，允许更多非线性计算。</u></p>
+<p>为什么双倍通道？<u>这样做之后，该层与上一层计算次数相同。</u></p>
+<h3 id="GoogleNet"><a href="#GoogleNet" class="headerlink" title="GoogleNet"></a>GoogleNet</h3><h4 id="1-Aggressive-Stem"><a href="#1-Aggressive-Stem" class="headerlink" title="1.Aggressive Stem"></a>1.Aggressive Stem</h4><p>用stem network在开始时采样，减小空间开销</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image4.png"
+                      alt="image"
+                ></p>
+<h4 id="2-Inception-Module-初始模块（主要组成）"><a href="#2-Inception-Module-初始模块（主要组成）" class="headerlink" title="2.Inception Module 初始模块（主要组成）"></a>2.Inception Module 初始模块（主要组成）</h4><p>使用并行处理，在同一时间进行多个卷积</p>
+<p>在卷积前使用池化，减少通道数量。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image5.png"
+                      alt="image"
+                ></p>
+<h4 id="3-全局平均池化"><a href="#3-全局平均池化" class="headerlink" title="3.全局平均池化"></a>3.全局平均池化</h4><p>用全局平均池化取代全连接层，对通道求平均，减少元素总数，来摧毁空间。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image6.png"
+                      alt="image"
+                ></p>
+<h3 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h3><h4 id="1-Residual-Block"><a href="#1-Residual-Block" class="headerlink" title="1.Residual Block"></a>1.Residual Block</h4><p>使深网络更好地模拟浅层网络，改善梯度流。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image7.png"
+                      alt="image"
+                ></p>
+<h4 id="“Bottleneck-Block”："><a href="#“Bottleneck-Block”：" class="headerlink" title="“Bottleneck Block”："></a>“Bottleneck Block”：</h4><p>1x1收缩通道-3x3卷积-1x1扩张通道。</p>
+<p>增加了层数，但计算复杂度不变，减少误差。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image8.png"
+                      alt="image"
+                ></p>
+<h4 id="2-使用了GoogleNet的向下采样以及全局平均池化的方法。"><a href="#2-使用了GoogleNet的向下采样以及全局平均池化的方法。" class="headerlink" title="2.使用了GoogleNet的向下采样以及全局平均池化的方法。"></a>2.使用了GoogleNet的<strong>向下采样</strong>以及<strong>全局平均池化</strong>的方法。</h4><h3 id="ResNeXt"><a href="#ResNeXt" class="headerlink" title="ResNeXt"></a>ResNeXt</h3><p>使用<strong>并行路径</strong>，计算成本与左侧相同。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image9.png"
+                      alt="image"
+                ></p>
+]]></content>
+  </entry>
 </search>
