@@ -13,37 +13,40 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/10/反向传播/"/>
+    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2025/01/15/卷积神经网络/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Lecture6–反向传播如何为神经网络计算梯度？ bad idea：在纸上推导 better：计算图 以svm  loss举例 蓝色节点：x与W的矩阵乘法 红色节点：铰链损失（针对SVMloss） 绿色：正则化项 相加得到L（loss）  Backpropagation 反向传播构成： 1.Forward pass “前向传递”计算输出值 2.backward pass “反向传递”计算每个参数">
+        <meta name="description" content="Lecture7 卷积神经网络前面存在的问题：并没有利用图像的空间结构（将其展开成向量） 1.Convolution layer 卷积层超参数：（卷积层大小、层数、填充、步长） 构成：①输入三维张量（depth x width x height） ②权重矩阵 filter（也是三维） 存在约束：filter与input的depth必须相同。（filter会覆盖input的整个深度）  计算： 将f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CS231N Lecture6 反向传播">
-<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/10/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/index.html">
+<meta property="og:title" content="CS231N-Lecture7 卷积神经网络">
+<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2025/01/15/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Lecture6–反向传播如何为神经网络计算梯度？ bad idea：在纸上推导 better：计算图 以svm  loss举例 蓝色节点：x与W的矩阵乘法 红色节点：铰链损失（针对SVMloss） 绿色：正则化项 相加得到L（loss）  Backpropagation 反向传播构成： 1.Forward pass “前向传递”计算输出值 2.backward pass “反向传递”计算每个参数">
+<meta property="og:description" content="Lecture7 卷积神经网络前面存在的问题：并没有利用图像的空间结构（将其展开成向量） 1.Convolution layer 卷积层超参数：（卷积层大小、层数、填充、步长） 构成：①输入三维张量（depth x width x height） ②权重矩阵 filter（也是三维） 存在约束：filter与input的depth必须相同。（filter会覆盖input的整个深度）  计算： 将f">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image1.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image2.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image3.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image4.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image5.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image6.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image7.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image8.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image9.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image10.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image11.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image12.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image13.png">
-<meta property="article:published_time" content="2024-12-10T14:54:45.635Z">
-<meta property="article:modified_time" content="2025-01-17T08:20:15.486Z">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image1.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image2.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image3.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image4.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image5.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image6.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image7.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image8.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image9.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image10.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image11.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image12.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image13.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image14.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image15.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image16.png">
+<meta property="article:published_time" content="2025-01-15T14:51:12.952Z">
+<meta property="article:modified_time" content="2025-01-17T08:18:04.492Z">
 <meta property="article:author" content="Roin">
 <meta property="article:tag" content="计算机视觉">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image1.png">
+<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image1.png">
     
     
     <!--- Icon Part-->
@@ -55,7 +58,7 @@
     
     <title>
         
-            CS231N Lecture6 反向传播 | Roin&#39;s BLOG
+            CS231N-Lecture7 卷积神经网络 | Roin&#39;s BLOG
         
     </title>
 
@@ -289,7 +292,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CS231N Lecture6 反向传播</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CS231N-Lecture7 卷积神经网络</h1>
                 </div>
             
             </div>
@@ -310,15 +313,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-12-10 22:54:45</span>
-        <span class="mobile">2024-12-10 22:54:45</span>
+        <span class="desktop">2025-01-15 22:51:12</span>
+        <span class="mobile">2025-01-15 22:51:12</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-01-17 16:20:15</span>
-            <span class="mobile">2025-01-17 16:20:15</span>
+            <span class="desktop">2025-01-17 16:18:04</span>
+            <span class="mobile">2025-01-17 16:18:04</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -356,7 +359,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>701 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>614 Words</span>
         </span>
     
     
@@ -380,119 +383,140 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="Lecture6–反向传播"><a href="#Lecture6–反向传播" class="headerlink" title="Lecture6–反向传播"></a>Lecture6–反向传播</h1><p><em>如何为神经网络计算梯度？</em></p>
-<p>bad idea：在纸上推导</p>
-<p>better：计算图</p>
-<p>以svm  loss举例</p>
-<p>蓝色节点：x与W的矩阵乘法</p>
-<p>红色节点：铰链损失（针对SVMloss）</p>
-<p>绿色：正则化项</p>
-<p>相加得到L（loss）</p>
+            <h1 id="Lecture7-卷积神经网络"><a href="#Lecture7-卷积神经网络" class="headerlink" title="Lecture7 卷积神经网络"></a>Lecture7 卷积神经网络</h1><p>前面存在的问题：并没有利用图像的空间结构（将其展开成向量）</p>
+<h2 id="1-Convolution-layer-卷积层"><a href="#1-Convolution-layer-卷积层" class="headerlink" title="1.Convolution layer 卷积层"></a>1.Convolution layer 卷积层</h2><p>超参数：<strong>（卷积层大小、层数、填充、步长）</strong></p>
+<p>构成：<strong>①输入三维张量</strong>（depth x width x height）</p>
+<p><strong>②权重矩阵 filter</strong>（也是三维）</p>
+<p>存在<strong>约束</strong>：filter与input的depth必须相同。（filter会覆盖input的整个深度）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image1.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image1.png"
                       alt="image"
                 ></p>
-<h2 id="Backpropagation-反向传播"><a href="#Backpropagation-反向传播" class="headerlink" title="Backpropagation 反向传播"></a>Backpropagation 反向传播</h2><p>构成：</p>
-<p>1<u>.Forward pass</u> “前向传递”计算输出值</p>
-<p>2.<u>backward pass</u> “反向传递”计算每个参数的导数</p>
-<p><u>下游梯度 &#x3D; 局部梯度 x 上游梯度</u></p>
+<p>计算：</p>
+<p>将filter在输入张量上滑动，选定一块区域进行点积，再加上偏差，得到一个标量结果。对input所有可能的位置进行该操作。</p>
+<p>使用举例：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image2.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image2.png"
                       alt="image"
                 ></p>
-<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a><u>优点：</u></h5><p><u>将对梯度的计算<strong>模块化</strong>。不需要知道全局架构，只需要知道这个节点里对应的三个梯度数值（上游&#x2F;本地&#x2F;下游），从而推出<strong>全局梯度</strong>。</u></p>
+<h3 id="填充（padding）"><a href="#填充（padding）" class="headerlink" title="填充（padding）"></a><strong>填充（padding）</strong></h3><p><u>卷积时会造成像素损失，所以在图片周围进行填充，以减少损失（如下：0填充）</u></p>
+<p><strong><u>same padding</u></strong>(不改变空间大小)：将p设置为（k-1）&#x2F;2</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image3.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image3.png"
                       alt="image"
                 ></p>
-<h5 id="全局图be-like："><a href="#全局图be-like：" class="headerlink" title="全局图be like："></a>全局图be like：</h5><p>（trick: 蓝色框内为sigmoid函数，可以直接计算其local gradient得到简单表达式,跳过中间步骤)</p>
+<h3 id="步长Stride"><a href="#步长Stride" class="headerlink" title="步长Stride"></a><strong><u>步长Stride</u></strong></h3><p>定义：<u>一次移动一个步长，会将概念域翻对应倍数。</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image4.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image4.png"
                       alt="image"
                 ></p>
-<h3 id="梯度流动时一些有趣的pattern："><a href="#梯度流动时一些有趣的pattern：" class="headerlink" title="梯度流动时一些有趣的pattern："></a>梯度流动时一些有趣的pattern：</h3><p>加法：downstream gradient &#x3D; upstream gradient</p>
-<p>复制：downstream gradient &#x3D; sum(upstream gradient)</p>
-<p>乘法：“交换”downstream gradient &#x3D; other diwnstream gradient * upstream</p>
-<p>max：最大值downstream &#x3D; upstream，其余downstream&#x3D;0（不常见）</p>
+<h3 id="概念域Receptive-Field"><a href="#概念域Receptive-Field" class="headerlink" title="概念域Receptive Field"></a>概念域Receptive Field</h3><p>定义：<u>输出张量的一个元素与input的局部区域对应，所对应的域即为概念域。</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image5.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image5.png"
                       alt="image"
                 ></p>
-<p>实际处理问题时，我们通常是对<strong>向量</strong>进行求梯度等操作（最后得到的loss仍然是标量）</p>
+<p>举例：<strong>1x1 卷积</strong></p>
+<p>对空间中每一个网格的特征向量操作，用来改变三维张量的通道维数。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image6.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image6.png"
                       alt="image"
                 ></p>
-<p>由于只考虑upstream和downstream的关系，Jocobian矩阵将会是一个<em>非常大的稀疏矩阵</em>，<em>只有对角线上元素可能不为0</em>.所以在使用中，从来不会真正形成矩阵，而是对其<strong>隐式表达</strong>。</p>
-<p>如下图，对RELU函数，可以理解为：</p>
-<p>根据input符号，决定downstream是0还是具体值</p>
+<p>举例：<strong>全连接层 （fully connected layer）</strong></p>
+<p>用来展开张量、破坏空间结构，得到一个向量输出。</p>
+<p>总结：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image7.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image7.png"
                       alt="image"
                 ></p>
-<p>当使用的是<strong>tensor</strong>，更复杂了.</p>
+<p>其他卷积：<strong>一维卷积</strong>：（例如处理音频数据）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image8.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image8.png"
                       alt="image"
                 ></p>
-<h3 id="简化求解反向传播"><a href="#简化求解反向传播" class="headerlink" title="简化求解反向传播"></a>简化求解反向传播</h3><p>推导：分解问题，尝试对每个x的导数求解</p>
-<p>如图，dL&#x2F;dx1,1 &#x3D; (dy&#x2F;dx1,1)(dL&#x2F;dy)</p>
-<p>计算dy&#x2F;dx1,1，发现其为第一行等于权重矩阵第一行，其余行为0的矩阵；</p>
-<p>所以，dL&#x2F;dx1,1等于权重第一行与dL&#x2F;dy第一行的内积；</p>
-<p>其他同理。</p>
+<p><strong>三维卷积</strong>：（例如处理点云数据）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image9.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image9.png"
                       alt="image"
                 ></p>
-<p>最后推得关系式如下：dL&#x2F;dx  &#x3D; (dL&#x2F;dy)wT</p>
-<p>（详细证明：<a class="link"   target="_blank" rel="noopener" href="http://cs231n.stanford.edu/handouts/linear-backprop.pdf%EF%BC%89" >http://cs231n.stanford.edu/handouts/linear-backprop.pdf） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="2-池化层-Pooling-layer：向下采样"><a href="#2-池化层-Pooling-layer：向下采样" class="headerlink" title="2.池化层 Pooling layer：向下采样"></a>2.池化层 Pooling layer：向下采样</h3><p>包含de超参：<strong>内核大小、步长、池化函数</strong></p>
+<p>举例：<strong>最大池化max pooling</strong></p>
+<p><u>空间维度减半</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image10.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image10.png"
                       alt="image"
                 ></p>
-<h3 id="另一个观点：反向自动微分"><a href="#另一个观点：反向自动微分" class="headerlink" title="另一个观点：反向自动微分"></a>另一个观点：反向自动微分</h3><h5 id="反向自动微分"><a href="#反向自动微分" class="headerlink" title="反向自动微分"></a>反向自动微分</h5><p>认为jacobian矩阵可以累乘，最后得到一个标量。（对于所有的与求导&#x2F;微分相关的程序都有效，局限性小）</p>
+<h3 id="3-正则化"><a href="#3-正则化" class="headerlink" title="3.正则化"></a>3.正则化</h3><p>形成零均值和零平均单位方差，对数据处理，</p>
+<p>作用：<u>1.稳定加速神经网络的训练。</u></p>
+<p><u>改善梯度流动。</u></p>
+<p><u>允许更高的学习率，更快的收敛。</u></p>
+<p><u>更加鲁棒性</u>。</p>
+<p>一般<strong>放在全连接层后，非线性函数前</strong></p>
+<p>举例：①<strong>批正则化</strong>（xk-均值&#x2F;标准差）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image11.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image11.png"
                       alt="image"
                 ></p>
-<h5 id="前向自动微分"><a href="#前向自动微分" class="headerlink" title="前向自动微分"></a>前向自动微分</h5><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image12.png"
-                      alt="image"
-                ></p>
-<p><u>缺点：前向不被大框架支持；不好用</u></p>
-<h3 id="反向传播另一个功能：求高阶导数"><a href="#反向传播另一个功能：求高阶导数" class="headerlink" title="反向传播另一个功能：求高阶导数"></a>反向传播另一个功能：求高阶导数</h3><p>（比如计算hessian矩阵）</p>
-<p>使用反向传播扩展计算图。在计算loss之后，使用f2’计算梯度相对于x1的损失，用f1’计算loss相对于x0的损失（f1’\f2’是f的反向传递）</p>
-<p>再点积向量 v，就会得到v关于x的导数。</p>
-<p>再Backprop，可以得到x关于v的导数。</p>
-<p>（图中举例：二阶导数）</p>
+<p>N：<strong>批量参数</strong>（n个向量）</p>
+<p>D：<strong>向量维数</strong></p>
+<p>添加<strong>学习尺度、偏差bias</strong>两个参数，生成新的输出</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image13.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image12.png"
+                      alt="image"
+                ></p>
+<p>测试时：<u>所用的\mu和\thgma都是对训练中的值求平均（两个常数），归一化变成线性操作。</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image13.png"
+                      alt="image"
+                ></p>
+<p>存在问题：1.优化原理不清晰 2.训练&#x2F;测试时方法不同</p>
+<p>举例：<strong>②层标准化Layer Normalization</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image14.png"
+                      alt="image"
+                ></p>
+<p>举例：③<strong>实例归一化Instance Normalization</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image15.png"
+                      alt="image"
+                ></p>
+<p><strong>三者区别:</strong></p>
+<p>批正则：对批和空间正则</p>
+<p>层：对空间和通道正则</p>
+<p>实例：对通道正则</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image16.png"
                       alt="image"
                 ></p>
 
@@ -502,18 +526,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> CS231N Lecture6 反向传播</li>
+        <li><strong>Title:</strong> CS231N-Lecture7 卷积神经网络</li>
         <li><strong>Author:</strong> Rongying Liu</li>
         <li><strong>Created at
-                :</strong> 2024-12-10 22:54:45</li>
+                :</strong> 2025-01-15 22:51:12</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-01-17 16:20:15
+                    :</strong> 2025-01-17 16:18:04
             </li>
         
         <li>
-            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/10/反向传播/
+            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2025/01/15/卷积神经网络/
         </li>
         <li>
             <strong>
@@ -546,29 +570,14 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2025/01/15/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">CS231N-Lecture7 卷积神经网络</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/12/08/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
+                        href="/2024/12/10/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">CS231N Lecture5 神经网络</span>
+                                <span class="post-nav-title-item">CS231N Lecture6 反向传播</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -631,8 +640,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">CS231N Lecture6 反向传播</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture6%E2%80%93%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">Lecture6–反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagation-%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">Backpropagation 反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E6%B5%81%E5%8A%A8%E6%97%B6%E4%B8%80%E4%BA%9B%E6%9C%89%E8%B6%A3%E7%9A%84pattern%EF%BC%9A"><span class="nav-text">梯度流动时一些有趣的pattern：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8C%96%E6%B1%82%E8%A7%A3%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">简化求解反向传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%A7%82%E7%82%B9%EF%BC%9A%E5%8F%8D%E5%90%91%E8%87%AA%E5%8A%A8%E5%BE%AE%E5%88%86"><span class="nav-text">另一个观点：反向自动微分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%EF%BC%9A%E6%B1%82%E9%AB%98%E9%98%B6%E5%AF%BC%E6%95%B0"><span class="nav-text">反向传播另一个功能：求高阶导数</span></a></li></ol></li></ol></li></ol>
+        <div class="page-title">CS231N-Lecture7 卷积神经网络</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture7-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-text">Lecture7 卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Convolution-layer-%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="nav-text">1.Convolution layer 卷积层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A1%AB%E5%85%85%EF%BC%88padding%EF%BC%89"><span class="nav-text">填充（padding）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%95%BFStride"><span class="nav-text">步长Stride</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E5%9F%9FReceptive-Field"><span class="nav-text">概念域Receptive Field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%B1%A0%E5%8C%96%E5%B1%82-Pooling-layer%EF%BC%9A%E5%90%91%E4%B8%8B%E9%87%87%E6%A0%B7"><span class="nav-text">2.池化层 Pooling layer：向下采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-text">3.正则化</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>
