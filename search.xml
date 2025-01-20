@@ -59,7 +59,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/image-20241119183936618.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119183936618.png"
                       alt="image"
                 ></p>
 <h5 id="二、视觉角度分析"><a href="#二、视觉角度分析" class="headerlink" title="二、视觉角度分析"></a>二、视觉角度分析</h5><p>另一种处理方法：<u>将权重矩阵reshape到跟输入图像一样，实现<strong>“template matching”</strong></u></p>
@@ -70,7 +70,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/image-20241119185407644.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119185407644.png"
                       alt="image"
                 ></p>
 <p><u>（缺点：对input图像的依赖严重，对其content（环境）依赖，旋转图片后无法识别）</u></p>
@@ -78,7 +78,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/image-20241119191101704.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119191101704.png"
                       alt="image"
                 ></p>
 <h3 id="二、如何选择矩阵W-——使用损失函数来量化评估W"><a href="#二、如何选择矩阵W-——使用损失函数来量化评估W" class="headerlink" title="二、如何选择矩阵W ——使用损失函数来量化评估W"></a>二、如何选择矩阵W ——使用损失函数来量化评估W</h3><h5 id="1️⃣loss：multi-class-SVM损失（图像分类）"><a href="#1️⃣loss：multi-class-SVM损失（图像分类）" class="headerlink" title="1️⃣loss：multi-class SVM损失（图像分类）"></a>1️⃣loss：multi-class SVM损失（图像分类）</h5><p>特征：如果一个种类被正确区分，那么改变预测分数，不再影响损失。（达到零损失）</p>
@@ -86,7 +86,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0514.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0514.PNG"
                       alt="\images\IMG_0514.PNG"
                 ></p>
 <h5 id="2️⃣Cross-Entropy-Loss（multinomial-logistic-regression）"><a href="#2️⃣Cross-Entropy-Loss（multinomial-logistic-regression）" class="headerlink" title="2️⃣Cross- Entropy Loss（multinomial logistic regression）"></a>2️⃣Cross- Entropy Loss（multinomial logistic regression）</h5><p>want to interpret raw classifier scores as probabilities.（使用概率来评分）</p>
@@ -104,7 +104,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0523.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0523.PNG"
                       alt="\images\IMG_0523.PNG"
                 ></p>
 <h3 id="三、对矩阵进行优化"><a href="#三、对矩阵进行优化" class="headerlink" title="三、对矩阵进行优化"></a>三、对矩阵进行优化</h3><p>Regularization（正则化）—— prevent the model from doing too well</p>
@@ -113,7 +113,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0516.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0516.PNG"
                       alt="\images\IMG_0516.PNG"
                 ></p>
 <p>正则化简单实例：L2、L1、Elastic net（L1+L2）（如上图左下）</p>
@@ -125,7 +125,7 @@
 <p>如果有噪声或者很多特征,也适用。<img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0517.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0517.PNG"
                       alt="images\IMG_0517.PNG"
                 ></p>
 <p>2️⃣</p>
@@ -133,7 +133,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/IMG_0518.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0518.PNG"
                       alt="image"
                 ></p>
 ]]></content>
@@ -158,7 +158,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0531.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0531.PNG"
                       alt="image"
                 ></p>
 <h3 id="gradient-descent梯度下降"><a href="#gradient-descent梯度下降" class="headerlink" title="gradient descent梯度下降"></a><u>gradient descent梯度下降</u></h3><p>包含的超参：</p>
@@ -171,7 +171,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0532.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0532.PNG"
                       alt="image"
                 ></p>
 <h3 id="batch-gradient-descent（批量梯度下降）"><a href="#batch-gradient-descent（批量梯度下降）" class="headerlink" title="batch gradient descent（批量梯度下降）"></a><u>batch gradient descent（批量梯度下降）</u></h3><p>选择批量，进行求loss和计算梯度</p>
@@ -179,7 +179,7 @@
 <h3 id="stochastic-gradient-descentSGD随机梯度下降"><a href="#stochastic-gradient-descentSGD随机梯度下降" class="headerlink" title="stochastic gradient descentSGD随机梯度下降"></a><u>stochastic gradient descentSGD随机梯度下降</u></h3><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0533.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0533.PNG"
                       alt="image"
                 ></p>
 <p>存在的问题：</p>
@@ -191,7 +191,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0555.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0555.PNG"
                       alt="image"
                 ></p>
 <h4 id="2-Nesterov-动量更新"><a href="#2-Nesterov-动量更新" class="headerlink" title="2.Nesterov 动量更新"></a>2.Nesterov 动量更新</h4><p>如图</p>
@@ -199,21 +199,21 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0559.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0559.PNG"
                       alt="image"
                 ></p>
 <p>两者对比：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0557.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0557.PNG"
                       alt="image"
                 ></p>
 <p><u>sgd特征：1.可能会overshoot（到达底端后，会有反向动量存在，往回走一段距离，如下图）</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0560.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0560.PNG"
                       alt="image"
                 ></p>
 <h3 id="Adaptive-learning-rates自适应学习率"><a href="#Adaptive-learning-rates自适应学习率" class="headerlink" title="Adaptive learning rates自适应学习率"></a>Adaptive learning rates自适应学习率</h3><h4 id="1-AdaGrad算法"><a href="#1-AdaGrad算法" class="headerlink" title="1.AdaGrad算法"></a>1.AdaGrad算法</h4><p>（通过<strong>除以梯度</strong>，抑制&#x2F;提高运动速度）</p>
@@ -221,14 +221,14 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0561.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0561.PNG"
                       alt="image"
                 ></p>
 <h4 id="2-RMSprop（对AdaGrad的改善）"><a href="#2-RMSprop（对AdaGrad的改善）" class="headerlink" title="2.RMSprop（对AdaGrad的改善）"></a>2.RMSprop（对AdaGrad的改善）</h4><p>添加参数decay_rate 来降低grad_squared,  类似加入摩擦系数</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0562.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0562.PNG"
                       alt="image"
                 ></p>
 <h3 id="Adam（RMSProp-动量）"><a href="#Adam（RMSProp-动量）" class="headerlink" title="Adam（RMSProp+动量）"></a>Adam（RMSProp+动量）</h3><p>——非常强大的优化算法，适用于不同的任务，超参的调整范围也较小</p>
@@ -236,14 +236,14 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0563.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0563.PNG"
                       alt="image"
                 ></p>
 <p>对其进行改善：添加<strong>Bias Corection（偏差校正）</strong>，让其更稳健。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0564.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0564.PNG"
                       alt="image"
                 ></p>
 <h3 id="AdamW：Adam-Variant-with-Weight-Decay"><a href="#AdamW：Adam-Variant-with-Weight-Decay" class="headerlink" title="AdamW：Adam Variant with Weight Decay"></a>AdamW：Adam Variant with Weight Decay</h3><p>Source：<a class="link"   href="https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html" >https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
@@ -253,430 +253,27 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/image.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image.png"
                       alt="image"
                 ></p>
 <h3 id="Learning-Rate-Decay-减少学习率"><a href="#Learning-Rate-Decay-减少学习率" class="headerlink" title="Learning Rate Decay 减少学习率"></a>Learning Rate Decay 减少学习率</h3><p>在某些固定点减少学习率。常见的方法如下：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/image0568.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image0568.png"
                       alt="image"
                 ></p>
 <h3 id="二阶优化方法：L-BFGS（准确但不实际）-BGFS-最常用"><a href="#二阶优化方法：L-BFGS（准确但不实际）-BGFS-最常用" class="headerlink" title="二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)"></a>二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)</h3><p>使用Hessian矩阵，可以使对学习率&#x2F;步长的选择更加合理。但数据量巨大，只适合低维优化问题</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0567.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0567.PNG"
                       alt="image"
                 ></p>
 <h3 id="总结（对优化算法的比较）"><a href="#总结（对优化算法的比较）" class="headerlink" title="总结（对优化算法的比较）"></a>总结（对优化算法的比较）</h3><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture2/IMG_0566.PNG"
-                      alt="image"
-                ></p>
-]]></content>
-      <categories>
-        <category>CS231N</category>
-      </categories>
-      <tags>
-        <tag>计算机视觉</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CS231N Lecture5 神经网络</title>
-    <url>/2024/12/08/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
-    <content><![CDATA[<p>“线性分类器不够强大”</p>
-<p>Solution ①：</p>
-<h5 id="Feature-Transform-“特征变换”"><a href="#Feature-Transform-“特征变换”" class="headerlink" title="Feature Transform “特征变换”"></a>Feature Transform “特征变换”</h5><p>————需要考虑如何设计特征类型</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image1.png"
-                      alt="image"
-                ></p>
-<h6 id="举例一：颜色直方图-Color-Histogram"><a href="#举例一：颜色直方图-Color-Histogram" class="headerlink" title="举例一：颜色直方图 Color Histogram"></a>举例一：颜色直方图 Color Histogram</h6><p>只考虑颜色出现的频率&#x2F;多少，不考虑图像实际信息</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image2.png"
-                      alt="image"
-                ></p>
-<h6 id="举例二：Histogram-of-Oriented-Gradients（HoG）"><a href="#举例二：Histogram-of-Oriented-Gradients（HoG）" class="headerlink" title="举例二：Histogram of Oriented Gradients（HoG）"></a>举例二：Histogram of Oriented Gradients（HoG）</h6><p>主要流程：</p>
-<p>1.对每个像素边缘方向、强度计算。</p>
-<p>2.将图像分为8x8 区域</p>
-<p>3.在每个区域，计算HoG。</p>
-<p>常用于物体检测等任务（20世纪初）。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image3.png"
-                      alt="image"
-                ></p>
-<h6 id="举例三：”data-driven-数据驱动型”"><a href="#举例三：”data-driven-数据驱动型”" class="headerlink" title="举例三：”data driven 数据驱动型”"></a>举例三：”data driven 数据驱动型”</h6><p>将数据集图片内容提取，使用聚类，得到与视觉词对应的”codebook”（形成特征向量）</p>
-<p>再对图片进行处理，绘制图片的颜色直方图，将其与codebook匹配，寻找结果。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image4.png"
-                      alt="image"
-                ></p>
-<p><u>缺点：特征提取复杂；不能有效利用数据自行调整系统、达到最好的分类效果</u></p>
-<h3 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h3><p>如图，是一个<strong>简单的神经网络</strong>示例：由<u>输入列向量x，权重矩阵W1、W2，隐藏层h，输出层S</u>构成。</p>
-<p>其中的权重矩阵每个元素都有值，对后续输出造成影响，称为<strong>全连接神经网络&#x2F;多层感知器</strong>  “Fully-connected neural network”&#x2F;“Multi-Layer Perceptron”（MLP）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image5.png"
-                      alt="image"
-                ></p>
-<p>复杂神经网络</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image6.png"
-                      alt="image"
-                ></p>
-<h4 id="常用Activation-Function-–RELU函数"><a href="#常用Activation-Function-–RELU函数" class="headerlink" title="常用Activation Function –RELU函数"></a>常用Activation Function –RELU函数</h4><p>RELU函数（修正线性单元）–使用最广泛的激活函数</p>
-<p><del>如果不添加激活函数，神经网络又是一个线性分类器！</del></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image7.png"
-                      alt="image"
-                ></p>
-<h4 id="其他常用激活函数："><a href="#其他常用激活函数：" class="headerlink" title="其他常用激活函数："></a>其他常用激活函数：</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image8.png"
-                      alt="image"
-                ></p>
-<h5 id="从一个有趣的角度理解激活函数：空间扭曲"><a href="#从一个有趣的角度理解激活函数：空间扭曲" class="headerlink" title="从一个有趣的角度理解激活函数：空间扭曲"></a>从一个有趣的角度理解激活函数：空间扭曲</h5><p>线性分类器造成的空间扭曲，大概率是这样的：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image9.png"
-                      alt="image"
-                ></p>
-<p>但是使用RELU函数，对空间变换如下：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image10.png"
-                      alt="image"
-                ></p>
-<p>这样的话，数据在变换后的特征空间变得线性可分（如下图，类似于对空间进行两次折叠）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image11.png"
-                      alt="image"
-                ></p>
-<h4 id="增加隐藏层，可能导致决策边界变复杂"><a href="#增加隐藏层，可能导致决策边界变复杂" class="headerlink" title="增加隐藏层，可能导致决策边界变复杂"></a>增加隐藏层，可能导致决策边界变复杂</h4><p>——需采用<strong>更强的正则化</strong>，<del>而不是减少隐藏层！</del></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image12.png"
-                      alt="image"
-                ></p>
-<h4 id="神经网络另一功能：Universal-Approximation-“万能逼近”"><a href="#神经网络另一功能：Universal-Approximation-“万能逼近”" class="headerlink" title="神经网络另一功能：Universal Approximation “万能逼近”"></a>神经网络另一功能：Universal Approximation “万能逼近”</h4><p>从代数观点分析：</p>
-<p>对于结果y，每一项u1<em>max(0,w1</em>x+b1)相当于RELU函数的平移&#x2F;放大缩小：</p>
-<p>根据wi正负对RELU进行左右翻转；</p>
-<p>根据偏差bi来设置拐点；</p>
-<p>根据第二个权重&#x2F;第一个权重得到斜率。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image13.png"
-                      alt="image"
-                ></p>
-<p>例：用四个隐藏层（四个relu函数），完成对凹凸函数的拟合</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image14.png"
-                      alt="image"
-                ></p>
-<h4 id="关于神经网络的优化–"><a href="#关于神经网络的优化–" class="headerlink" title="关于神经网络的优化–"></a>关于神经网络的优化–</h4><p>1.<strong>NONConvex Functions</strong> “非凸函数优化”</p>
-<p>目前没有理论验证其一定收敛，但实践证明有用。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture3/image15.png"
-                      alt="image"
-                ></p>
-]]></content>
-      <categories>
-        <category>CS231N</category>
-      </categories>
-      <tags>
-        <tag>计算机视觉</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CS231N Lecture6 反向传播</title>
-    <url>/2024/12/10/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/</url>
-    <content><![CDATA[<h1 id="Lecture6–反向传播"><a href="#Lecture6–反向传播" class="headerlink" title="Lecture6–反向传播"></a>Lecture6–反向传播</h1><p><em>如何为神经网络计算梯度？</em></p>
-<p>bad idea：在纸上推导</p>
-<p>better：计算图</p>
-<p>以svm  loss举例</p>
-<p>蓝色节点：x与W的矩阵乘法</p>
-<p>红色节点：铰链损失（针对SVMloss）</p>
-<p>绿色：正则化项</p>
-<p>相加得到L（loss）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image1.png"
-                      alt="image"
-                ></p>
-<h2 id="Backpropagation-反向传播"><a href="#Backpropagation-反向传播" class="headerlink" title="Backpropagation 反向传播"></a>Backpropagation 反向传播</h2><p>构成：</p>
-<p>1<u>.Forward pass</u> “前向传递”计算输出值</p>
-<p>2.<u>backward pass</u> “反向传递”计算每个参数的导数</p>
-<p><u>下游梯度 &#x3D; 局部梯度 x 上游梯度</u></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image2.png"
-                      alt="image"
-                ></p>
-<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a><u>优点：</u></h5><p><u>将对梯度的计算<strong>模块化</strong>。不需要知道全局架构，只需要知道这个节点里对应的三个梯度数值（上游&#x2F;本地&#x2F;下游），从而推出<strong>全局梯度</strong>。</u></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image3.png"
-                      alt="image"
-                ></p>
-<h5 id="全局图be-like："><a href="#全局图be-like：" class="headerlink" title="全局图be like："></a>全局图be like：</h5><p>（trick: 蓝色框内为sigmoid函数，可以直接计算其local gradient得到简单表达式,跳过中间步骤)</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image4.png"
-                      alt="image"
-                ></p>
-<h3 id="梯度流动时一些有趣的pattern："><a href="#梯度流动时一些有趣的pattern：" class="headerlink" title="梯度流动时一些有趣的pattern："></a>梯度流动时一些有趣的pattern：</h3><p>加法：downstream gradient &#x3D; upstream gradient</p>
-<p>复制：downstream gradient &#x3D; sum(upstream gradient)</p>
-<p>乘法：“交换”downstream gradient &#x3D; other diwnstream gradient * upstream</p>
-<p>max：最大值downstream &#x3D; upstream，其余downstream&#x3D;0（不常见）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image5.png"
-                      alt="image"
-                ></p>
-<p>实际处理问题时，我们通常是对<strong>向量</strong>进行求梯度等操作（最后得到的loss仍然是标量）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image6.png"
-                      alt="image"
-                ></p>
-<p>由于只考虑upstream和downstream的关系，Jocobian矩阵将会是一个<em>非常大的稀疏矩阵</em>，<em>只有对角线上元素可能不为0</em>.所以在使用中，从来不会真正形成矩阵，而是对其<strong>隐式表达</strong>。</p>
-<p>如下图，对RELU函数，可以理解为：</p>
-<p>根据input符号，决定downstream是0还是具体值</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image7.png"
-                      alt="image"
-                ></p>
-<p>当使用的是<strong>tensor</strong>，更复杂了.</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image8.png"
-                      alt="image"
-                ></p>
-<h3 id="简化求解反向传播"><a href="#简化求解反向传播" class="headerlink" title="简化求解反向传播"></a>简化求解反向传播</h3><p>推导：分解问题，尝试对每个x的导数求解</p>
-<p>如图，dL&#x2F;dx1,1 &#x3D; (dy&#x2F;dx1,1)(dL&#x2F;dy)</p>
-<p>计算dy&#x2F;dx1,1，发现其为第一行等于权重矩阵第一行，其余行为0的矩阵；</p>
-<p>所以，dL&#x2F;dx1,1等于权重第一行与dL&#x2F;dy第一行的内积；</p>
-<p>其他同理。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image9.png"
-                      alt="image"
-                ></p>
-<p>最后推得关系式如下：dL&#x2F;dx  &#x3D; (dL&#x2F;dy)wT</p>
-<p>（详细证明：<a class="link"   href="http://cs231n.stanford.edu/handouts/linear-backprop.pdf%EF%BC%89" >http://cs231n.stanford.edu/handouts/linear-backprop.pdf） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image10.png"
-                      alt="image"
-                ></p>
-<h3 id="另一个观点：反向自动微分"><a href="#另一个观点：反向自动微分" class="headerlink" title="另一个观点：反向自动微分"></a>另一个观点：反向自动微分</h3><h5 id="反向自动微分"><a href="#反向自动微分" class="headerlink" title="反向自动微分"></a>反向自动微分</h5><p>认为jacobian矩阵可以累乘，最后得到一个标量。（对于所有的与求导&#x2F;微分相关的程序都有效，局限性小）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image11.png"
-                      alt="image"
-                ></p>
-<h5 id="前向自动微分"><a href="#前向自动微分" class="headerlink" title="前向自动微分"></a>前向自动微分</h5><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image12.png"
-                      alt="image"
-                ></p>
-<p><u>缺点：前向不被大框架支持；不好用</u></p>
-<h3 id="反向传播另一个功能：求高阶导数"><a href="#反向传播另一个功能：求高阶导数" class="headerlink" title="反向传播另一个功能：求高阶导数"></a>反向传播另一个功能：求高阶导数</h3><p>（比如计算hessian矩阵）</p>
-<p>使用反向传播扩展计算图。在计算loss之后，使用f2’计算梯度相对于x1的损失，用f1’计算loss相对于x0的损失（f1’\f2’是f的反向传递）</p>
-<p>再点积向量 v，就会得到v关于x的导数。</p>
-<p>再Backprop，可以得到x关于v的导数。</p>
-<p>（图中举例：二阶导数）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture6/image13.png"
-                      alt="image"
-                ></p>
-]]></content>
-      <categories>
-        <category>CS231N</category>
-      </categories>
-      <tags>
-        <tag>计算机视觉</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CS231N-Lecture7 卷积神经网络</title>
-    <url>/2025/01/15/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
-    <content><![CDATA[<h1 id="Lecture7-卷积神经网络"><a href="#Lecture7-卷积神经网络" class="headerlink" title="Lecture7 卷积神经网络"></a>Lecture7 卷积神经网络</h1><p>前面存在的问题：并没有利用图像的空间结构（将其展开成向量）</p>
-<h2 id="1-Convolution-layer-卷积层"><a href="#1-Convolution-layer-卷积层" class="headerlink" title="1.Convolution layer 卷积层"></a>1.Convolution layer 卷积层</h2><p>超参数：<strong>（卷积层大小、层数、填充、步长）</strong></p>
-<p>构成：<strong>①输入三维张量</strong>（depth x width x height）</p>
-<p><strong>②权重矩阵 filter</strong>（也是三维）</p>
-<p>存在<strong>约束</strong>：filter与input的depth必须相同。（filter会覆盖input的整个深度）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image1.png"
-                      alt="image"
-                ></p>
-<p>计算：</p>
-<p>将filter在输入张量上滑动，选定一块区域进行点积，再加上偏差，得到一个标量结果。对input所有可能的位置进行该操作。</p>
-<p>使用举例：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image2.png"
-                      alt="image"
-                ></p>
-<h3 id="填充（padding）"><a href="#填充（padding）" class="headerlink" title="填充（padding）"></a><strong>填充（padding）</strong></h3><p><u>卷积时会造成像素损失，所以在图片周围进行填充，以减少损失（如下：0填充）</u></p>
-<p><strong><u>same padding</u></strong>(不改变空间大小)：将p设置为（k-1）&#x2F;2</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image3.png"
-                      alt="image"
-                ></p>
-<h3 id="步长Stride"><a href="#步长Stride" class="headerlink" title="步长Stride"></a><strong><u>步长Stride</u></strong></h3><p>定义：<u>一次移动一个步长，会将概念域翻对应倍数。</u></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image4.png"
-                      alt="image"
-                ></p>
-<h3 id="概念域Receptive-Field"><a href="#概念域Receptive-Field" class="headerlink" title="概念域Receptive Field"></a>概念域Receptive Field</h3><p>定义：<u>输出张量的一个元素与input的局部区域对应，所对应的域即为概念域。</u></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image5.png"
-                      alt="image"
-                ></p>
-<p>举例：<strong>1x1 卷积</strong></p>
-<p>对空间中每一个网格的特征向量操作，用来改变三维张量的通道维数。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image6.png"
-                      alt="image"
-                ></p>
-<p>举例：<strong>全连接层 （fully connected layer）</strong></p>
-<p>用来展开张量、破坏空间结构，得到一个向量输出。</p>
-<p>总结：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image7.png"
-                      alt="image"
-                ></p>
-<p>其他卷积：<strong>一维卷积</strong>：（例如处理音频数据）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image8.png"
-                      alt="image"
-                ></p>
-<p><strong>三维卷积</strong>：（例如处理点云数据）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image9.png"
-                      alt="image"
-                ></p>
-<h3 id="2-池化层-Pooling-layer：向下采样"><a href="#2-池化层-Pooling-layer：向下采样" class="headerlink" title="2.池化层 Pooling layer：向下采样"></a>2.池化层 Pooling layer：向下采样</h3><p>包含de超参：<strong>内核大小、步长、池化函数</strong></p>
-<p>举例：<strong>最大池化max pooling</strong></p>
-<p><u>空间维度减半</u></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image10.png"
-                      alt="image"
-                ></p>
-<h3 id="3-正则化"><a href="#3-正则化" class="headerlink" title="3.正则化"></a>3.正则化</h3><p>形成零均值和零平均单位方差，对数据处理，</p>
-<p>作用：<u>1.稳定加速神经网络的训练。</u></p>
-<p><u>改善梯度流动。</u></p>
-<p><u>允许更高的学习率，更快的收敛。</u></p>
-<p><u>更加鲁棒性</u>。</p>
-<p>一般<strong>放在全连接层后，非线性函数前</strong></p>
-<p>举例：①<strong>批正则化</strong>（xk-均值&#x2F;标准差）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image11.png"
-                      alt="image"
-                ></p>
-<p>N：<strong>批量参数</strong>（n个向量）</p>
-<p>D：<strong>向量维数</strong></p>
-<p>添加<strong>学习尺度、偏差bias</strong>两个参数，生成新的输出</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image12.png"
-                      alt="image"
-                ></p>
-<p>测试时：<u>所用的\mu和\thgma都是对训练中的值求平均（两个常数），归一化变成线性操作。</u></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image13.png"
-                      alt="image"
-                ></p>
-<p>存在问题：1.优化原理不清晰 2.训练&#x2F;测试时方法不同</p>
-<p>举例：<strong>②层标准化Layer Normalization</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image14.png"
-                      alt="image"
-                ></p>
-<p>举例：③<strong>实例归一化Instance Normalization</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image15.png"
-                      alt="image"
-                ></p>
-<p><strong>三者区别:</strong></p>
-<p>批正则：对批和空间正则</p>
-<p>层：对空间和通道正则</p>
-<p>实例：对通道正则</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image16.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0566.PNG"
                       alt="image"
                 ></p>
 ]]></content>
@@ -702,14 +299,14 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image1.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image1.png"
                       alt="image"
                 ></p>
 <p>总结规律：1.<u>池化的计算次数远小于卷积</u><br><u>2.主要的内存使用在早期卷积层</u><br><u>3.参数主要在全连接层中</u><br><u>4.主要的浮点运算在卷积层</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image2.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image2.png"
                       alt="image"
                 ></p>
 <h3 id="VGGNet"><a href="#VGGNet" class="headerlink" title="VGGNet"></a>VGGNet</h3><p><strong>设计规则</strong>：</p>
@@ -728,7 +325,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image3.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image3.png"
                       alt="image"
                 ></p>
 <p>为什么使用小卷积层？<u>三个3x3层与一个7x7层的概念域相等，计算更少，允许更多非线性计算。</u></p>
@@ -737,7 +334,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image4.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image4.png"
                       alt="image"
                 ></p>
 <h4 id="2-Inception-Module-初始模块（主要组成）"><a href="#2-Inception-Module-初始模块（主要组成）" class="headerlink" title="2.Inception Module 初始模块（主要组成）"></a>2.Inception Module 初始模块（主要组成）</h4><p>使用并行处理，在同一时间进行多个卷积</p>
@@ -745,21 +342,21 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image5.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image5.png"
                       alt="image"
                 ></p>
 <h4 id="3-全局平均池化"><a href="#3-全局平均池化" class="headerlink" title="3.全局平均池化"></a>3.全局平均池化</h4><p>用全局平均池化取代全连接层，对通道求平均，减少元素总数，来摧毁空间。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image6.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image6.png"
                       alt="image"
                 ></p>
 <h3 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h3><h4 id="1-Residual-Block"><a href="#1-Residual-Block" class="headerlink" title="1.Residual Block"></a>1.Residual Block</h4><p>使深网络更好地模拟浅层网络，改善梯度流。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image7.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image7.png"
                       alt="image"
                 ></p>
 <h4 id="“Bottleneck-Block”："><a href="#“Bottleneck-Block”：" class="headerlink" title="“Bottleneck Block”："></a>“Bottleneck Block”：</h4><p>1x1收缩通道-3x3卷积-1x1扩张通道。</p>
@@ -767,16 +364,425 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image8.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image8.png"
                       alt="image"
                 ></p>
 <h4 id="2-使用了GoogleNet的向下采样以及全局平均池化的方法。"><a href="#2-使用了GoogleNet的向下采样以及全局平均池化的方法。" class="headerlink" title="2.使用了GoogleNet的向下采样以及全局平均池化的方法。"></a>2.使用了GoogleNet的<strong>向下采样</strong>以及<strong>全局平均池化</strong>的方法。</h4><h3 id="ResNeXt"><a href="#ResNeXt" class="headerlink" title="ResNeXt"></a>ResNeXt</h3><p>使用<strong>并行路径</strong>，计算成本与左侧相同。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture8/image9.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image9.png"
                       alt="image"
                 ></p>
 ]]></content>
+      <categories>
+        <category>CS231N</category>
+      </categories>
+      <tags>
+        <tag>计算机视觉</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS231N Lecture5 神经网络</title>
+    <url>/2024/12/08/5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<p>“线性分类器不够强大”</p>
+<p>Solution ①：</p>
+<h5 id="Feature-Transform-“特征变换”"><a href="#Feature-Transform-“特征变换”" class="headerlink" title="Feature Transform “特征变换”"></a>Feature Transform “特征变换”</h5><p>————需要考虑如何设计特征类型</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image1.png"
+                      alt="image"
+                ></p>
+<h6 id="举例一：颜色直方图-Color-Histogram"><a href="#举例一：颜色直方图-Color-Histogram" class="headerlink" title="举例一：颜色直方图 Color Histogram"></a>举例一：颜色直方图 Color Histogram</h6><p>只考虑颜色出现的频率&#x2F;多少，不考虑图像实际信息</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image2.png"
+                      alt="image"
+                ></p>
+<h6 id="举例二：Histogram-of-Oriented-Gradients（HoG）"><a href="#举例二：Histogram-of-Oriented-Gradients（HoG）" class="headerlink" title="举例二：Histogram of Oriented Gradients（HoG）"></a>举例二：Histogram of Oriented Gradients（HoG）</h6><p>主要流程：</p>
+<p>1.对每个像素边缘方向、强度计算。</p>
+<p>2.将图像分为8x8 区域</p>
+<p>3.在每个区域，计算HoG。</p>
+<p>常用于物体检测等任务（20世纪初）。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image3.png"
+                      alt="image"
+                ></p>
+<h6 id="举例三：”data-driven-数据驱动型”"><a href="#举例三：”data-driven-数据驱动型”" class="headerlink" title="举例三：”data driven 数据驱动型”"></a>举例三：”data driven 数据驱动型”</h6><p>将数据集图片内容提取，使用聚类，得到与视觉词对应的”codebook”（形成特征向量）</p>
+<p>再对图片进行处理，绘制图片的颜色直方图，将其与codebook匹配，寻找结果。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image4.png"
+                      alt="image"
+                ></p>
+<p><u>缺点：特征提取复杂；不能有效利用数据自行调整系统、达到最好的分类效果</u></p>
+<h3 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h3><p>如图，是一个<strong>简单的神经网络</strong>示例：由<u>输入列向量x，权重矩阵W1、W2，隐藏层h，输出层S</u>构成。</p>
+<p>其中的权重矩阵每个元素都有值，对后续输出造成影响，称为<strong>全连接神经网络&#x2F;多层感知器</strong>  “Fully-connected neural network”&#x2F;“Multi-Layer Perceptron”（MLP）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image5.png"
+                      alt="image"
+                ></p>
+<p>复杂神经网络</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image6.png"
+                      alt="image"
+                ></p>
+<h4 id="常用Activation-Function-–RELU函数"><a href="#常用Activation-Function-–RELU函数" class="headerlink" title="常用Activation Function –RELU函数"></a>常用Activation Function –RELU函数</h4><p>RELU函数（修正线性单元）–使用最广泛的激活函数</p>
+<p><del>如果不添加激活函数，神经网络又是一个线性分类器！</del></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image7.png"
+                      alt="image"
+                ></p>
+<h4 id="其他常用激活函数："><a href="#其他常用激活函数：" class="headerlink" title="其他常用激活函数："></a>其他常用激活函数：</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image8.png"
+                      alt="image"
+                ></p>
+<h5 id="从一个有趣的角度理解激活函数：空间扭曲"><a href="#从一个有趣的角度理解激活函数：空间扭曲" class="headerlink" title="从一个有趣的角度理解激活函数：空间扭曲"></a>从一个有趣的角度理解激活函数：空间扭曲</h5><p>线性分类器造成的空间扭曲，大概率是这样的：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image9.png"
+                      alt="image"
+                ></p>
+<p>但是使用RELU函数，对空间变换如下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image10.png"
+                      alt="image"
+                ></p>
+<p>这样的话，数据在变换后的特征空间变得线性可分（如下图，类似于对空间进行两次折叠）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image11.png"
+                      alt="image"
+                ></p>
+<h4 id="增加隐藏层，可能导致决策边界变复杂"><a href="#增加隐藏层，可能导致决策边界变复杂" class="headerlink" title="增加隐藏层，可能导致决策边界变复杂"></a>增加隐藏层，可能导致决策边界变复杂</h4><p>——需采用<strong>更强的正则化</strong>，<del>而不是减少隐藏层！</del></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image12.png"
+                      alt="image"
+                ></p>
+<h4 id="神经网络另一功能：Universal-Approximation-“万能逼近”"><a href="#神经网络另一功能：Universal-Approximation-“万能逼近”" class="headerlink" title="神经网络另一功能：Universal Approximation “万能逼近”"></a>神经网络另一功能：Universal Approximation “万能逼近”</h4><p>从代数观点分析：</p>
+<p>对于结果y，每一项u1<em>max(0,w1</em>x+b1)相当于RELU函数的平移&#x2F;放大缩小：</p>
+<p>根据wi正负对RELU进行左右翻转；</p>
+<p>根据偏差bi来设置拐点；</p>
+<p>根据第二个权重&#x2F;第一个权重得到斜率。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image13.png"
+                      alt="image"
+                ></p>
+<p>例：用四个隐藏层（四个relu函数），完成对凹凸函数的拟合</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image14.png"
+                      alt="image"
+                ></p>
+<h4 id="关于神经网络的优化–"><a href="#关于神经网络的优化–" class="headerlink" title="关于神经网络的优化–"></a>关于神经网络的优化–</h4><p>1.<strong>NONConvex Functions</strong> “非凸函数优化”</p>
+<p>目前没有理论验证其一定收敛，但实践证明有用。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture3/image15.png"
+                      alt="image"
+                ></p>
+]]></content>
+      <categories>
+        <category>CS231N</category>
+      </categories>
+      <tags>
+        <tag>计算机视觉</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS231N Lecture6 反向传播</title>
+    <url>/2024/12/10/6%20%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/</url>
+    <content><![CDATA[<h1 id="Lecture6–反向传播"><a href="#Lecture6–反向传播" class="headerlink" title="Lecture6–反向传播"></a>Lecture6–反向传播</h1><p><em>如何为神经网络计算梯度？</em></p>
+<p>bad idea：在纸上推导</p>
+<p>better：计算图</p>
+<p>以svm  loss举例</p>
+<p>蓝色节点：x与W的矩阵乘法</p>
+<p>红色节点：铰链损失（针对SVMloss）</p>
+<p>绿色：正则化项</p>
+<p>相加得到L（loss）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image1.png"
+                      alt="image"
+                ></p>
+<h2 id="Backpropagation-反向传播"><a href="#Backpropagation-反向传播" class="headerlink" title="Backpropagation 反向传播"></a>Backpropagation 反向传播</h2><p>构成：</p>
+<p>1<u>.Forward pass</u> “前向传递”计算输出值</p>
+<p>2.<u>backward pass</u> “反向传递”计算每个参数的导数</p>
+<p><u>下游梯度 &#x3D; 局部梯度 x 上游梯度</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image2.png"
+                      alt="image"
+                ></p>
+<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a><u>优点：</u></h5><p><u>将对梯度的计算<strong>模块化</strong>。不需要知道全局架构，只需要知道这个节点里对应的三个梯度数值（上游&#x2F;本地&#x2F;下游），从而推出<strong>全局梯度</strong>。</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image3.png"
+                      alt="image"
+                ></p>
+<h5 id="全局图be-like："><a href="#全局图be-like：" class="headerlink" title="全局图be like："></a>全局图be like：</h5><p>（trick: 蓝色框内为sigmoid函数，可以直接计算其local gradient得到简单表达式,跳过中间步骤)</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image4.png"
+                      alt="image"
+                ></p>
+<h3 id="梯度流动时一些有趣的pattern："><a href="#梯度流动时一些有趣的pattern：" class="headerlink" title="梯度流动时一些有趣的pattern："></a>梯度流动时一些有趣的pattern：</h3><p>加法：downstream gradient &#x3D; upstream gradient</p>
+<p>复制：downstream gradient &#x3D; sum(upstream gradient)</p>
+<p>乘法：“交换”downstream gradient &#x3D; other diwnstream gradient * upstream</p>
+<p>max：最大值downstream &#x3D; upstream，其余downstream&#x3D;0（不常见）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image5.png"
+                      alt="image"
+                ></p>
+<p>实际处理问题时，我们通常是对<strong>向量</strong>进行求梯度等操作（最后得到的loss仍然是标量）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image6.png"
+                      alt="image"
+                ></p>
+<p>由于只考虑upstream和downstream的关系，Jocobian矩阵将会是一个<em>非常大的稀疏矩阵</em>，<em>只有对角线上元素可能不为0</em>.所以在使用中，从来不会真正形成矩阵，而是对其<strong>隐式表达</strong>。</p>
+<p>如下图，对RELU函数，可以理解为：</p>
+<p>根据input符号，决定downstream是0还是具体值</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image7.png"
+                      alt="image"
+                ></p>
+<p>当使用的是<strong>tensor</strong>，更复杂了.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image8.png"
+                      alt="image"
+                ></p>
+<h3 id="简化求解反向传播"><a href="#简化求解反向传播" class="headerlink" title="简化求解反向传播"></a>简化求解反向传播</h3><p>推导：分解问题，尝试对每个x的导数求解</p>
+<p>如图，dL&#x2F;dx1,1 &#x3D; (dy&#x2F;dx1,1)(dL&#x2F;dy)</p>
+<p>计算dy&#x2F;dx1,1，发现其为第一行等于权重矩阵第一行，其余行为0的矩阵；</p>
+<p>所以，dL&#x2F;dx1,1等于权重第一行与dL&#x2F;dy第一行的内积；</p>
+<p>其他同理。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image9.png"
+                      alt="image"
+                ></p>
+<p>最后推得关系式如下：dL&#x2F;dx  &#x3D; (dL&#x2F;dy)wT</p>
+<p>（详细证明：<a class="link"   href="http://cs231n.stanford.edu/handouts/linear-backprop.pdf%EF%BC%89" >http://cs231n.stanford.edu/handouts/linear-backprop.pdf） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image10.png"
+                      alt="image"
+                ></p>
+<h3 id="另一个观点：反向自动微分"><a href="#另一个观点：反向自动微分" class="headerlink" title="另一个观点：反向自动微分"></a>另一个观点：反向自动微分</h3><h5 id="反向自动微分"><a href="#反向自动微分" class="headerlink" title="反向自动微分"></a>反向自动微分</h5><p>认为jacobian矩阵可以累乘，最后得到一个标量。（对于所有的与求导&#x2F;微分相关的程序都有效，局限性小）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image11.png"
+                      alt="image"
+                ></p>
+<h5 id="前向自动微分"><a href="#前向自动微分" class="headerlink" title="前向自动微分"></a>前向自动微分</h5><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image12.png"
+                      alt="image"
+                ></p>
+<p><u>缺点：前向不被大框架支持；不好用</u></p>
+<h3 id="反向传播另一个功能：求高阶导数"><a href="#反向传播另一个功能：求高阶导数" class="headerlink" title="反向传播另一个功能：求高阶导数"></a>反向传播另一个功能：求高阶导数</h3><p>（比如计算hessian矩阵）</p>
+<p>使用反向传播扩展计算图。在计算loss之后，使用f2’计算梯度相对于x1的损失，用f1’计算loss相对于x0的损失（f1’\f2’是f的反向传递）</p>
+<p>再点积向量 v，就会得到v关于x的导数。</p>
+<p>再Backprop，可以得到x关于v的导数。</p>
+<p>（图中举例：二阶导数）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image13.png"
+                      alt="image"
+                ></p>
+]]></content>
+      <categories>
+        <category>CS231N</category>
+      </categories>
+      <tags>
+        <tag>计算机视觉</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS231N-Lecture7 卷积神经网络</title>
+    <url>/2025/01/15/7%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<h1 id="Lecture7-卷积神经网络"><a href="#Lecture7-卷积神经网络" class="headerlink" title="Lecture7 卷积神经网络"></a>Lecture7 卷积神经网络</h1><p>前面存在的问题：并没有利用图像的空间结构（将其展开成向量）</p>
+<h2 id="1-Convolution-layer-卷积层"><a href="#1-Convolution-layer-卷积层" class="headerlink" title="1.Convolution layer 卷积层"></a>1.Convolution layer 卷积层</h2><p>超参数：<strong>（卷积层大小、层数、填充、步长）</strong></p>
+<p>构成：<strong>①输入三维张量</strong>（depth x width x height）</p>
+<p><strong>②权重矩阵 filter</strong>（也是三维）</p>
+<p>存在<strong>约束</strong>：filter与input的depth必须相同。（filter会覆盖input的整个深度）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image1.png"
+                      alt="image"
+                ></p>
+<p>计算：</p>
+<p>将filter在输入张量上滑动，选定一块区域进行点积，再加上偏差，得到一个标量结果。对input所有可能的位置进行该操作。</p>
+<p>使用举例：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image2.png"
+                      alt="image"
+                ></p>
+<h3 id="填充（padding）"><a href="#填充（padding）" class="headerlink" title="填充（padding）"></a><strong>填充（padding）</strong></h3><p><u>卷积时会造成像素损失，所以在图片周围进行填充，以减少损失（如下：0填充）</u></p>
+<p><strong><u>same padding</u></strong>(不改变空间大小)：将p设置为（k-1）&#x2F;2</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image3.png"
+                      alt="image"
+                ></p>
+<h3 id="步长Stride"><a href="#步长Stride" class="headerlink" title="步长Stride"></a><strong><u>步长Stride</u></strong></h3><p>定义：<u>一次移动一个步长，会将概念域翻对应倍数。</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image4.png"
+                      alt="image"
+                ></p>
+<h3 id="概念域Receptive-Field"><a href="#概念域Receptive-Field" class="headerlink" title="概念域Receptive Field"></a>概念域Receptive Field</h3><p>定义：<u>输出张量的一个元素与input的局部区域对应，所对应的域即为概念域。</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image5.png"
+                      alt="image"
+                ></p>
+<p>举例：<strong>1x1 卷积</strong></p>
+<p>对空间中每一个网格的特征向量操作，用来改变三维张量的通道维数。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image6.png"
+                      alt="image"
+                ></p>
+<p>举例：<strong>全连接层 （fully connected layer）</strong></p>
+<p>用来展开张量、破坏空间结构，得到一个向量输出。</p>
+<p>总结：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image7.png"
+                      alt="image"
+                ></p>
+<p>其他卷积：<strong>一维卷积</strong>：（例如处理音频数据）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image8.png"
+                      alt="image"
+                ></p>
+<p><strong>三维卷积</strong>：（例如处理点云数据）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image9.png"
+                      alt="image"
+                ></p>
+<h3 id="2-池化层-Pooling-layer：向下采样"><a href="#2-池化层-Pooling-layer：向下采样" class="headerlink" title="2.池化层 Pooling layer：向下采样"></a>2.池化层 Pooling layer：向下采样</h3><p>包含de超参：<strong>内核大小、步长、池化函数</strong></p>
+<p>举例：<strong>最大池化max pooling</strong></p>
+<p><u>空间维度减半</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image10.png"
+                      alt="image"
+                ></p>
+<h3 id="3-正则化"><a href="#3-正则化" class="headerlink" title="3.正则化"></a>3.正则化</h3><p>形成零均值和零平均单位方差，对数据处理，</p>
+<p>作用：<u>1.稳定加速神经网络的训练。</u></p>
+<p><u>改善梯度流动。</u></p>
+<p><u>允许更高的学习率，更快的收敛。</u></p>
+<p><u>更加鲁棒性</u>。</p>
+<p>一般<strong>放在全连接层后，非线性函数前</strong></p>
+<p>举例：①<strong>批正则化</strong>（xk-均值&#x2F;标准差）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image11.png"
+                      alt="image"
+                ></p>
+<p>N：<strong>批量参数</strong>（n个向量）</p>
+<p>D：<strong>向量维数</strong></p>
+<p>添加<strong>学习尺度、偏差bias</strong>两个参数，生成新的输出</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image12.png"
+                      alt="image"
+                ></p>
+<p>测试时：<u>所用的\mu和\thgma都是对训练中的值求平均（两个常数），归一化变成线性操作。</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image13.png"
+                      alt="image"
+                ></p>
+<p>存在问题：1.优化原理不清晰 2.训练&#x2F;测试时方法不同</p>
+<p>举例：<strong>②层标准化Layer Normalization</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image14.png"
+                      alt="image"
+                ></p>
+<p>举例：③<strong>实例归一化Instance Normalization</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image15.png"
+                      alt="image"
+                ></p>
+<p><strong>三者区别:</strong></p>
+<p>批正则：对批和空间正则</p>
+<p>层：对空间和通道正则</p>
+<p>实例：对通道正则</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image16.png"
+                      alt="image"
+                ></p>
+]]></content>
+      <categories>
+        <category>CS231N</category>
+      </categories>
+      <tags>
+        <tag>计算机视觉</tag>
+      </tags>
   </entry>
 </search>
