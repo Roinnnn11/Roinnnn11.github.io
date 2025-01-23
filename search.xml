@@ -785,4 +785,333 @@
         <tag>计算机视觉</tag>
       </tags>
   </entry>
+  <entry>
+    <title>CS231N Lecture10&amp;11 训练技巧</title>
+    <url>/2025/01/23/CS231N-10&amp;11/</url>
+    <content><![CDATA[<h1 id="1-One-time-setup"><a href="#1-One-time-setup" class="headerlink" title="1.One time setup"></a>1.One time setup</h1><h2 id="1-Activation-Function激活函数及其特征"><a href="#1-Activation-Function激活函数及其特征" class="headerlink" title="1.Activation Function激活函数及其特征"></a>1.Activation Function激活函数及其特征</h2><h3 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h3><p>类似于“神经放电”，将数字压缩至[0,1]</p>
+<p>三个问题：①平滑的地方梯度消失，让学习过程更困难  （最严重的问题）</p>
+<p>​					②其输出一直为正，并不是以零中心对称的。存在非常不稳定的因素。（会导致梯度一直为正&#x2F;负）–使用小批量梯度，对这些梯度求平均得到最后的梯度，可以解决这个问题</p>
+<p>​					③exp（）函数计算成本较高</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image1.png"
+                      alt="image"
+                ></p>
+<h3 id="Tanh函数"><a href="#Tanh函数" class="headerlink" title="Tanh函数"></a>Tanh函数</h3><p>是sigmoid的变形。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image2.png"
+                      alt="image"
+                ></p>
+<h3 id="ReLU函数"><a href="#ReLU函数" class="headerlink" title="ReLU函数"></a>ReLU函数</h3><ul>
+<li>计算效率高</li>
+<li>比sigmoid&#x2F;tanh收缩更快</li>
+<li>问题：dead ReLU：当输入为负数，梯度将恒为零；所有输入为负，将无法激活</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image3.png"
+                      alt="image"
+                ></p>
+<h3 id="Leaky-ReLU函数"><a href="#Leaky-ReLU函数" class="headerlink" title="Leaky ReLU函数"></a>Leaky ReLU函数</h3><p>这样梯度不会“死去”</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image4.png"
+                      alt="image"
+                ></p>
+<h3 id="GELU函数（高斯错误线性单元）"><a href="#GELU函数（高斯错误线性单元）" class="headerlink" title="GELU函数（高斯错误线性单元）"></a>GELU函数（高斯错误线性单元）</h3><ul>
+<li>在0左右取值表现好</li>
+<li>其流畅度有利于训练</li>
+<li>不是单调的    –可能破坏信息</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image5.png"
+                      alt="image"
+                ></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image6.png"
+                      alt="image"
+                ></p>
+<h2 id="2-Data-Processing-数据预处理与传递"><a href="#2-Data-Processing-数据预处理与传递" class="headerlink" title="2.Data Processing 数据预处理与传递"></a>2.Data Processing 数据预处理与传递</h2><h3 id="常见操作"><a href="#常见操作" class="headerlink" title="常见操作"></a>常见操作</h3><ol>
+<li>zero-centered 零中心</li>
+<li>normalization 正则化</li>
+<li>decorrelation 去相关：使用协方差矩阵旋转数据云，使数据不相关</li>
+<li>whitened data 白化：同时使用去相关和正则化</li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image7.png"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image8.png"
+                      alt="image"
+                ></p>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>常见的操作：</p>
+<ul>
+<li>计算图像的mean值， 可以在样本中减去该平均图像</li>
+<li>求平均通道，并在每个像素中减去</li>
+<li>求通道的平均和三个颜色标准差，减去均值除以标准差。</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image9.png"
+                      alt="image"
+                ></p>
+<h2 id="3-Weight-Initialization-权重初始化"><a href="#3-Weight-Initialization-权重初始化" class="headerlink" title="3.Weight Initialization 权重初始化"></a>3.Weight Initialization 权重初始化</h2><ol>
+<li>小的随机数 —只对小网络有效（最简单的）</li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image10.png"
+                      alt="image"
+                ></p>
+<p><u>Activation Statistics 统计数据激活</u></p>
+<h3 id="Xavier-Initialization"><a href="#Xavier-Initialization" class="headerlink" title="Xavier Initialization"></a><strong>Xavier Initialization</strong></h3><p>（思想：让输入与输出的方差相等）</p>
+<p>具体实现如下：</p>
+<p>（使用tanh函数、如果使用ReLU又会坍缩）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image11.png"
+                      alt="image"
+                ></p>
+<h4 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h4><p>如下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image12.png"
+                      alt="image"
+                ></p>
+<h3 id="Kaiming-MSRA-Initialization"><a href="#Kaiming-MSRA-Initialization" class="headerlink" title="Kaiming&#x2F;MSRA Initialization"></a>Kaiming&#x2F;MSRA Initialization</h3><p>方差为2&#x2F;Din</p>
+<p>对残差网络没什么用</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image13.png"
+                      alt="image"
+                ></p>
+<h3 id="残差网络的初始：（存疑，2024的ppt没有提及）"><a href="#残差网络的初始：（存疑，2024的ppt没有提及）" class="headerlink" title="残差网络的初始：（存疑，2024的ppt没有提及）"></a>残差网络的初始：（<u>存疑，2024的ppt没有提及</u>）</h3><p>第一层用MSRA初始化，最后一层为零。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image14.png"
+                      alt="image"
+                ></p>
+<h2 id="3-Regularization-正则化策略"><a href="#3-Regularization-正则化策略" class="headerlink" title="3.Regularization 正则化策略"></a>3.Regularization 正则化策略</h2><h3 id="L2-regularization"><a href="#L2-regularization" class="headerlink" title="L2 regularization"></a>L2 regularization</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image15.png"
+                      alt="image"
+                > </p>
+<h3 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a><strong>Dropout</strong></h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image16.png"
+                      alt="image"
+                ></p>
+<p>在层内随机使神经元变为0，<strong>随机的概率</strong>为超参数。</p>
+<p>原理：<u>强制网络存在冗余表示；防止共同适应的特征出现；</u></p>
+<p>或者：认为Dropout是<u>对一个共享权重的子集训练，所有子集权重相同</u>。</p>
+<p>在<strong>测试</strong>时：<u>不drop（使用所有神经元），然后乘以概率，（即得到训练时对应的期望），没有随机性</u>。如下图。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image17.png"
+                      alt="image"
+                ></p>
+<h3 id="A-common-pattern：Batch-Normalization"><a href="#A-common-pattern：Batch-Normalization" class="headerlink" title="A common pattern：Batch Normalization"></a>A common pattern：Batch Normalization</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image18.png"
+                      alt="image"
+                ></p>
+<h2 id="4-Data-Augmentation-数据增强"><a href="#4-Data-Augmentation-数据增强" class="headerlink" title="4.Data Augmentation 数据增强"></a>4.Data Augmentation 数据增强</h2><p>可以扩大训练集，对训练增加随机性。</p>
+<ul>
+<li>Random Crops and Scales 对图片随机裁剪</li>
+<li>Horizontal Flips 视角翻转</li>
+<li>Color Jitter 随机化对比度和亮度，减少对特定颜色通道的依赖</li>
+<li>Cutout 随机遮挡图像的部分区域，避免过度依赖局部特征，减少过拟合</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image19.png"
+                      alt="image"
+                ></p>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image20.png"
+                      alt="image"
+                ></p>
+<h1 id="2-Training-dynamics"><a href="#2-Training-dynamics" class="headerlink" title="2.Training dynamics"></a>2.Training dynamics</h1><h2 id="5-Learning-Rate-Schedules-学习率（超参）"><a href="#5-Learning-Rate-Schedules-学习率（超参）" class="headerlink" title="5.Learning Rate Schedules 学习率（超参）"></a>5.Learning Rate Schedules 学习率（超参）</h2><h3 id="①step-schedule"><a href="#①step-schedule" class="headerlink" title="①step schedule"></a>①step schedule</h3><p>从高学习率开始，在选定的点降低学习率。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image21.png"
+                      alt="image"
+                ></p>
+<h3 id="②cosine-schedule"><a href="#②cosine-schedule" class="headerlink" title="②cosine schedule"></a>②cosine schedule</h3><p>只有两个超参数：学习率\alpha和周期T；超参数比step schedule少得多。</p>
+<p>半波余弦函数。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image22.png"
+                      alt="image"
+                ></p>
+<h3 id="③Linear-schedule"><a href="#③Linear-schedule" class="headerlink" title="③Linear schedule"></a>③Linear schedule</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image23.png"
+                      alt="image"
+                ></p>
+<h3 id="④Inverse-Sqrt-schedule"><a href="#④Inverse-Sqrt-schedule" class="headerlink" title="④Inverse Sqrt schedule"></a>④Inverse Sqrt schedule</h3><p>学习率下降很快，更多时间在低学习率上。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image24.png"
+                      alt="image"
+                ></p>
+<h3 id="⑤constant-schedule"><a href="#⑤constant-schedule" class="headerlink" title="⑤constant schedule"></a>⑤constant schedule</h3><p>使用常数可以让你的模型开始工作。调整学习率是长期工作（提高效率）。</p>
+<p>一般在每5or10 个epoch，形成模型检查点，如果梯度爆炸（正确率降低、停止训练）</p>
+<h2 id="6-超参数的选择"><a href="#6-超参数的选择" class="headerlink" title="6.超参数的选择"></a>6.超参数的选择</h2><h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><p>step 1：检查初始损失。（关闭权重衰减）根据损失函数的结构，分析计算随机初始得到的损失。—-（如果与预期不符，则存在bug）</p>
+<p>step 2：过拟合小样本。在小样本（5-10个mini batch）上达到100% accuracy。在过程中调整参数如架构（architecture）、学习率、初始权重。（关闭正则化）—-（目的：确保优化过程无误）</p>
+<p>step3 ：找到让loss迅速下降的学习率。使用上一步的架构、全部的数据、小的权重衰减，在一百次左右迭代中显著下降。</p>
+<p>好的尝试选择：1e-1,1e-2,1e-3,1e-4</p>
+<p>step4 ：建立粗略的超参数网格。通过粗略网格搜索和短期训练（1-5个epoch），快速缩小一个合适的学习率范围，为后续的精细调优（refining grid）做好准备。这一步的目的是确定一个大致的学习率区域</p>
+<p>step5 ：Refeine grid。在之前粗略选出的学习率范围内，选择更多的学习率值并进行更精细的搜索。延长训练时间到10-20个epoch或更多。</p>
+<p>step6 ：观察loss曲线以及accuracy曲线。分析如下。</p>
+<p>step7 ：goto step5.</p>
+<h3 id="（分析loss曲线）"><a href="#（分析loss曲线）" class="headerlink" title="（分析loss曲线）"></a>（分析loss曲线）</h3><ol>
+<li>先平滑再下降：–可能需要重新初始化。</li>
+<li>先下降再平滑： –可能是学习率太高，尝试LR decay</li>
+<li>下降时step decay，然后平滑： –LR decay过早</li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image25.png"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image26.png"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image27.png"
+                      alt="image"
+                ></p>
+<h3 id="（分析Accuracy曲线）"><a href="#（分析Accuracy曲线）" class="headerlink" title="（分析Accuracy曲线）"></a>（分析Accuracy曲线）</h3><ul>
+<li>train&amp;val准确率仍上升： 需要更长时间训练</li>
+<li>train上升，val下降，间隙大且越来越大，发生过拟合： 增强正则化&#x2F;使用更多训练数据&#x2F;（少数情况，减少模型大小或容量）</li>
+<li>train与val间隙很小，没有正确拟合训练数据：扩大模型&#x2F;减少正则化</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image28.png"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image29.png"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image30.png"
+                      alt="image"
+                ></p>
+<h3 id="其他小技巧"><a href="#其他小技巧" class="headerlink" title="其他小技巧"></a>其他小技巧</h3><p>1.查看权重更新幅度与权重幅度的比值。如果太大，说明有错误。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image31.png"
+                      alt="image"
+                ></p>
+<h1 id="3-After-training"><a href="#3-After-training" class="headerlink" title="3.After training"></a>3.After training</h1><h2 id="7-Model-Ensembles-模型集合"><a href="#7-Model-Ensembles-模型集合" class="headerlink" title="7.Model Ensembles 模型集合"></a>7.Model Ensembles 模型集合</h2><p>使用不同模型的集合，以他们结果的平均作为最终结果。通常最终会得到1-2%的改善。</p>
+<p>Tips &amp; Tricks：1. 可以保存一个模型多个检查点，而不是训练多个模型。</p>
+<ol>
+<li><ol>
+<li><ol>
+<li><ol>
+<li><ol>
+<li><ol>
+<li>使学习率呈周期性变化，在学习率周期性最低点时，保存作为检查点。</li>
+<li>Polyak averaging：（在生成模型中常用）使用运行时的模型权重的指数运行平均值，并在测试时使用该值。（方便消除一些迭代产生的噪声）</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="8-Transfer-Learning-迁移学习"><a href="#8-Transfer-Learning-迁移学习" class="headerlink" title="8.Transfer Learning 迁移学习"></a>8.Transfer Learning 迁移学习</h2><p>方法1： 在特定数据集训练后，去掉最后一层全连接层（FC layer），相当于得到一个特征向量。再根据特征向量建立新关系。</p>
+<h3 id="细调（有时能带来较大提升）："><a href="#细调（有时能带来较大提升）：" class="headerlink" title="细调（有时能带来较大提升）："></a>细调（有时能带来较大提升）：</h3><ul>
+<li>先完成预训练，提取特征向量再进行细调。（反向传播，更新权重）</li>
+<li>降低学习率，一般调整至原训练的1&#x2F;10</li>
+<li>有时可以将低层次保持不变，减少计算量</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image32.png"
+                      alt="image"
+                ></p>
+<h3 id="总结（根据数据集类型，选择更合适的架构）："><a href="#总结（根据数据集类型，选择更合适的架构）：" class="headerlink" title="总结（根据数据集类型，选择更合适的架构）："></a>总结（根据数据集类型，选择更合适的架构）：</h3><p>如果<u>数据集很小</u>，Pretraining+Finetune 更有用。<u>收集更多数据比pretraining更高效</u>。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image33.png"
+                      alt="image"
+                ></p>
+<h2 id="9-Distributed-Training-分布式训练"><a href="#9-Distributed-Training-分布式训练" class="headerlink" title="9.Distributed Training 分布式训练"></a>9.Distributed Training 分布式训练</h2><p>“数据并行”</p>
+<p>在批处理维度上划分为n个图像，分给不同gpu独立运行，在末尾对梯度求和时合并数据。</p>
+<h2 id="10-Large-Batch-Training-大批量训练"><a href="#10-Large-Batch-Training-大批量训练" class="headerlink" title="10.Large-Batch Training 大批量训练"></a>10.Large-Batch Training 大批量训练</h2><p>多块GPU同时训练时：按比例缩放批量、学习率。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image34.png"
+                      alt="image"
+                ></p>
+<p><strong>”学习率热身“</strong>（学习率如果一开始过高，容易梯度爆炸）</p>
+<p>在初始的0-5000次迭代，学习率<strong>从0开始线性增加</strong>。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture10%2611/image35.png"
+                      alt="image"
+                ></p>
+]]></content>
+      <categories>
+        <category>CS231N</category>
+      </categories>
+      <tags>
+        <tag>计算机视觉</tag>
+      </tags>
+  </entry>
 </search>
