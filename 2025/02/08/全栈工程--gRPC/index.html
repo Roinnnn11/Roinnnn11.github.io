@@ -13,33 +13,22 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/11/19/线性分类器/"/>
+    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2025/02/08/全栈工程--grpc/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Linear Classifiers–线性分类器一、如何理解线性分类器一、代数观点分析线性分类器：权重矩阵W和像素X之间的矩阵相乘，再加上b 如果输入数据具有native vector form，可以将b合并至W矩阵中处理**（针对线性分类是好的方法，对于卷积并非） feature：预测也是线性的，放大&#x2F;缩小所有像素，会让所有预测值都放大&#x2F;缩小 （如下图）  二、视觉角度分析另">
+        <meta name="description" content="Client-Server model⭐Client-Server结构是一种经典的通信模型。它通常采取两层结构：  服务器（Server）负责数据的处理。它有以下特征： 等待来自客户端的请求 处理请求并传回结果   客户端（Client）负责完成与用户的交互任务。它有以下特征： 发送请求 等待直到收到响应    IP AddressIP Address(Internet Protocol addr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CS231N Lecture3 线性分类器">
-<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/11/19/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2025/02/08/%E5%85%A8%E6%A0%88%E5%B7%A5%E7%A8%8B--gRPC/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Linear Classifiers–线性分类器一、如何理解线性分类器一、代数观点分析线性分类器：权重矩阵W和像素X之间的矩阵相乘，再加上b 如果输入数据具有native vector form，可以将b合并至W矩阵中处理**（针对线性分类是好的方法，对于卷积并非） feature：预测也是线性的，放大&#x2F;缩小所有像素，会让所有预测值都放大&#x2F;缩小 （如下图）  二、视觉角度分析另">
+<meta property="og:description" content="Client-Server model⭐Client-Server结构是一种经典的通信模型。它通常采取两层结构：  服务器（Server）负责数据的处理。它有以下特征： 等待来自客户端的请求 处理请求并传回结果   客户端（Client）负责完成与用户的交互任务。它有以下特征： 发送请求 等待直到收到响应    IP AddressIP Address(Internet Protocol addr">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119183936618.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119185407644.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119191101704.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0514.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0522.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0523.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0516.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0517.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0518.PNG">
-<meta property="article:published_time" content="2024-11-19T10:32:56.177Z">
-<meta property="article:modified_time" content="2025-01-20T15:29:44.297Z">
+<meta property="article:published_time" content="2025-02-08T09:33:40.893Z">
+<meta property="article:modified_time" content="2025-02-08T09:53:35.804Z">
 <meta property="article:author" content="Roin">
-<meta property="article:tag" content="计算机视觉">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119183936618.png">
     
     
     <!--- Icon Part-->
@@ -51,7 +40,7 @@
     
     <title>
         
-            CS231N Lecture3 线性分类器 | Roin&#39;s BLOG
+            Roin&#39;s BLOG - 记录学习の一个小角落(o^^o).
         
     </title>
 
@@ -285,7 +274,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CS231N Lecture3 线性分类器</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3"></h1>
                 </div>
             
             </div>
@@ -306,58 +295,31 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-11-19 18:32:56</span>
-        <span class="mobile">2024-11-19 18:32:56</span>
+        <span class="desktop">2025-02-08 17:33:40</span>
+        <span class="mobile">2025-02-08 17:33:40</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-01-20 23:29:44</span>
-            <span class="mobile">2025-01-20 23:29:44</span>
+            <span class="desktop">2025-02-08 17:53:35</span>
+            <span class="mobile">2025-02-08 17:53:35</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
     
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/CS231N/">CS231N</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>621 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>495 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>1 Mins</span>
         </span>
     
     
@@ -376,109 +338,53 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="Linear-Classifiers–线性分类器"><a href="#Linear-Classifiers–线性分类器" class="headerlink" title="Linear Classifiers–线性分类器"></a>Linear Classifiers–线性分类器</h1><h3 id="一、如何理解线性分类器"><a href="#一、如何理解线性分类器" class="headerlink" title="一、如何理解线性分类器"></a>一、如何理解线性分类器</h3><h5 id="一、代数观点分析"><a href="#一、代数观点分析" class="headerlink" title="一、代数观点分析"></a>一、代数观点分析</h5><p>线性分类器：权重矩阵W和像素X之间的矩阵相乘，再加上b</p>
-<p><em>如果输入数据具有native vector form，可以将b合并至W矩阵中处理**（针对线性分类是好的方法，对于卷积并非）</em></p>
-<p><u>feature：预测也是线性的，放大&#x2F;缩小所有像素，会让所有预测值都放大&#x2F;缩小</u></p>
-<p>（如下图）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119183936618.png"
-                      alt="image"
-                ></p>
-<h5 id="二、视觉角度分析"><a href="#二、视觉角度分析" class="headerlink" title="二、视觉角度分析"></a>二、视觉角度分析</h5><p>另一种处理方法：<u>将权重矩阵reshape到跟输入图像一样，实现<strong>“template matching”</strong></u></p>
-<p>例：取每一行数字，组成2x2 shape（图像假设为2x2），同时b也分类。</p>
-<p><strong>“template matching”</strong>(模式匹配)</p>
-<p>按上述处理之后，每一行都是一个种类，当他们匹配上时，值会最大。有一种视觉上的模式匹配（如下图）</p>
-<p>（visual viewpoint）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119185407644.png"
-                      alt="image"
-                ></p>
-<p><u>（缺点：对input图像的依赖严重，对其content（环境）依赖，旋转图片后无法识别）</u></p>
-<h5 id="三、几何观点"><a href="#三、几何观点" class="headerlink" title="三、几何观点"></a>三、几何观点</h5><p>可以认为，像素图像是一个高维欧几里得空间，每个种类都有对应的一个超平面，将空间切割。（如下图）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119191101704.png"
-                      alt="image"
-                ></p>
-<h3 id="二、如何选择矩阵W-——使用损失函数来量化评估W"><a href="#二、如何选择矩阵W-——使用损失函数来量化评估W" class="headerlink" title="二、如何选择矩阵W ——使用损失函数来量化评估W"></a>二、如何选择矩阵W ——使用损失函数来量化评估W</h3><h5 id="1️⃣loss：multi-class-SVM损失（图像分类）"><a href="#1️⃣loss：multi-class-SVM损失（图像分类）" class="headerlink" title="1️⃣loss：multi-class SVM损失（图像分类）"></a>1️⃣loss：multi-class SVM损失（图像分类）</h5><p>特征：如果一个种类被正确区分，那么改变预测分数，不再影响损失。（达到零损失）</p>
-<p>（如图，图中为铰链损失）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0514.PNG"
-                      alt="\images\IMG_0514.PNG"
-                ></p>
-<h5 id="2️⃣Cross-Entropy-Loss（multinomial-logistic-regression）"><a href="#2️⃣Cross-Entropy-Loss（multinomial-logistic-regression）" class="headerlink" title="2️⃣Cross- Entropy Loss（multinomial logistic regression）"></a>2️⃣Cross- Entropy Loss（multinomial logistic regression）</h5><p>want to interpret raw classifier scores as probabilities.（使用概率来评分）</p>
-<p>使用softmax function 求概率 （重要工具）</p>
-<p><strong>对loss的计算：L &#x3D; -logP（Y&#x3D;y_{i}&#x2F;X&#x3D;x_{i}）</strong></p>
-<p>feature: 这个loss函数永远不会达到0️⃣损失</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0522.PNG"
-                      alt="\images\IMG_0522.PNG"
-                ></p>
-<p>对预测值和理论值进行评估<strong>（Kullback-Leibler divergence）</strong></p>
-<p><strong>cross- Entropy：H（P,Q）&#x3D;H(p)+D_{KL}（P||Q）</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0523.PNG"
-                      alt="\images\IMG_0523.PNG"
-                ></p>
-<h3 id="三、对矩阵进行优化"><a href="#三、对矩阵进行优化" class="headerlink" title="三、对矩阵进行优化"></a>三、对矩阵进行优化</h3><p>Regularization（正则化）—— prevent the model from doing too well</p>
-<p>lamda —— 控制正则化的超参</p>
-<p>公式如图</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0516.PNG"
-                      alt="\images\IMG_0516.PNG"
-                ></p>
-<p>正则化简单实例：L2、L1、Elastic net（L1+L2）（如上图左下）</p>
-<p>正则化目的：1️⃣表达偏好</p>
-<p>​						2️⃣避免过拟合prefer simple models that generalize well</p>
-<p>​						3️⃣添加曲率改善优化adding curvature improve optimization</p>
-<p>举例说明正则化的作用：</p>
-<p>1️⃣比如可以通过调整正则化、考虑全局或者专注于一个参数</p>
-<p>如果有噪声或者很多特征,也适用。<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0517.PNG"
-                      alt="images\IMG_0517.PNG"
-                ></p>
-<p>2️⃣</p>
-<p>避免过拟合。如图，曲线是添加正则化后，合理地减少了噪声干扰</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0518.PNG"
-                      alt="image"
-                ></p>
-
+            <h4 id="Client-Server-model⭐"><a href="#Client-Server-model⭐" class="headerlink" title="Client-Server model⭐"></a>Client-Server model⭐</h4><p>Client-Server结构是一种经典的通信模型。它通常采取两层结构：</p>
+<ul>
+<li>服务器（Server）负责数据的处理。它有以下特征：<ul>
+<li>等待来自客户端的请求</li>
+<li>处理请求并传回结果</li>
+</ul>
+</li>
+<li>客户端（Client）负责完成与用户的交互任务。它有以下特征：<ul>
+<li>发送请求</li>
+<li>等待直到收到响应</li>
+</ul>
+</li>
+</ul>
+<h4 id="IP-Address"><a href="#IP-Address" class="headerlink" title="IP Address"></a>IP Address</h4><p>IP Address(Internet Protocol address，网际协议地址)，是网际协议中用于标识发送或接受数据报的设<br>备的一串数字。</p>
+<p>当设备连接网络后，设备将被分配一个IP地址，对于一个具体的设备而言，IP地址是独一无二的。IP地<br>址有两个主要的功能：<strong>标识主机</strong>（用户在互联网上可以识别）和<strong>网络寻址</strong>（允许计算机通过互联网发送<br>和接受数据）</p>
+<p>常见的IP地址分为IPv4和IPv6两大类：</p>
+<ul>
+<li><p>IPv4：32位长，通常书写时以四组十进制数字组成，并以点分割，例如： 172.16.254.1 。</p>
+</li>
+<li><p>IPv6：128位长，通常书写时以八组十六进制数字组成，并以冒号分割，例如：</p>
+<p>2001:db8:0：1234:0:567:8:1 。</p>
+</li>
+</ul>
+<p>我们可以使用如下方法查询本机的IP地址：<br>windows： ipconfig<br>linux： ifconfig （可能需要使用 sudo apt-get install net-tools 进行安装）</p>
+<blockquote>
+<p><u>一个特殊的IP地址： 127.0.0.1</u><br>尽管现在有大量可用的 IP 地址，但为了防止编程冲突的特定目的，刻意保留一些地址，甚至是地址范围是很方便的。<br>127.0.0.1 就是其中一个。它表示的是<strong>主机环回地址</strong>，表示的是任何数据包都不应该离开计算机，计算机本身即为接收者。</p>
+<p>当我们需要在本地测试一些网站服务，或者只想在本地设备上运行只有本地设备可以访问的服务，就可以使用 127.0.0.1 。</p>
+</blockquote>
+<h4 id="Port"><a href="#Port" class="headerlink" title="Port"></a>Port</h4>
         </div>
 
         
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> CS231N Lecture3 线性分类器</li>
+        <li><strong>Title:</strong> </li>
         <li><strong>Author:</strong> Rongying Liu</li>
         <li><strong>Created at
-                :</strong> 2024-11-19 18:32:56</li>
+                :</strong> 2025-02-08 17:33:40</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-01-20 23:29:44
+                    :</strong> 2025-02-08 17:53:35
             </li>
         
         <li>
-            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2024/11/19/线性分类器/
+            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2025/02/08/全栈工程--gRPC/
         </li>
         <li>
             <strong>
@@ -497,14 +403,6 @@
         
 
         
-            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">#计算机视觉</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
 
         
 
@@ -514,13 +412,13 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2024/12/07/%E4%BC%98%E5%8C%96/"
+                        href="/2025/02/08/%E5%85%A8%E6%A0%88%E5%B7%A5%E7%A8%8B--Protobuf/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">CS231N Lecture4 优化</span>
+                                <span class="post-nav-title-item"></span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -530,10 +428,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/11/12/PyTorch101/"
+                        href="/2025/01/23/CS231N-10&amp;11/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">PyTorch101 --PyTorch基本框架</span>
+                                <span class="post-nav-title-item">CS231N Lecture10&amp;11 训练技巧</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -596,8 +494,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">CS231N Lecture3 线性分类器</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linear-Classifiers%E2%80%93%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-text">Linear Classifiers–线性分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-text">一、如何理解线性分类器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E7%9F%A9%E9%98%B5W-%E2%80%94%E2%80%94%E4%BD%BF%E7%94%A8%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9D%A5%E9%87%8F%E5%8C%96%E8%AF%84%E4%BC%B0W"><span class="nav-text">二、如何选择矩阵W ——使用损失函数来量化评估W</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AF%B9%E7%9F%A9%E9%98%B5%E8%BF%9B%E8%A1%8C%E4%BC%98%E5%8C%96"><span class="nav-text">三、对矩阵进行优化</span></a></li></ol></li></ol></li></ol>
+        <div class="page-title"></div>
+        
 
     </div>
 </div>

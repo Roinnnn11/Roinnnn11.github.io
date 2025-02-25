@@ -1114,4 +1114,218 @@
         <tag>计算机视觉</tag>
       </tags>
   </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/08/%E5%85%A8%E6%A0%88%E5%B7%A5%E7%A8%8B--Protobuf/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/08/%E5%85%A8%E6%A0%88%E5%B7%A5%E7%A8%8B--gRPC/</url>
+    <content><![CDATA[<h4 id="Client-Server-model⭐"><a href="#Client-Server-model⭐" class="headerlink" title="Client-Server model⭐"></a>Client-Server model⭐</h4><p>Client-Server结构是一种经典的通信模型。它通常采取两层结构：</p>
+<ul>
+<li>服务器（Server）负责数据的处理。它有以下特征：<ul>
+<li>等待来自客户端的请求</li>
+<li>处理请求并传回结果</li>
+</ul>
+</li>
+<li>客户端（Client）负责完成与用户的交互任务。它有以下特征：<ul>
+<li>发送请求</li>
+<li>等待直到收到响应</li>
+</ul>
+</li>
+</ul>
+<h4 id="IP-Address"><a href="#IP-Address" class="headerlink" title="IP Address"></a>IP Address</h4><p>IP Address(Internet Protocol address，网际协议地址)，是网际协议中用于标识发送或接受数据报的设<br>备的一串数字。</p>
+<p>当设备连接网络后，设备将被分配一个IP地址，对于一个具体的设备而言，IP地址是独一无二的。IP地<br>址有两个主要的功能：<strong>标识主机</strong>（用户在互联网上可以识别）和<strong>网络寻址</strong>（允许计算机通过互联网发送<br>和接受数据）</p>
+<p>常见的IP地址分为IPv4和IPv6两大类：</p>
+<ul>
+<li><p>IPv4：32位长，通常书写时以四组十进制数字组成，并以点分割，例如： 172.16.254.1 。</p>
+</li>
+<li><p>IPv6：128位长，通常书写时以八组十六进制数字组成，并以冒号分割，例如：</p>
+<p>2001:db8:0：1234:0:567:8:1 。</p>
+</li>
+</ul>
+<p>我们可以使用如下方法查询本机的IP地址：<br>windows： ipconfig<br>linux： ifconfig （可能需要使用 sudo apt-get install net-tools 进行安装）</p>
+<blockquote>
+<p><u>一个特殊的IP地址： 127.0.0.1</u><br>尽管现在有大量可用的 IP 地址，但为了防止编程冲突的特定目的，刻意保留一些地址，甚至是地址范围是很方便的。<br>127.0.0.1 就是其中一个。它表示的是<strong>主机环回地址</strong>，表示的是任何数据包都不应该离开计算机，计算机本身即为接收者。</p>
+<p>当我们需要在本地测试一些网站服务，或者只想在本地设备上运行只有本地设备可以访问的服务，就可以使用 127.0.0.1 。</p>
+</blockquote>
+<h4 id="Port"><a href="#Port" class="headerlink" title="Port"></a>Port</h4>]]></content>
+  </entry>
+  <entry>
+    <title>CS231N Lecture12 RNN</title>
+    <url>/2025/02/24/CS231N/CS231N-Lecture12/</url>
+    <content><![CDATA[<h1 id="Lecture12-RNN"><a href="#Lecture12-RNN" class="headerlink" title="Lecture12 RNN"></a>Lecture12 RNN</h1><p>循环神经网络：以某种顺序的过程，处理顺序问题和非顺序的问题</p>
+<h3 id="隐藏层的更新"><a href="#隐藏层的更新" class="headerlink" title="隐藏层的更新"></a>隐藏层的更新</h3><p>如图，呈递归关系。</p>
+<p>注意：在每个时间步中，使用的f函数以及参数都是相同的。即一直使用相同的权重矩阵。其中x_{t}为当前时间步的输入向量。</p>
+<p><a href="#">h_{t}&#x3D;f_{W}(h_{t-1},x_{t})</a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image1.png"
+                      alt="image"
+                ></p>
+<h3 id="举例：Vanilla-RNN"><a href="#举例：Vanilla-RNN" class="headerlink" title="举例：Vanilla RNN"></a>举例：Vanilla RNN</h3><p>h_{t-1}乘以矩阵，x_{t}乘以另一个矩阵，然后使用tanh得到新状态，输出y_{t}是h_{t}的线性变换</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image2.png"
+                      alt="image"
+                ></p>
+<h3 id="用计算图来理解RNN："><a href="#用计算图来理解RNN：" class="headerlink" title="用计算图来理解RNN："></a>用计算图来理解RNN：</h3><h4 id="1-多对多"><a href="#1-多对多" class="headerlink" title="1.多对多"></a>1.多对多</h4><p>y-&gt;L 求loss（举例：可以应用交叉熵损失 ）再对每个时间步的loss求和得到最终的LOSS</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image3.png"
+                      alt="image"
+                ></p>
+<h4 id="2-多对一"><a href="#2-多对一" class="headerlink" title="2.多对一"></a>2.多对一</h4><p>例如：视频分类</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image4.png"
+                      alt="image"
+                ></p>
+<h4 id="3-一对多"><a href="#3-一对多" class="headerlink" title="3.一对多"></a>3.一对多</h4><p>例如：分析图像生成字幕…</p>
+<p>输入0或者将前一步输出再输入</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image5.png"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image6.png"
+                      alt="image"
+                ></p>
+<h3 id="Sequence-2-Sequence：多对一-一对多"><a href="#Sequence-2-Sequence：多对一-一对多" class="headerlink" title="Sequence 2 Sequence：多对一+一对多"></a>Sequence 2 Sequence：多对一+一对多</h3><p>类似于编码器＋译码器；</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image7.png"
+                      alt="image"
+                ></p>
+<h4 id="举例：character-level-language-model"><a href="#举例：character-level-language-model" class="headerlink" title="举例：character-level language model"></a>举例：character-level language model</h4><p>使用one-hot编码.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image8.png"
+                      alt="image"
+                ></p>
+<h4 id="举例：取样的character-level-language-model"><a href="#举例：取样的character-level-language-model" class="headerlink" title="举例：取样的character-level language model"></a>举例：取样的character-level language model</h4><p>在测试时，每采样一个字符，反馈给模型，继续进行生成。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image9.png"
+                      alt="image"
+                ></p>
+<h4 id="单热向量-one-hot"><a href="#单热向量-one-hot" class="headerlink" title="单热向量 one-hot"></a>单热向量 one-hot</h4><p>单热向量的矩阵乘法只是从权重矩阵中提取一列，没有什么意义。</p>
+<p>所以，我们经常在输入层和隐藏层之间放置一个单独的嵌入层，用来进行之后的计算。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image10.png"
+                      alt="image"
+                ></p>
+<h3 id="时间截断反向传播：Truncated-Backpropagation-through-time"><a href="#时间截断反向传播：Truncated-Backpropagation-through-time" class="headerlink" title="时间截断反向传播：Truncated Backpropagation through time"></a>时间截断反向传播：Truncated Backpropagation through time</h3><p>取一个初始子集（10-100token），将其前序传递展开，求loss，然后通过初始块反向传播，对权重矩阵进行更新。</p>
+<p>永远向前携带隐藏层，但只能反向传播一些较小的步骤</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image11.png"
+                      alt="image"
+                ></p>
+<h3 id="使用举例："><a href="#使用举例：" class="headerlink" title="使用举例："></a>使用举例：</h3><h4 id="Image-Captioning"><a href="#Image-Captioning" class="headerlink" title="Image Captioning"></a>Image Captioning</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image12.png"
+                      alt="image"
+                ></p>
+<p>迁移学习。首先使用一个在imagenet预训练过的CNN模型，去掉最后两层。</p>
+<p>（x：输入，h：隐藏层，v：cnn输入的特征向量，每个对应不同的矩阵）</p>
+<p>使用[start]和[end]的token作为一次分析的开始指令与结束指令。</p>
+<h4 id="Visual-Q-uestion-Answering（VQA）"><a href="#Visual-Q-uestion-Answering（VQA）" class="headerlink" title="Visual Q uestion Answering（VQA）"></a>Visual Q uestion Answering（VQA）</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image13.png"
+                      alt="image"
+                ></p>
+<h4 id="Visual-Dialog-Conversations-about-images"><a href="#Visual-Dialog-Conversations-about-images" class="headerlink" title="Visual Dialog: Conversations about images"></a>Visual Dialog: Conversations about images</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image14.png"
+                      alt="image"
+                ></p>
+<h4 id="Visual-Language-Navigation-Go-to-the-living-room"><a href="#Visual-Language-Navigation-Go-to-the-living-room" class="headerlink" title="Visual Language Navigation: Go to the living room"></a>Visual Language Navigation: Go to the living room</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image15.png"
+                      alt="image"
+                ></p>
+<h3 id="梯度流"><a href="#梯度流" class="headerlink" title="梯度流"></a>梯度流</h3><p>以Vanilla RNN 举例。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image16.png"
+                      alt="image"
+                ></p>
+<p>如果梯度&gt;1，最终会爆炸型增长；&lt;1，最终无限趋于零。</p>
+<h4 id="1-Gradient-clipping-梯度裁剪-：克服梯度爆炸"><a href="#1-Gradient-clipping-梯度裁剪-：克服梯度爆炸" class="headerlink" title="1.Gradient clipping 梯度裁剪 ：克服梯度爆炸"></a>1.Gradient clipping 梯度裁剪 ：克服梯度爆炸</h4><p>在反向传播时，检查梯度的范数，如果过大，将其裁剪，再继续反向传播</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image17.png"
+                      alt="image"
+                ></p>
+<h4 id="2-Long-Short-Term-Memory-LSTM-：克服梯度消失"><a href="#2-Long-Short-Term-Memory-LSTM-：克服梯度消失" class="headerlink" title="2.Long Short Term Memory (LSTM)：克服梯度消失"></a>2.Long Short Term Memory (LSTM)：克服梯度消失</h4><p>在每个时间步使用两个向量：<br>$$<br>Cellstate(ct)+Hiddenstate(ht)<br>$$<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image18.png"
+                      alt="image"
+                ></p>
+<h4 id="如何作用的？"><a href="#如何作用的？" class="headerlink" title="如何作用的？"></a>如何作用的？</h4><p>使用四个gate（i&#x2F;f&#x2F;o&#x2F;g）来决定下一个LSTM状态。</p>
+<p>公式如图。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image19.png"
+                      alt="image"
+                ></p>
+<p>对于LSTM，其四个门<strong>来源于h_{t-1}与x_{t}与权重矩阵W相乘，然后输出四个门</strong>。</p>
+<p>而反向梯度传播，<strong>只与f gate 进行乘法</strong>（如果f接近0，有可能破坏信息，接近1不可能破坏）， 解决了梯度消失的问题。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image20.png"
+                      alt="image"
+                ></p>
+<h3 id="多层-深度循环"><a href="#多层-深度循环" class="headerlink" title="多层&#x2F;深度循环"></a>多层&#x2F;深度循环</h3><p>将隐藏层作为序列输入至另一个RNN….</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image21.png"
+                      alt="image"
+                ></p>
+<h3 id="GRU"><a href="#GRU" class="headerlink" title="GRU"></a>GRU</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image22.png"
+                      alt="image"
+                ></p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image23.png"
+                      alt="image"
+                ></p>
+]]></content>
+      <categories>
+        <category>CS231N</category>
+      </categories>
+      <tags>
+        <tag>计算机视觉</tag>
+      </tags>
+  </entry>
 </search>

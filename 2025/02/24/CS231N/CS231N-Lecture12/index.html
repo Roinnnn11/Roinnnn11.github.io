@@ -13,33 +13,47 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/11/19/线性分类器/"/>
+    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2025/02/24/cs231n/cs231n-lecture12/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Linear Classifiers–线性分类器一、如何理解线性分类器一、代数观点分析线性分类器：权重矩阵W和像素X之间的矩阵相乘，再加上b 如果输入数据具有native vector form，可以将b合并至W矩阵中处理**（针对线性分类是好的方法，对于卷积并非） feature：预测也是线性的，放大&#x2F;缩小所有像素，会让所有预测值都放大&#x2F;缩小 （如下图）  二、视觉角度分析另">
+        <meta name="description" content="Lecture12 RNN循环神经网络：以某种顺序的过程，处理顺序问题和非顺序的问题 隐藏层的更新如图，呈递归关系。 注意：在每个时间步中，使用的f函数以及参数都是相同的。即一直使用相同的权重矩阵。其中x_{t}为当前时间步的输入向量。 h_{t}&#x3D;f_{W}(h_{t-1},x_{t})  举例：Vanilla RNNh_{t-1}乘以矩阵，x_{t}乘以另一个矩阵，然后使用tanh得">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CS231N Lecture3 线性分类器">
-<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/11/19/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8/index.html">
+<meta property="og:title" content="CS231N Lecture12 RNN">
+<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2025/02/24/CS231N/CS231N-Lecture12/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Linear Classifiers–线性分类器一、如何理解线性分类器一、代数观点分析线性分类器：权重矩阵W和像素X之间的矩阵相乘，再加上b 如果输入数据具有native vector form，可以将b合并至W矩阵中处理**（针对线性分类是好的方法，对于卷积并非） feature：预测也是线性的，放大&#x2F;缩小所有像素，会让所有预测值都放大&#x2F;缩小 （如下图）  二、视觉角度分析另">
+<meta property="og:description" content="Lecture12 RNN循环神经网络：以某种顺序的过程，处理顺序问题和非顺序的问题 隐藏层的更新如图，呈递归关系。 注意：在每个时间步中，使用的f函数以及参数都是相同的。即一直使用相同的权重矩阵。其中x_{t}为当前时间步的输入向量。 h_{t}&#x3D;f_{W}(h_{t-1},x_{t})  举例：Vanilla RNNh_{t-1}乘以矩阵，x_{t}乘以另一个矩阵，然后使用tanh得">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119183936618.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119185407644.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119191101704.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0514.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0522.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0523.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0516.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0517.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0518.PNG">
-<meta property="article:published_time" content="2024-11-19T10:32:56.177Z">
-<meta property="article:modified_time" content="2025-01-20T15:29:44.297Z">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image1.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image2.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image3.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image4.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image5.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image6.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image7.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image8.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image9.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image10.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image11.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image12.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image13.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image14.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image15.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image16.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image17.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image18.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image19.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image20.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image21.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image22.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image23.png">
+<meta property="article:published_time" content="2025-02-24T11:27:29.042Z">
+<meta property="article:modified_time" content="2025-02-25T12:55:21.739Z">
 <meta property="article:author" content="Roin">
 <meta property="article:tag" content="计算机视觉">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119183936618.png">
+<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image1.png">
     
     
     <!--- Icon Part-->
@@ -51,7 +65,7 @@
     
     <title>
         
-            CS231N Lecture3 线性分类器 | Roin&#39;s BLOG
+            CS231N Lecture12 RNN | Roin&#39;s BLOG
         
     </title>
 
@@ -285,7 +299,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CS231N Lecture3 线性分类器</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CS231N Lecture12 RNN</h1>
                 </div>
             
             </div>
@@ -306,15 +320,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-11-19 18:32:56</span>
-        <span class="mobile">2024-11-19 18:32:56</span>
+        <span class="desktop">2025-02-24 19:27:29</span>
+        <span class="mobile">2025-02-24 19:27:29</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-01-20 23:29:44</span>
-            <span class="mobile">2025-01-20 23:29:44</span>
+            <span class="desktop">2025-02-25 20:55:21</span>
+            <span class="mobile">2025-02-25 20:55:21</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -352,7 +366,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>621 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>756 Words</span>
         </span>
     
     
@@ -376,88 +390,169 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="Linear-Classifiers–线性分类器"><a href="#Linear-Classifiers–线性分类器" class="headerlink" title="Linear Classifiers–线性分类器"></a>Linear Classifiers–线性分类器</h1><h3 id="一、如何理解线性分类器"><a href="#一、如何理解线性分类器" class="headerlink" title="一、如何理解线性分类器"></a>一、如何理解线性分类器</h3><h5 id="一、代数观点分析"><a href="#一、代数观点分析" class="headerlink" title="一、代数观点分析"></a>一、代数观点分析</h5><p>线性分类器：权重矩阵W和像素X之间的矩阵相乘，再加上b</p>
-<p><em>如果输入数据具有native vector form，可以将b合并至W矩阵中处理**（针对线性分类是好的方法，对于卷积并非）</em></p>
-<p><u>feature：预测也是线性的，放大&#x2F;缩小所有像素，会让所有预测值都放大&#x2F;缩小</u></p>
-<p>（如下图）</p>
+            <h1 id="Lecture12-RNN"><a href="#Lecture12-RNN" class="headerlink" title="Lecture12 RNN"></a>Lecture12 RNN</h1><p>循环神经网络：以某种顺序的过程，处理顺序问题和非顺序的问题</p>
+<h3 id="隐藏层的更新"><a href="#隐藏层的更新" class="headerlink" title="隐藏层的更新"></a>隐藏层的更新</h3><p>如图，呈递归关系。</p>
+<p>注意：在每个时间步中，使用的f函数以及参数都是相同的。即一直使用相同的权重矩阵。其中x_{t}为当前时间步的输入向量。</p>
+<p><a href="#">h_{t}&#x3D;f_{W}(h_{t-1},x_{t})</a></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119183936618.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image1.png"
                       alt="image"
                 ></p>
-<h5 id="二、视觉角度分析"><a href="#二、视觉角度分析" class="headerlink" title="二、视觉角度分析"></a>二、视觉角度分析</h5><p>另一种处理方法：<u>将权重矩阵reshape到跟输入图像一样，实现<strong>“template matching”</strong></u></p>
-<p>例：取每一行数字，组成2x2 shape（图像假设为2x2），同时b也分类。</p>
-<p><strong>“template matching”</strong>(模式匹配)</p>
-<p>按上述处理之后，每一行都是一个种类，当他们匹配上时，值会最大。有一种视觉上的模式匹配（如下图）</p>
-<p>（visual viewpoint）</p>
+<h3 id="举例：Vanilla-RNN"><a href="#举例：Vanilla-RNN" class="headerlink" title="举例：Vanilla RNN"></a>举例：Vanilla RNN</h3><p>h_{t-1}乘以矩阵，x_{t}乘以另一个矩阵，然后使用tanh得到新状态，输出y_{t}是h_{t}的线性变换</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119185407644.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image2.png"
                       alt="image"
                 ></p>
-<p><u>（缺点：对input图像的依赖严重，对其content（环境）依赖，旋转图片后无法识别）</u></p>
-<h5 id="三、几何观点"><a href="#三、几何观点" class="headerlink" title="三、几何观点"></a>三、几何观点</h5><p>可以认为，像素图像是一个高维欧几里得空间，每个种类都有对应的一个超平面，将空间切割。（如下图）</p>
+<h3 id="用计算图来理解RNN："><a href="#用计算图来理解RNN：" class="headerlink" title="用计算图来理解RNN："></a>用计算图来理解RNN：</h3><h4 id="1-多对多"><a href="#1-多对多" class="headerlink" title="1.多对多"></a>1.多对多</h4><p>y-&gt;L 求loss（举例：可以应用交叉熵损失 ）再对每个时间步的loss求和得到最终的LOSS</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119191101704.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image3.png"
                       alt="image"
                 ></p>
-<h3 id="二、如何选择矩阵W-——使用损失函数来量化评估W"><a href="#二、如何选择矩阵W-——使用损失函数来量化评估W" class="headerlink" title="二、如何选择矩阵W ——使用损失函数来量化评估W"></a>二、如何选择矩阵W ——使用损失函数来量化评估W</h3><h5 id="1️⃣loss：multi-class-SVM损失（图像分类）"><a href="#1️⃣loss：multi-class-SVM损失（图像分类）" class="headerlink" title="1️⃣loss：multi-class SVM损失（图像分类）"></a>1️⃣loss：multi-class SVM损失（图像分类）</h5><p>特征：如果一个种类被正确区分，那么改变预测分数，不再影响损失。（达到零损失）</p>
-<p>（如图，图中为铰链损失）</p>
+<h4 id="2-多对一"><a href="#2-多对一" class="headerlink" title="2.多对一"></a>2.多对一</h4><p>例如：视频分类</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0514.PNG"
-                      alt="\images\IMG_0514.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image4.png"
+                      alt="image"
                 ></p>
-<h5 id="2️⃣Cross-Entropy-Loss（multinomial-logistic-regression）"><a href="#2️⃣Cross-Entropy-Loss（multinomial-logistic-regression）" class="headerlink" title="2️⃣Cross- Entropy Loss（multinomial logistic regression）"></a>2️⃣Cross- Entropy Loss（multinomial logistic regression）</h5><p>want to interpret raw classifier scores as probabilities.（使用概率来评分）</p>
-<p>使用softmax function 求概率 （重要工具）</p>
-<p><strong>对loss的计算：L &#x3D; -logP（Y&#x3D;y_{i}&#x2F;X&#x3D;x_{i}）</strong></p>
-<p>feature: 这个loss函数永远不会达到0️⃣损失</p>
+<h4 id="3-一对多"><a href="#3-一对多" class="headerlink" title="3.一对多"></a>3.一对多</h4><p>例如：分析图像生成字幕…</p>
+<p>输入0或者将前一步输出再输入</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0522.PNG"
-                      alt="\images\IMG_0522.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image5.png"
+                      alt="image"
                 ></p>
-<p>对预测值和理论值进行评估<strong>（Kullback-Leibler divergence）</strong></p>
-<p><strong>cross- Entropy：H（P,Q）&#x3D;H(p)+D_{KL}（P||Q）</strong></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0523.PNG"
-                      alt="\images\IMG_0523.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image6.png"
+                      alt="image"
                 ></p>
-<h3 id="三、对矩阵进行优化"><a href="#三、对矩阵进行优化" class="headerlink" title="三、对矩阵进行优化"></a>三、对矩阵进行优化</h3><p>Regularization（正则化）—— prevent the model from doing too well</p>
-<p>lamda —— 控制正则化的超参</p>
-<p>公式如图</p>
+<h3 id="Sequence-2-Sequence：多对一-一对多"><a href="#Sequence-2-Sequence：多对一-一对多" class="headerlink" title="Sequence 2 Sequence：多对一+一对多"></a>Sequence 2 Sequence：多对一+一对多</h3><p>类似于编码器＋译码器；</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0516.PNG"
-                      alt="\images\IMG_0516.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image7.png"
+                      alt="image"
                 ></p>
-<p>正则化简单实例：L2、L1、Elastic net（L1+L2）（如上图左下）</p>
-<p>正则化目的：1️⃣表达偏好</p>
-<p>​						2️⃣避免过拟合prefer simple models that generalize well</p>
-<p>​						3️⃣添加曲率改善优化adding curvature improve optimization</p>
-<p>举例说明正则化的作用：</p>
-<p>1️⃣比如可以通过调整正则化、考虑全局或者专注于一个参数</p>
-<p>如果有噪声或者很多特征,也适用。<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0517.PNG"
-                      alt="images\IMG_0517.PNG"
-                ></p>
-<p>2️⃣</p>
-<p>避免过拟合。如图，曲线是添加正则化后，合理地减少了噪声干扰</p>
+<h4 id="举例：character-level-language-model"><a href="#举例：character-level-language-model" class="headerlink" title="举例：character-level language model"></a>举例：character-level language model</h4><p>使用one-hot编码.</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0518.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image8.png"
+                      alt="image"
+                ></p>
+<h4 id="举例：取样的character-level-language-model"><a href="#举例：取样的character-level-language-model" class="headerlink" title="举例：取样的character-level language model"></a>举例：取样的character-level language model</h4><p>在测试时，每采样一个字符，反馈给模型，继续进行生成。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image9.png"
+                      alt="image"
+                ></p>
+<h4 id="单热向量-one-hot"><a href="#单热向量-one-hot" class="headerlink" title="单热向量 one-hot"></a>单热向量 one-hot</h4><p>单热向量的矩阵乘法只是从权重矩阵中提取一列，没有什么意义。</p>
+<p>所以，我们经常在输入层和隐藏层之间放置一个单独的嵌入层，用来进行之后的计算。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image10.png"
+                      alt="image"
+                ></p>
+<h3 id="时间截断反向传播：Truncated-Backpropagation-through-time"><a href="#时间截断反向传播：Truncated-Backpropagation-through-time" class="headerlink" title="时间截断反向传播：Truncated Backpropagation through time"></a>时间截断反向传播：Truncated Backpropagation through time</h3><p>取一个初始子集（10-100token），将其前序传递展开，求loss，然后通过初始块反向传播，对权重矩阵进行更新。</p>
+<p>永远向前携带隐藏层，但只能反向传播一些较小的步骤</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image11.png"
+                      alt="image"
+                ></p>
+<h3 id="使用举例："><a href="#使用举例：" class="headerlink" title="使用举例："></a>使用举例：</h3><h4 id="Image-Captioning"><a href="#Image-Captioning" class="headerlink" title="Image Captioning"></a>Image Captioning</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image12.png"
+                      alt="image"
+                ></p>
+<p>迁移学习。首先使用一个在imagenet预训练过的CNN模型，去掉最后两层。</p>
+<p>（x：输入，h：隐藏层，v：cnn输入的特征向量，每个对应不同的矩阵）</p>
+<p>使用[start]和[end]的token作为一次分析的开始指令与结束指令。</p>
+<h4 id="Visual-Q-uestion-Answering（VQA）"><a href="#Visual-Q-uestion-Answering（VQA）" class="headerlink" title="Visual Q uestion Answering（VQA）"></a>Visual Q uestion Answering（VQA）</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image13.png"
+                      alt="image"
+                ></p>
+<h4 id="Visual-Dialog-Conversations-about-images"><a href="#Visual-Dialog-Conversations-about-images" class="headerlink" title="Visual Dialog: Conversations about images"></a>Visual Dialog: Conversations about images</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image14.png"
+                      alt="image"
+                ></p>
+<h4 id="Visual-Language-Navigation-Go-to-the-living-room"><a href="#Visual-Language-Navigation-Go-to-the-living-room" class="headerlink" title="Visual Language Navigation: Go to the living room"></a>Visual Language Navigation: Go to the living room</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image15.png"
+                      alt="image"
+                ></p>
+<h3 id="梯度流"><a href="#梯度流" class="headerlink" title="梯度流"></a>梯度流</h3><p>以Vanilla RNN 举例。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image16.png"
+                      alt="image"
+                ></p>
+<p>如果梯度&gt;1，最终会爆炸型增长；&lt;1，最终无限趋于零。</p>
+<h4 id="1-Gradient-clipping-梯度裁剪-：克服梯度爆炸"><a href="#1-Gradient-clipping-梯度裁剪-：克服梯度爆炸" class="headerlink" title="1.Gradient clipping 梯度裁剪 ：克服梯度爆炸"></a>1.Gradient clipping 梯度裁剪 ：克服梯度爆炸</h4><p>在反向传播时，检查梯度的范数，如果过大，将其裁剪，再继续反向传播</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image17.png"
+                      alt="image"
+                ></p>
+<h4 id="2-Long-Short-Term-Memory-LSTM-：克服梯度消失"><a href="#2-Long-Short-Term-Memory-LSTM-：克服梯度消失" class="headerlink" title="2.Long Short Term Memory (LSTM)：克服梯度消失"></a>2.Long Short Term Memory (LSTM)：克服梯度消失</h4><p>在每个时间步使用两个向量：<br>$$<br>Cellstate(ct)+Hiddenstate(ht)<br>$$<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image18.png"
+                      alt="image"
+                ></p>
+<h4 id="如何作用的？"><a href="#如何作用的？" class="headerlink" title="如何作用的？"></a>如何作用的？</h4><p>使用四个gate（i&#x2F;f&#x2F;o&#x2F;g）来决定下一个LSTM状态。</p>
+<p>公式如图。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image19.png"
+                      alt="image"
+                ></p>
+<p>对于LSTM，其四个门<strong>来源于h_{t-1}与x_{t}与权重矩阵W相乘，然后输出四个门</strong>。</p>
+<p>而反向梯度传播，<strong>只与f gate 进行乘法</strong>（如果f接近0，有可能破坏信息，接近1不可能破坏）， 解决了梯度消失的问题。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image20.png"
+                      alt="image"
+                ></p>
+<h3 id="多层-深度循环"><a href="#多层-深度循环" class="headerlink" title="多层&#x2F;深度循环"></a>多层&#x2F;深度循环</h3><p>将隐藏层作为序列输入至另一个RNN….</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image21.png"
+                      alt="image"
+                ></p>
+<h3 id="GRU"><a href="#GRU" class="headerlink" title="GRU"></a>GRU</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image22.png"
+                      alt="image"
+                ></p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image23.png"
                       alt="image"
                 ></p>
 
@@ -467,18 +562,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> CS231N Lecture3 线性分类器</li>
+        <li><strong>Title:</strong> CS231N Lecture12 RNN</li>
         <li><strong>Author:</strong> Rongying Liu</li>
         <li><strong>Created at
-                :</strong> 2024-11-19 18:32:56</li>
+                :</strong> 2025-02-24 19:27:29</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-01-20 23:29:44
+                    :</strong> 2025-02-25 20:55:21
             </li>
         
         <li>
-            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2024/11/19/线性分类器/
+            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2025/02/24/CS231N/CS231N-Lecture12/
         </li>
         <li>
             <strong>
@@ -511,29 +606,14 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/12/07/%E4%BC%98%E5%8C%96/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">CS231N Lecture4 优化</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/11/12/PyTorch101/"
+                        href="/2025/02/08/%E5%85%A8%E6%A0%88%E5%B7%A5%E7%A8%8B--Protobuf/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">PyTorch101 --PyTorch基本框架</span>
+                                <span class="post-nav-title-item"></span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -596,8 +676,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">CS231N Lecture3 线性分类器</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linear-Classifiers%E2%80%93%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-text">Linear Classifiers–线性分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-text">一、如何理解线性分类器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E7%9F%A9%E9%98%B5W-%E2%80%94%E2%80%94%E4%BD%BF%E7%94%A8%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9D%A5%E9%87%8F%E5%8C%96%E8%AF%84%E4%BC%B0W"><span class="nav-text">二、如何选择矩阵W ——使用损失函数来量化评估W</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AF%B9%E7%9F%A9%E9%98%B5%E8%BF%9B%E8%A1%8C%E4%BC%98%E5%8C%96"><span class="nav-text">三、对矩阵进行优化</span></a></li></ol></li></ol></li></ol>
+        <div class="page-title">CS231N Lecture12 RNN</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture12-RNN"><span class="nav-text">Lecture12 RNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E5%B1%82%E7%9A%84%E6%9B%B4%E6%96%B0"><span class="nav-text">隐藏层的更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9AVanilla-RNN"><span class="nav-text">举例：Vanilla RNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E8%AE%A1%E7%AE%97%E5%9B%BE%E6%9D%A5%E7%90%86%E8%A7%A3RNN%EF%BC%9A"><span class="nav-text">用计算图来理解RNN：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sequence-2-Sequence%EF%BC%9A%E5%A4%9A%E5%AF%B9%E4%B8%80-%E4%B8%80%E5%AF%B9%E5%A4%9A"><span class="nav-text">Sequence 2 Sequence：多对一+一对多</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%88%AA%E6%96%AD%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%9ATruncated-Backpropagation-through-time"><span class="nav-text">时间截断反向传播：Truncated Backpropagation through time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B%EF%BC%9A"><span class="nav-text">使用举例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E6%B5%81"><span class="nav-text">梯度流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%B1%82-%E6%B7%B1%E5%BA%A6%E5%BE%AA%E7%8E%AF"><span class="nav-text">多层&#x2F;深度循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GRU"><span class="nav-text">GRU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="nav-text">总结：</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>
