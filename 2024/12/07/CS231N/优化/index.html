@@ -13,37 +13,39 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/10/6 反向传播/"/>
+    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/07/cs231n/优化/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Lecture6–反向传播如何为神经网络计算梯度？ bad idea：在纸上推导 better：计算图 以svm  loss举例 蓝色节点：x与W的矩阵乘法 红色节点：铰链损失（针对SVMloss） 绿色：正则化项 相加得到L（loss）  Backpropagation 反向传播构成： 1.Forward pass “前向传递”计算输出值 2.backward pass “反向传递”计算每个参数">
+        <meta name="description" content="2️⃣ follow the slope 直接计算导数、使用导数（deltaloss&#x2F;delta-h） 缺点：对求导计算缓慢，如果矩阵&#x2F;维度过大 &#x3D;&#x3D;&#x3D;用一个方程表示梯度（反向传播 第六节中讲述） Computing Gradients(计算梯度) numeric&#x2F;analytic （计算出值&#x2F;分析） 一般使用数字梯度来检验对解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CS231N Lecture6 反向传播">
-<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/10/6%20%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/index.html">
+<meta property="og:title" content="CS231N Lecture4 优化">
+<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/07/CS231N/%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Lecture6–反向传播如何为神经网络计算梯度？ bad idea：在纸上推导 better：计算图 以svm  loss举例 蓝色节点：x与W的矩阵乘法 红色节点：铰链损失（针对SVMloss） 绿色：正则化项 相加得到L（loss）  Backpropagation 反向传播构成： 1.Forward pass “前向传递”计算输出值 2.backward pass “反向传递”计算每个参数">
+<meta property="og:description" content="2️⃣ follow the slope 直接计算导数、使用导数（deltaloss&#x2F;delta-h） 缺点：对求导计算缓慢，如果矩阵&#x2F;维度过大 &#x3D;&#x3D;&#x3D;用一个方程表示梯度（反向传播 第六节中讲述） Computing Gradients(计算梯度) numeric&#x2F;analytic （计算出值&#x2F;分析） 一般使用数字梯度来检验对解">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image1.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image2.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image3.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image4.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image5.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image6.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image7.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image8.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image9.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image10.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image11.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image12.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image13.png">
-<meta property="article:published_time" content="2024-12-10T14:54:45.635Z">
-<meta property="article:modified_time" content="2025-01-20T15:25:51.686Z">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0531.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0532.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0533.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0555.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0559.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0557.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0560.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0561.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0562.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0563.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0564.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image0568.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0567.PNG">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0566.PNG">
+<meta property="article:published_time" content="2024-12-07T11:14:49.409Z">
+<meta property="article:modified_time" content="2025-01-20T15:30:42.769Z">
 <meta property="article:author" content="Roin">
 <meta property="article:tag" content="计算机视觉">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image1.png">
+<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0531.PNG">
     
     
     <!--- Icon Part-->
@@ -55,7 +57,7 @@
     
     <title>
         
-            CS231N Lecture6 反向传播 | Roin&#39;s BLOG
+            CS231N Lecture4 优化 | Roin&#39;s BLOG
         
     </title>
 
@@ -263,7 +265,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">14</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -289,7 +291,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CS231N Lecture6 反向传播</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CS231N Lecture4 优化</h1>
                 </div>
             
             </div>
@@ -310,15 +312,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-12-10 22:54:45</span>
-        <span class="mobile">2024-12-10 22:54:45</span>
+        <span class="desktop">2024-12-07 19:14:49</span>
+        <span class="mobile">2024-12-07 19:14:49</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-01-20 23:25:51</span>
-            <span class="mobile">2025-01-20 23:25:51</span>
+            <span class="desktop">2025-01-20 23:30:42</span>
+            <span class="mobile">2025-01-20 23:30:42</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -356,7 +358,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>701 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>705 Words</span>
         </span>
     
     
@@ -380,119 +382,133 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="Lecture6–反向传播"><a href="#Lecture6–反向传播" class="headerlink" title="Lecture6–反向传播"></a>Lecture6–反向传播</h1><p><em>如何为神经网络计算梯度？</em></p>
-<p>bad idea：在纸上推导</p>
-<p>better：计算图</p>
-<p>以svm  loss举例</p>
-<p>蓝色节点：x与W的矩阵乘法</p>
-<p>红色节点：铰链损失（针对SVMloss）</p>
-<p>绿色：正则化项</p>
-<p>相加得到L（loss）</p>
+            <p>2️⃣ follow the slope</p>
+<p>直接计算导数、使用导数（deltaloss&#x2F;delta-h）</p>
+<p>缺点：对求导计算缓慢，如果矩阵&#x2F;维度过大</p>
+<p>&#x3D;&#x3D;&#x3D;用一个方程表示梯度（反向传播 第六节中讲述）</p>
+<p><strong>Computing Gradients(计算梯度)</strong></p>
+<p>numeric&#x2F;analytic （计算出值&#x2F;分析）</p>
+<p>一般使用数字梯度来检验对解析梯度的推导</p>
+<p>（pytorch提供了一个函数gradcheck、实现相似的功能）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image1.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0531.PNG"
                       alt="image"
                 ></p>
-<h2 id="Backpropagation-反向传播"><a href="#Backpropagation-反向传播" class="headerlink" title="Backpropagation 反向传播"></a>Backpropagation 反向传播</h2><p>构成：</p>
-<p>1<u>.Forward pass</u> “前向传递”计算输出值</p>
-<p>2.<u>backward pass</u> “反向传递”计算每个参数的导数</p>
-<p><u>下游梯度 &#x3D; 局部梯度 x 上游梯度</u></p>
+<h3 id="gradient-descent梯度下降"><a href="#gradient-descent梯度下降" class="headerlink" title="gradient descent梯度下降"></a><u>gradient descent梯度下降</u></h3><p>包含的超参：</p>
+<p><u>1️⃣初始化权重的方法</u></p>
+<p><u>2️⃣循环次数：受计算预算和时间限制</u></p>
+<p><u>3️⃣学习率learning rate：</u></p>
+<p>较大：收敛较快</p>
+<p>较小：不容易数字爆炸、但时间较长</p>
+<p>梯度下降的feature：使用全部数据，当数据集较大时，不适用</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image2.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0532.PNG"
                       alt="image"
                 ></p>
-<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a><u>优点：</u></h5><p><u>将对梯度的计算<strong>模块化</strong>。不需要知道全局架构，只需要知道这个节点里对应的三个梯度数值（上游&#x2F;本地&#x2F;下游），从而推出<strong>全局梯度</strong>。</u></p>
+<h3 id="batch-gradient-descent（批量梯度下降）"><a href="#batch-gradient-descent（批量梯度下降）" class="headerlink" title="batch gradient descent（批量梯度下降）"></a><u>batch gradient descent（批量梯度下降）</u></h3><p>选择批量，进行求loss和计算梯度</p>
+<p>SGD随机梯度下降</p>
+<h3 id="stochastic-gradient-descentSGD随机梯度下降"><a href="#stochastic-gradient-descentSGD随机梯度下降" class="headerlink" title="stochastic gradient descentSGD随机梯度下降"></a><u>stochastic gradient descentSGD随机梯度下降</u></h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0533.PNG"
+                      alt="image"
+                ></p>
+<p>存在的问题：</p>
+<p><u>局部最小、鞍点&#x2F;收敛速度一方过大一方过小</u></p>
+<p><strong>更智能的方法：</strong></p>
+<h4 id="1-sgd-动量更新"><a href="#1-sgd-动量更新" class="headerlink" title="1.sgd+动量更新"></a>1.sgd+动量更新</h4><p>初始化相同、用梯度算出”dw”的值，用来更新速度向量，（想象球滚落）（类似于对梯度计算历史平均值）</p>
+<p>超参数：<strong>rho– decay rate</strong></p>
+<p><u>（当抵达局部最小&#x2F;鞍点，仍有残余速度去跳出局部，更平滑地处理高纬度问题）</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image3.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0555.PNG"
                       alt="image"
                 ></p>
-<h5 id="全局图be-like："><a href="#全局图be-like：" class="headerlink" title="全局图be like："></a>全局图be like：</h5><p>（trick: 蓝色框内为sigmoid函数，可以直接计算其local gradient得到简单表达式,跳过中间步骤)</p>
+<h4 id="2-Nesterov-动量更新"><a href="#2-Nesterov-动量更新" class="headerlink" title="2.Nesterov 动量更新"></a>2.Nesterov 动量更新</h4><p>如图</p>
+<p>“Look ahead”会对下一时刻的梯度进行预测</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image4.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0559.PNG"
                       alt="image"
                 ></p>
-<h3 id="梯度流动时一些有趣的pattern："><a href="#梯度流动时一些有趣的pattern：" class="headerlink" title="梯度流动时一些有趣的pattern："></a>梯度流动时一些有趣的pattern：</h3><p>加法：downstream gradient &#x3D; upstream gradient</p>
-<p>复制：downstream gradient &#x3D; sum(upstream gradient)</p>
-<p>乘法：“交换”downstream gradient &#x3D; other diwnstream gradient * upstream</p>
-<p>max：最大值downstream &#x3D; upstream，其余downstream&#x3D;0（不常见）</p>
+<p>两者对比：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image5.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0557.PNG"
                       alt="image"
                 ></p>
-<p>实际处理问题时，我们通常是对<strong>向量</strong>进行求梯度等操作（最后得到的loss仍然是标量）</p>
+<p><u>sgd特征：1.可能会overshoot（到达底端后，会有反向动量存在，往回走一段距离，如下图）</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image6.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0560.PNG"
                       alt="image"
                 ></p>
-<p>由于只考虑upstream和downstream的关系，Jocobian矩阵将会是一个<em>非常大的稀疏矩阵</em>，<em>只有对角线上元素可能不为0</em>.所以在使用中，从来不会真正形成矩阵，而是对其<strong>隐式表达</strong>。</p>
-<p>如下图，对RELU函数，可以理解为：</p>
-<p>根据input符号，决定downstream是0还是具体值</p>
+<h3 id="Adaptive-learning-rates自适应学习率"><a href="#Adaptive-learning-rates自适应学习率" class="headerlink" title="Adaptive learning rates自适应学习率"></a>Adaptive learning rates自适应学习率</h3><h4 id="1-AdaGrad算法"><a href="#1-AdaGrad算法" class="headerlink" title="1.AdaGrad算法"></a>1.AdaGrad算法</h4><p>（通过<strong>除以梯度</strong>，抑制&#x2F;提高运动速度）</p>
+<p><u>问题：grad—squared不断增加（趋于无限大），学习率不断下降，可能在达到结果前停止</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image7.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0561.PNG"
                       alt="image"
                 ></p>
-<p>当使用的是<strong>tensor</strong>，更复杂了.</p>
+<h4 id="2-RMSprop（对AdaGrad的改善）"><a href="#2-RMSprop（对AdaGrad的改善）" class="headerlink" title="2.RMSprop（对AdaGrad的改善）"></a>2.RMSprop（对AdaGrad的改善）</h4><p>添加参数decay_rate 来降低grad_squared,  类似加入摩擦系数</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image8.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0562.PNG"
                       alt="image"
                 ></p>
-<h3 id="简化求解反向传播"><a href="#简化求解反向传播" class="headerlink" title="简化求解反向传播"></a>简化求解反向传播</h3><p>推导：分解问题，尝试对每个x的导数求解</p>
-<p>如图，dL&#x2F;dx1,1 &#x3D; (dy&#x2F;dx1,1)(dL&#x2F;dy)</p>
-<p>计算dy&#x2F;dx1,1，发现其为第一行等于权重矩阵第一行，其余行为0的矩阵；</p>
-<p>所以，dL&#x2F;dx1,1等于权重第一行与dL&#x2F;dy第一行的内积；</p>
-<p>其他同理。</p>
+<h3 id="Adam（RMSProp-动量）"><a href="#Adam（RMSProp-动量）" class="headerlink" title="Adam（RMSProp+动量）"></a>Adam（RMSProp+动量）</h3><p>——非常强大的优化算法，适用于不同的任务，超参的调整范围也较小</p>
+<p>将两种算法结合，存在问题：如果beta2趋于1，那么优化第一步可能走出很大一步（除以近似0的数）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image9.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0563.PNG"
                       alt="image"
                 ></p>
-<p>最后推得关系式如下：dL&#x2F;dx  &#x3D; (dL&#x2F;dy)wT</p>
-<p>（详细证明：<a class="link"   target="_blank" rel="noopener" href="http://cs231n.stanford.edu/handouts/linear-backprop.pdf%EF%BC%89" >http://cs231n.stanford.edu/handouts/linear-backprop.pdf） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>对其进行改善：添加<strong>Bias Corection（偏差校正）</strong>，让其更稳健。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image10.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0564.PNG"
                       alt="image"
                 ></p>
-<h3 id="另一个观点：反向自动微分"><a href="#另一个观点：反向自动微分" class="headerlink" title="另一个观点：反向自动微分"></a>另一个观点：反向自动微分</h3><h5 id="反向自动微分"><a href="#反向自动微分" class="headerlink" title="反向自动微分"></a>反向自动微分</h5><p>认为jacobian矩阵可以累乘，最后得到一个标量。（对于所有的与求导&#x2F;微分相关的程序都有效，局限性小）</p>
+<h3 id="AdamW：Adam-Variant-with-Weight-Decay"><a href="#AdamW：Adam-Variant-with-Weight-Decay" class="headerlink" title="AdamW：Adam Variant with Weight Decay"></a>AdamW：Adam Variant with Weight Decay</h3><p>Source：<a class="link"   target="_blank" rel="noopener" href="https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html" >https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>在每次epoch中，对权重进行衰减：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">moving_avg = alpha * moving_avg + (<span class="number">1</span>-alpha) * w.grad </span><br><span class="line"></span><br><span class="line">w = w - lr * moving_avg - lr * wd * w</span><br></pre></td></tr></table></figure></div>
+
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image11.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image.png"
                       alt="image"
                 ></p>
-<h5 id="前向自动微分"><a href="#前向自动微分" class="headerlink" title="前向自动微分"></a>前向自动微分</h5><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image12.png"
-                      alt="image"
-                ></p>
-<p><u>缺点：前向不被大框架支持；不好用</u></p>
-<h3 id="反向传播另一个功能：求高阶导数"><a href="#反向传播另一个功能：求高阶导数" class="headerlink" title="反向传播另一个功能：求高阶导数"></a>反向传播另一个功能：求高阶导数</h3><p>（比如计算hessian矩阵）</p>
-<p>使用反向传播扩展计算图。在计算loss之后，使用f2’计算梯度相对于x1的损失，用f1’计算loss相对于x0的损失（f1’\f2’是f的反向传递）</p>
-<p>再点积向量 v，就会得到v关于x的导数。</p>
-<p>再Backprop，可以得到x关于v的导数。</p>
-<p>（图中举例：二阶导数）</p>
+<h3 id="Learning-Rate-Decay-减少学习率"><a href="#Learning-Rate-Decay-减少学习率" class="headerlink" title="Learning Rate Decay 减少学习率"></a>Learning Rate Decay 减少学习率</h3><p>在某些固定点减少学习率。常见的方法如下：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image13.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image0568.png"
+                      alt="image"
+                ></p>
+<h3 id="二阶优化方法：L-BFGS（准确但不实际）-BGFS-最常用"><a href="#二阶优化方法：L-BFGS（准确但不实际）-BGFS-最常用" class="headerlink" title="二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)"></a>二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)</h3><p>使用Hessian矩阵，可以使对学习率&#x2F;步长的选择更加合理。但数据量巨大，只适合低维优化问题</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0567.PNG"
+                      alt="image"
+                ></p>
+<h3 id="总结（对优化算法的比较）"><a href="#总结（对优化算法的比较）" class="headerlink" title="总结（对优化算法的比较）"></a>总结（对优化算法的比较）</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0566.PNG"
                       alt="image"
                 ></p>
 
@@ -502,18 +518,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> CS231N Lecture6 反向传播</li>
+        <li><strong>Title:</strong> CS231N Lecture4 优化</li>
         <li><strong>Author:</strong> Rongying Liu</li>
         <li><strong>Created at
-                :</strong> 2024-12-10 22:54:45</li>
+                :</strong> 2024-12-07 19:14:49</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-01-20 23:25:51
+                    :</strong> 2025-01-20 23:30:42
             </li>
         
         <li>
-            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/10/6 反向传播/
+            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/07/CS231N/优化/
         </li>
         <li>
             <strong>
@@ -549,13 +565,13 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2025/01/15/7%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
+                        href="/2024/12/08/CS231N/5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">CS231N-Lecture7 卷积神经网络</span>
+                                <span class="post-nav-title-item">CS231N Lecture5 神经网络</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -565,10 +581,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/12/08/5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
+                        href="/2024/11/19/CS231N/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">CS231N Lecture5 神经网络</span>
+                                <span class="post-nav-title-item">CS231N Lecture3 线性分类器</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -631,8 +647,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">CS231N Lecture6 反向传播</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture6%E2%80%93%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">Lecture6–反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagation-%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">Backpropagation 反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E6%B5%81%E5%8A%A8%E6%97%B6%E4%B8%80%E4%BA%9B%E6%9C%89%E8%B6%A3%E7%9A%84pattern%EF%BC%9A"><span class="nav-text">梯度流动时一些有趣的pattern：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8C%96%E6%B1%82%E8%A7%A3%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">简化求解反向传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%A7%82%E7%82%B9%EF%BC%9A%E5%8F%8D%E5%90%91%E8%87%AA%E5%8A%A8%E5%BE%AE%E5%88%86"><span class="nav-text">另一个观点：反向自动微分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%EF%BC%9A%E6%B1%82%E9%AB%98%E9%98%B6%E5%AF%BC%E6%95%B0"><span class="nav-text">反向传播另一个功能：求高阶导数</span></a></li></ol></li></ol></li></ol>
+        <div class="page-title">CS231N Lecture4 优化</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-text">gradient descent梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#batch-gradient-descent%EF%BC%88%E6%89%B9%E9%87%8F%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%89"><span class="nav-text">batch gradient descent（批量梯度下降）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stochastic-gradient-descentSGD%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-text">stochastic gradient descentSGD随机梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adaptive-learning-rates%E8%87%AA%E9%80%82%E5%BA%94%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="nav-text">Adaptive learning rates自适应学习率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adam%EF%BC%88RMSProp-%E5%8A%A8%E9%87%8F%EF%BC%89"><span class="nav-text">Adam（RMSProp+动量）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AdamW%EF%BC%9AAdam-Variant-with-Weight-Decay"><span class="nav-text">AdamW：Adam Variant with Weight Decay</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Rate-Decay-%E5%87%8F%E5%B0%91%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="nav-text">Learning Rate Decay 减少学习率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E9%98%B6%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%9AL-BFGS%EF%BC%88%E5%87%86%E7%A1%AE%E4%BD%86%E4%B8%8D%E5%AE%9E%E9%99%85%EF%BC%89-BGFS-%E6%9C%80%E5%B8%B8%E7%94%A8"><span class="nav-text">二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%88%E5%AF%B9%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E7%9A%84%E6%AF%94%E8%BE%83%EF%BC%89"><span class="nav-text">总结（对优化算法的比较）</span></a></li></ol>
 
     </div>
 </div>
@@ -665,11 +681,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        12 posts in total
+                        14 posts in total
                     </span>
                     
                         <span>
-                            7.2k words in total
+                            10.4k words in total
                         </span>
                     
                 </p>

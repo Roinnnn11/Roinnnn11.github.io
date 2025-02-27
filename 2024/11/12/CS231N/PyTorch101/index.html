@@ -13,39 +13,22 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/07/优化/"/>
+    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/11/12/cs231n/pytorch101/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="2️⃣ follow the slope 直接计算导数、使用导数（deltaloss&#x2F;delta-h） 缺点：对求导计算缓慢，如果矩阵&#x2F;维度过大 &#x3D;&#x3D;&#x3D;用一个方程表示梯度（反向传播 第六节中讲述） Computing Gradients(计算梯度) numeric&#x2F;analytic （计算出值&#x2F;分析） 一般使用数字梯度来检验对解">
+        <meta name="description" content="一、Tensor 张量定义：The number of dimensions is the rank of the tensor；例：tensor([1,2,3])的秩为1 ​		the shape of a tensor is a tuple of integers giving the size of the array along each dimension 例：tensor([1,2,3">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CS231N Lecture4 优化">
-<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/07/%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:title" content="PyTorch101 --PyTorch基本框架">
+<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/11/12/CS231N/PyTorch101/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="2️⃣ follow the slope 直接计算导数、使用导数（deltaloss&#x2F;delta-h） 缺点：对求导计算缓慢，如果矩阵&#x2F;维度过大 &#x3D;&#x3D;&#x3D;用一个方程表示梯度（反向传播 第六节中讲述） Computing Gradients(计算梯度) numeric&#x2F;analytic （计算出值&#x2F;分析） 一般使用数字梯度来检验对解">
+<meta property="og:description" content="一、Tensor 张量定义：The number of dimensions is the rank of the tensor；例：tensor([1,2,3])的秩为1 ​		the shape of a tensor is a tuple of integers giving the size of the array along each dimension 例：tensor([1,2,3">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0531.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0532.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0533.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0555.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0559.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0557.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0560.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0561.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0562.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0563.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0564.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image0568.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0567.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0566.PNG">
-<meta property="article:published_time" content="2024-12-07T11:14:49.409Z">
-<meta property="article:modified_time" content="2025-01-20T15:30:42.769Z">
+<meta property="article:published_time" content="2024-11-12T04:59:05.702Z">
+<meta property="article:modified_time" content="2024-11-19T10:20:01.249Z">
 <meta property="article:author" content="Roin">
-<meta property="article:tag" content="计算机视觉">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0531.PNG">
     
     
     <!--- Icon Part-->
@@ -57,7 +40,7 @@
     
     <title>
         
-            CS231N Lecture4 优化 | Roin&#39;s BLOG
+            PyTorch101 --PyTorch基本框架 | Roin&#39;s BLOG
         
     </title>
 
@@ -265,7 +248,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">14</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -291,7 +274,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CS231N Lecture4 优化</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">PyTorch101 --PyTorch基本框架</h1>
                 </div>
             
             </div>
@@ -312,53 +295,26 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-12-07 19:14:49</span>
-        <span class="mobile">2024-12-07 19:14:49</span>
+        <span class="desktop">2024-11-12 12:59:05</span>
+        <span class="mobile">2024-11-12 12:59:05</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-01-20 23:30:42</span>
-            <span class="mobile">2025-01-20 23:30:42</span>
+            <span class="desktop">2024-11-19 18:20:01</span>
+            <span class="mobile">2024-11-19 18:20:01</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
     
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/CS231N/">CS231N</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>705 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>428 Words</span>
         </span>
     
     
@@ -382,135 +338,32 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <p>2️⃣ follow the slope</p>
-<p>直接计算导数、使用导数（deltaloss&#x2F;delta-h）</p>
-<p>缺点：对求导计算缓慢，如果矩阵&#x2F;维度过大</p>
-<p>&#x3D;&#x3D;&#x3D;用一个方程表示梯度（反向传播 第六节中讲述）</p>
-<p><strong>Computing Gradients(计算梯度)</strong></p>
-<p>numeric&#x2F;analytic （计算出值&#x2F;分析）</p>
-<p>一般使用数字梯度来检验对解析梯度的推导</p>
-<p>（pytorch提供了一个函数gradcheck、实现相似的功能）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0531.PNG"
-                      alt="image"
-                ></p>
-<h3 id="gradient-descent梯度下降"><a href="#gradient-descent梯度下降" class="headerlink" title="gradient descent梯度下降"></a><u>gradient descent梯度下降</u></h3><p>包含的超参：</p>
-<p><u>1️⃣初始化权重的方法</u></p>
-<p><u>2️⃣循环次数：受计算预算和时间限制</u></p>
-<p><u>3️⃣学习率learning rate：</u></p>
-<p>较大：收敛较快</p>
-<p>较小：不容易数字爆炸、但时间较长</p>
-<p>梯度下降的feature：使用全部数据，当数据集较大时，不适用</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0532.PNG"
-                      alt="image"
-                ></p>
-<h3 id="batch-gradient-descent（批量梯度下降）"><a href="#batch-gradient-descent（批量梯度下降）" class="headerlink" title="batch gradient descent（批量梯度下降）"></a><u>batch gradient descent（批量梯度下降）</u></h3><p>选择批量，进行求loss和计算梯度</p>
-<p>SGD随机梯度下降</p>
-<h3 id="stochastic-gradient-descentSGD随机梯度下降"><a href="#stochastic-gradient-descentSGD随机梯度下降" class="headerlink" title="stochastic gradient descentSGD随机梯度下降"></a><u>stochastic gradient descentSGD随机梯度下降</u></h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0533.PNG"
-                      alt="image"
-                ></p>
-<p>存在的问题：</p>
-<p><u>局部最小、鞍点&#x2F;收敛速度一方过大一方过小</u></p>
-<p><strong>更智能的方法：</strong></p>
-<h4 id="1-sgd-动量更新"><a href="#1-sgd-动量更新" class="headerlink" title="1.sgd+动量更新"></a>1.sgd+动量更新</h4><p>初始化相同、用梯度算出”dw”的值，用来更新速度向量，（想象球滚落）（类似于对梯度计算历史平均值）</p>
-<p>超参数：<strong>rho– decay rate</strong></p>
-<p><u>（当抵达局部最小&#x2F;鞍点，仍有残余速度去跳出局部，更平滑地处理高纬度问题）</u></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0555.PNG"
-                      alt="image"
-                ></p>
-<h4 id="2-Nesterov-动量更新"><a href="#2-Nesterov-动量更新" class="headerlink" title="2.Nesterov 动量更新"></a>2.Nesterov 动量更新</h4><p>如图</p>
-<p>“Look ahead”会对下一时刻的梯度进行预测</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0559.PNG"
-                      alt="image"
-                ></p>
-<p>两者对比：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0557.PNG"
-                      alt="image"
-                ></p>
-<p><u>sgd特征：1.可能会overshoot（到达底端后，会有反向动量存在，往回走一段距离，如下图）</u></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0560.PNG"
-                      alt="image"
-                ></p>
-<h3 id="Adaptive-learning-rates自适应学习率"><a href="#Adaptive-learning-rates自适应学习率" class="headerlink" title="Adaptive learning rates自适应学习率"></a>Adaptive learning rates自适应学习率</h3><h4 id="1-AdaGrad算法"><a href="#1-AdaGrad算法" class="headerlink" title="1.AdaGrad算法"></a>1.AdaGrad算法</h4><p>（通过<strong>除以梯度</strong>，抑制&#x2F;提高运动速度）</p>
-<p><u>问题：grad—squared不断增加（趋于无限大），学习率不断下降，可能在达到结果前停止</u></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0561.PNG"
-                      alt="image"
-                ></p>
-<h4 id="2-RMSprop（对AdaGrad的改善）"><a href="#2-RMSprop（对AdaGrad的改善）" class="headerlink" title="2.RMSprop（对AdaGrad的改善）"></a>2.RMSprop（对AdaGrad的改善）</h4><p>添加参数decay_rate 来降低grad_squared,  类似加入摩擦系数</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0562.PNG"
-                      alt="image"
-                ></p>
-<h3 id="Adam（RMSProp-动量）"><a href="#Adam（RMSProp-动量）" class="headerlink" title="Adam（RMSProp+动量）"></a>Adam（RMSProp+动量）</h3><p>——非常强大的优化算法，适用于不同的任务，超参的调整范围也较小</p>
-<p>将两种算法结合，存在问题：如果beta2趋于1，那么优化第一步可能走出很大一步（除以近似0的数）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0563.PNG"
-                      alt="image"
-                ></p>
-<p>对其进行改善：添加<strong>Bias Corection（偏差校正）</strong>，让其更稳健。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0564.PNG"
-                      alt="image"
-                ></p>
-<h3 id="AdamW：Adam-Variant-with-Weight-Decay"><a href="#AdamW：Adam-Variant-with-Weight-Decay" class="headerlink" title="AdamW：Adam Variant with Weight Decay"></a>AdamW：Adam Variant with Weight Decay</h3><p>Source：<a class="link"   target="_blank" rel="noopener" href="https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html" >https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>在每次epoch中，对权重进行衰减：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">moving_avg = alpha * moving_avg + (<span class="number">1</span>-alpha) * w.grad </span><br><span class="line"></span><br><span class="line">w = w - lr * moving_avg - lr * wd * w</span><br></pre></td></tr></table></figure></div>
+            <h3 id="一、Tensor-张量"><a href="#一、Tensor-张量" class="headerlink" title="一、Tensor 张量"></a>一、Tensor 张量</h3><p>定义：The number of dimensions is the <strong>rank</strong> of the tensor；例：tensor([1,2,3])的秩为1</p>
+<p>​		the <strong>shape</strong> of a tensor is a tuple of integers giving the size of the array along each dimension 例：tensor([1,2,3])的shape为[3]</p>
+<h4 id="1-构建-访问tensor"><a href="#1-构建-访问tensor" class="headerlink" title="1.构建&amp;访问tensor"></a>1.构建&amp;访问tensor</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x=torch.tensor([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])<span class="comment">#构建tensor张量</span></span><br><span class="line">x.dim()<span class="comment">#返回纬度值</span></span><br><span class="line">x.shape<span class="comment">#返回：torch.Size([3,3]),可以当作turple使用</span></span><br><span class="line">x[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span><span class="comment">#赋值操作</span></span><br><span class="line">x[<span class="number">0</span>][<span class="number">0</span>].item()<span class="comment">#将PyTorch的标量转换为python标量</span></span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image.png"
-                      alt="image"
-                ></p>
-<h3 id="Learning-Rate-Decay-减少学习率"><a href="#Learning-Rate-Decay-减少学习率" class="headerlink" title="Learning Rate Decay 减少学习率"></a>Learning Rate Decay 减少学习率</h3><p>在某些固定点减少学习率。常见的方法如下：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image0568.png"
-                      alt="image"
-                ></p>
-<h3 id="二阶优化方法：L-BFGS（准确但不实际）-BGFS-最常用"><a href="#二阶优化方法：L-BFGS（准确但不实际）-BGFS-最常用" class="headerlink" title="二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)"></a>二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)</h3><p>使用Hessian矩阵，可以使对学习率&#x2F;步长的选择更加合理。但数据量巨大，只适合低维优化问题</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0567.PNG"
-                      alt="image"
-                ></p>
-<h3 id="总结（对优化算法的比较）"><a href="#总结（对优化算法的比较）" class="headerlink" title="总结（对优化算法的比较）"></a>总结（对优化算法的比较）</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0566.PNG"
-                      alt="image"
-                ></p>
+
+
+<h4 id="2-帮助构建tensor的函数"><a href="#2-帮助构建tensor的函数" class="headerlink" title="2.帮助构建tensor的函数"></a>2.帮助构建tensor的函数</h4><p>常用的函数有：</p>
+<ul>
+<li><pre><code class="python">- x=torch.zeros（*size） #全为0的tensor
+- x=torch.ones(*size)#全为1的tensor
+- x=torch.rand(*size)#为0-1随机数
+- x=torch.full（*size*， *fill_value*， ***， *out* *=* *None*， *dtype* *=* None， *layout* *=* *torch.strided*， *device* *=* *None*， *requires_grad* *=* *False*）#→ Tensor
+- x=torch.from_numpy( ndarray ) #→ Tensor
+- x=torch.arange( *start=0* , *end* , *step=1* , * , out=None , *dtype=None* , layout *=torch.strided* , *device=None* , *require_grad=False* )#→Tensor &lt;u&gt;#左闭右开区间&lt;/u&gt;（torch.range &lt;u&gt;#左闭右闭&lt;/u&gt;）
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">You can find a **full list of tensor creation operations** [in the documentation](https://www.google.com/url?q=https%3A%2F%2Fpytorch.org%2Fdocs%2Fstable%2Ftorch.html%23creation-ops).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 3.tensor的数据形式</span><br><span class="line"></span><br><span class="line">tensor会根据数字自动设定形式，你也可以为其赋予特定格式如：int16、uint8、float32等等。</span><br><span class="line"></span><br><span class="line">可以使用  .to( )来修改dtype，如：x0.to(torch.float32)</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">x1=torch.zeros_like(x0) #构建一个size和dtype与x0一样的</span><br><span class="line">x2=x0.new_zeros(4,5)#size自定，dtype和x0一样</span><br><span class="line">x3=torch.ones(6,7).to(x0)#和上一行相同</span><br></pre></td></tr></table></figure></div>
+</code></pre>
+</li>
+</ul>
+<p>常用的数据形式：</p>
+<ul>
+<li><code>torch.float32</code>: Standard floating-point type; used to store learnable parameters, network activations, etc. Nearly all arithmetic is done using this type.</li>
+<li><code>torch.int64</code>: Typically used to store indices</li>
+<li><code>torch.bool</code>: Stores boolean values: 0 is false and 1 is true</li>
+<li><code>torch.float16</code>: Used for mixed-precision arithmetic, usually on NVIDIA GPUs with <a class="link"   target="_blank" rel="noopener" href="https://www.google.com/url?q=https://www.nvidia.com/en-us/data-center/tensorcore/" >tensor cores <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>. You won’t need to worry about this datatype in this course.</li>
+</ul>
+<h4 id="4-Tensor-Indexing"><a href="#4-Tensor-Indexing" class="headerlink" title="4.Tensor Indexing"></a>4.Tensor Indexing</h4><p>tensor也能进行“切片”，多维度也行</p>
 
         </div>
 
@@ -518,18 +371,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> CS231N Lecture4 优化</li>
+        <li><strong>Title:</strong> PyTorch101 --PyTorch基本框架</li>
         <li><strong>Author:</strong> Rongying Liu</li>
         <li><strong>Created at
-                :</strong> 2024-12-07 19:14:49</li>
+                :</strong> 2024-11-12 12:59:05</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-01-20 23:30:42
+                    :</strong> 2024-11-19 18:20:01
             </li>
         
         <li>
-            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/07/优化/
+            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2024/11/12/CS231N/PyTorch101/
         </li>
         <li>
             <strong>
@@ -548,14 +401,6 @@
         
 
         
-            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">#计算机视觉</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
 
         
 
@@ -565,13 +410,13 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2024/12/08/5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
+                        href="/2024/11/19/CS231N/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">CS231N Lecture5 神经网络</span>
+                                <span class="post-nav-title-item">CS231N Lecture3 线性分类器</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -581,10 +426,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/11/19/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8/"
+                        href="/2024/11/10/hello-world/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">CS231N Lecture3 线性分类器</span>
+                                <span class="post-nav-title-item">Hello World</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -647,8 +492,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">CS231N Lecture4 优化</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-text">gradient descent梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#batch-gradient-descent%EF%BC%88%E6%89%B9%E9%87%8F%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%89"><span class="nav-text">batch gradient descent（批量梯度下降）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stochastic-gradient-descentSGD%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-text">stochastic gradient descentSGD随机梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adaptive-learning-rates%E8%87%AA%E9%80%82%E5%BA%94%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="nav-text">Adaptive learning rates自适应学习率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adam%EF%BC%88RMSProp-%E5%8A%A8%E9%87%8F%EF%BC%89"><span class="nav-text">Adam（RMSProp+动量）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AdamW%EF%BC%9AAdam-Variant-with-Weight-Decay"><span class="nav-text">AdamW：Adam Variant with Weight Decay</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Rate-Decay-%E5%87%8F%E5%B0%91%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="nav-text">Learning Rate Decay 减少学习率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E9%98%B6%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%9AL-BFGS%EF%BC%88%E5%87%86%E7%A1%AE%E4%BD%86%E4%B8%8D%E5%AE%9E%E9%99%85%EF%BC%89-BGFS-%E6%9C%80%E5%B8%B8%E7%94%A8"><span class="nav-text">二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%88%E5%AF%B9%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E7%9A%84%E6%AF%94%E8%BE%83%EF%BC%89"><span class="nav-text">总结（对优化算法的比较）</span></a></li></ol>
+        <div class="page-title">PyTorch101 --PyTorch基本框架</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81Tensor-%E5%BC%A0%E9%87%8F"><span class="nav-text">一、Tensor 张量</span></a></li></ol>
 
     </div>
 </div>
@@ -681,11 +526,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        12 posts in total
+                        14 posts in total
                     </span>
                     
                         <span>
-                            7.2k words in total
+                            10.4k words in total
                         </span>
                     
                 </p>

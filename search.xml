@@ -19,261 +19,209 @@
 ]]></content>
   </entry>
   <entry>
-    <title>PyTorch101 --PyTorch基本框架</title>
-    <url>/2024/11/12/PyTorch101/</url>
-    <content><![CDATA[<h3 id="一、Tensor-张量"><a href="#一、Tensor-张量" class="headerlink" title="一、Tensor 张量"></a>一、Tensor 张量</h3><p>定义：The number of dimensions is the <strong>rank</strong> of the tensor；例：tensor([1,2,3])的秩为1</p>
-<p>​		the <strong>shape</strong> of a tensor is a tuple of integers giving the size of the array along each dimension 例：tensor([1,2,3])的shape为[3]</p>
-<h4 id="1-构建-访问tensor"><a href="#1-构建-访问tensor" class="headerlink" title="1.构建&amp;访问tensor"></a>1.构建&amp;访问tensor</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">x=torch.tensor([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])<span class="comment">#构建tensor张量</span></span><br><span class="line">x.dim()<span class="comment">#返回纬度值</span></span><br><span class="line">x.shape<span class="comment">#返回：torch.Size([3,3]),可以当作turple使用</span></span><br><span class="line">x[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span><span class="comment">#赋值操作</span></span><br><span class="line">x[<span class="number">0</span>][<span class="number">0</span>].item()<span class="comment">#将PyTorch的标量转换为python标量</span></span><br></pre></td></tr></table></figure></div>
-
-
-
-<h4 id="2-帮助构建tensor的函数"><a href="#2-帮助构建tensor的函数" class="headerlink" title="2.帮助构建tensor的函数"></a>2.帮助构建tensor的函数</h4><p>常用的函数有：</p>
+    <title></title>
+    <url>/2025/02/08/%E5%85%A8%E6%A0%88%E5%B7%A5%E7%A8%8B--Protobuf/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/08/%E5%85%A8%E6%A0%88%E5%B7%A5%E7%A8%8B--gRPC/</url>
+    <content><![CDATA[<h4 id="Client-Server-model⭐"><a href="#Client-Server-model⭐" class="headerlink" title="Client-Server model⭐"></a>Client-Server model⭐</h4><p>Client-Server结构是一种经典的通信模型。它通常采取两层结构：</p>
 <ul>
-<li><pre><code class="python">- x=torch.zeros（*size） #全为0的tensor
-- x=torch.ones(*size)#全为1的tensor
-- x=torch.rand(*size)#为0-1随机数
-- x=torch.full（*size*， *fill_value*， ***， *out* *=* *None*， *dtype* *=* None， *layout* *=* *torch.strided*， *device* *=* *None*， *requires_grad* *=* *False*）#→ Tensor
-- x=torch.from_numpy( ndarray ) #→ Tensor
-- x=torch.arange( *start=0* , *end* , *step=1* , * , out=None , *dtype=None* , layout *=torch.strided* , *device=None* , *require_grad=False* )#→Tensor &lt;u&gt;#左闭右开区间&lt;/u&gt;（torch.range &lt;u&gt;#左闭右闭&lt;/u&gt;）
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">You can find a **full list of tensor creation operations** [in the documentation](https://www.google.com/url?q=https%3A%2F%2Fpytorch.org%2Fdocs%2Fstable%2Ftorch.html%23creation-ops).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 3.tensor的数据形式</span><br><span class="line"></span><br><span class="line">tensor会根据数字自动设定形式，你也可以为其赋予特定格式如：int16、uint8、float32等等。</span><br><span class="line"></span><br><span class="line">可以使用  .to( )来修改dtype，如：x0.to(torch.float32)</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">x1=torch.zeros_like(x0) #构建一个size和dtype与x0一样的</span><br><span class="line">x2=x0.new_zeros(4,5)#size自定，dtype和x0一样</span><br><span class="line">x3=torch.ones(6,7).to(x0)#和上一行相同</span><br></pre></td></tr></table></figure></div>
-</code></pre>
+<li>服务器（Server）负责数据的处理。它有以下特征：<ul>
+<li>等待来自客户端的请求</li>
+<li>处理请求并传回结果</li>
+</ul>
+</li>
+<li>客户端（Client）负责完成与用户的交互任务。它有以下特征：<ul>
+<li>发送请求</li>
+<li>等待直到收到响应</li>
+</ul>
 </li>
 </ul>
-<p>常用的数据形式：</p>
+<h4 id="IP-Address"><a href="#IP-Address" class="headerlink" title="IP Address"></a>IP Address</h4><p>IP Address(Internet Protocol address，网际协议地址)，是网际协议中用于标识发送或接受数据报的设<br>备的一串数字。</p>
+<p>当设备连接网络后，设备将被分配一个IP地址，对于一个具体的设备而言，IP地址是独一无二的。IP地<br>址有两个主要的功能：<strong>标识主机</strong>（用户在互联网上可以识别）和<strong>网络寻址</strong>（允许计算机通过互联网发送<br>和接受数据）</p>
+<p>常见的IP地址分为IPv4和IPv6两大类：</p>
 <ul>
-<li><code>torch.float32</code>: Standard floating-point type; used to store learnable parameters, network activations, etc. Nearly all arithmetic is done using this type.</li>
-<li><code>torch.int64</code>: Typically used to store indices</li>
-<li><code>torch.bool</code>: Stores boolean values: 0 is false and 1 is true</li>
-<li><code>torch.float16</code>: Used for mixed-precision arithmetic, usually on NVIDIA GPUs with <a class="link"   href="https://www.google.com/url?q=https://www.nvidia.com/en-us/data-center/tensorcore/" >tensor cores <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>. You won’t need to worry about this datatype in this course.</li>
+<li><p>IPv4：32位长，通常书写时以四组十进制数字组成，并以点分割，例如： 172.16.254.1 。</p>
+</li>
+<li><p>IPv6：128位长，通常书写时以八组十六进制数字组成，并以冒号分割，例如：</p>
+<p>2001:db8:0：1234:0:567:8:1 。</p>
+</li>
 </ul>
-<h4 id="4-Tensor-Indexing"><a href="#4-Tensor-Indexing" class="headerlink" title="4.Tensor Indexing"></a>4.Tensor Indexing</h4><p>tensor也能进行“切片”，多维度也行</p>
-]]></content>
+<p>我们可以使用如下方法查询本机的IP地址：<br>windows： ipconfig<br>linux： ifconfig （可能需要使用 sudo apt-get install net-tools 进行安装）</p>
+<blockquote>
+<p><u>一个特殊的IP地址： 127.0.0.1</u><br>尽管现在有大量可用的 IP 地址，但为了防止编程冲突的特定目的，刻意保留一些地址，甚至是地址范围是很方便的。<br>127.0.0.1 就是其中一个。它表示的是<strong>主机环回地址</strong>，表示的是任何数据包都不应该离开计算机，计算机本身即为接收者。</p>
+<p>当我们需要在本地测试一些网站服务，或者只想在本地设备上运行只有本地设备可以访问的服务，就可以使用 127.0.0.1 。</p>
+</blockquote>
+<h4 id="Port"><a href="#Port" class="headerlink" title="Port"></a>Port</h4>]]></content>
   </entry>
   <entry>
-    <title>CS231N Lecture3 线性分类器</title>
-    <url>/2024/11/19/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8/</url>
-    <content><![CDATA[<h1 id="Linear-Classifiers–线性分类器"><a href="#Linear-Classifiers–线性分类器" class="headerlink" title="Linear Classifiers–线性分类器"></a>Linear Classifiers–线性分类器</h1><h3 id="一、如何理解线性分类器"><a href="#一、如何理解线性分类器" class="headerlink" title="一、如何理解线性分类器"></a>一、如何理解线性分类器</h3><h5 id="一、代数观点分析"><a href="#一、代数观点分析" class="headerlink" title="一、代数观点分析"></a>一、代数观点分析</h5><p>线性分类器：权重矩阵W和像素X之间的矩阵相乘，再加上b</p>
-<p><em>如果输入数据具有native vector form，可以将b合并至W矩阵中处理**（针对线性分类是好的方法，对于卷积并非）</em></p>
-<p><u>feature：预测也是线性的，放大&#x2F;缩小所有像素，会让所有预测值都放大&#x2F;缩小</u></p>
-<p>（如下图）</p>
+    <title>CS231N Lecture12 RNN</title>
+    <url>/2025/02/24/CS231N/CS231N-Lecture12/</url>
+    <content><![CDATA[<h1 id="Lecture12-RNN"><a href="#Lecture12-RNN" class="headerlink" title="Lecture12 RNN"></a>Lecture12 RNN</h1><p>循环神经网络：以某种顺序的过程，处理顺序问题和非顺序的问题</p>
+<h2 id="隐藏层的更新"><a href="#隐藏层的更新" class="headerlink" title="隐藏层的更新"></a>隐藏层的更新</h2><p>如图，呈递归关系。</p>
+<p>注意：在每个时间步中，使用的f函数以及参数都是相同的。即一直使用相同的权重矩阵。其中x_{t}为当前时间步的输入向量。</p>
+<p><a href="#">h_{t}&#x3D;f_{W}(h_{t-1},x_{t})</a></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119183936618.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image1.png"
                       alt="image"
                 ></p>
-<h5 id="二、视觉角度分析"><a href="#二、视觉角度分析" class="headerlink" title="二、视觉角度分析"></a>二、视觉角度分析</h5><p>另一种处理方法：<u>将权重矩阵reshape到跟输入图像一样，实现<strong>“template matching”</strong></u></p>
-<p>例：取每一行数字，组成2x2 shape（图像假设为2x2），同时b也分类。</p>
-<p><strong>“template matching”</strong>(模式匹配)</p>
-<p>按上述处理之后，每一行都是一个种类，当他们匹配上时，值会最大。有一种视觉上的模式匹配（如下图）</p>
-<p>（visual viewpoint）</p>
+<h2 id="举例：Vanilla-RNN"><a href="#举例：Vanilla-RNN" class="headerlink" title="举例：Vanilla RNN"></a>举例：Vanilla RNN</h2><p>h_{t-1}乘以矩阵，x_{t}乘以另一个矩阵，然后使用tanh得到新状态，输出y_{t}是h_{t}的线性变换</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119185407644.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image2.png"
                       alt="image"
                 ></p>
-<p><u>（缺点：对input图像的依赖严重，对其content（环境）依赖，旋转图片后无法识别）</u></p>
-<h5 id="三、几何观点"><a href="#三、几何观点" class="headerlink" title="三、几何观点"></a>三、几何观点</h5><p>可以认为，像素图像是一个高维欧几里得空间，每个种类都有对应的一个超平面，将空间切割。（如下图）</p>
+<h2 id="用计算图来理解RNN："><a href="#用计算图来理解RNN：" class="headerlink" title="用计算图来理解RNN："></a>用计算图来理解RNN：</h2><h2 id="1-多对多"><a href="#1-多对多" class="headerlink" title="1.多对多"></a>1.多对多</h2><p>y-&gt;L 求loss（举例：可以应用交叉熵损失 ）再对每个时间步的loss求和得到最终的LOSS</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119191101704.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image3.png"
                       alt="image"
                 ></p>
-<h3 id="二、如何选择矩阵W-——使用损失函数来量化评估W"><a href="#二、如何选择矩阵W-——使用损失函数来量化评估W" class="headerlink" title="二、如何选择矩阵W ——使用损失函数来量化评估W"></a>二、如何选择矩阵W ——使用损失函数来量化评估W</h3><h5 id="1️⃣loss：multi-class-SVM损失（图像分类）"><a href="#1️⃣loss：multi-class-SVM损失（图像分类）" class="headerlink" title="1️⃣loss：multi-class SVM损失（图像分类）"></a>1️⃣loss：multi-class SVM损失（图像分类）</h5><p>特征：如果一个种类被正确区分，那么改变预测分数，不再影响损失。（达到零损失）</p>
-<p>（如图，图中为铰链损失）</p>
+<h3 id="2-多对一"><a href="#2-多对一" class="headerlink" title="2.多对一"></a>2.多对一</h3><p>例如：视频分类</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0514.PNG"
-                      alt="\images\IMG_0514.PNG"
-                ></p>
-<h5 id="2️⃣Cross-Entropy-Loss（multinomial-logistic-regression）"><a href="#2️⃣Cross-Entropy-Loss（multinomial-logistic-regression）" class="headerlink" title="2️⃣Cross- Entropy Loss（multinomial logistic regression）"></a>2️⃣Cross- Entropy Loss（multinomial logistic regression）</h5><p>want to interpret raw classifier scores as probabilities.（使用概率来评分）</p>
-<p>使用softmax function 求概率 （重要工具）</p>
-<p><strong>对loss的计算：L &#x3D; -logP（Y&#x3D;y_{i}&#x2F;X&#x3D;x_{i}）</strong></p>
-<p>feature: 这个loss函数永远不会达到0️⃣损失</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0522.PNG"
-                      alt="\images\IMG_0522.PNG"
-                ></p>
-<p>对预测值和理论值进行评估<strong>（Kullback-Leibler divergence）</strong></p>
-<p><strong>cross- Entropy：H（P,Q）&#x3D;H(p)+D_{KL}（P||Q）</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0523.PNG"
-                      alt="\images\IMG_0523.PNG"
-                ></p>
-<h3 id="三、对矩阵进行优化"><a href="#三、对矩阵进行优化" class="headerlink" title="三、对矩阵进行优化"></a>三、对矩阵进行优化</h3><p>Regularization（正则化）—— prevent the model from doing too well</p>
-<p>lamda —— 控制正则化的超参</p>
-<p>公式如图</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0516.PNG"
-                      alt="\images\IMG_0516.PNG"
-                ></p>
-<p>正则化简单实例：L2、L1、Elastic net（L1+L2）（如上图左下）</p>
-<p>正则化目的：1️⃣表达偏好</p>
-<p>​						2️⃣避免过拟合prefer simple models that generalize well</p>
-<p>​						3️⃣添加曲率改善优化adding curvature improve optimization</p>
-<p>举例说明正则化的作用：</p>
-<p>1️⃣比如可以通过调整正则化、考虑全局或者专注于一个参数</p>
-<p>如果有噪声或者很多特征,也适用。<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0517.PNG"
-                      alt="images\IMG_0517.PNG"
-                ></p>
-<p>2️⃣</p>
-<p>避免过拟合。如图，曲线是添加正则化后，合理地减少了噪声干扰</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0518.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image4.png"
                       alt="image"
                 ></p>
-]]></content>
-      <categories>
-        <category>CS231N</category>
-      </categories>
-      <tags>
-        <tag>计算机视觉</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CS231N Lecture4 优化</title>
-    <url>/2024/12/07/%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p>2️⃣ follow the slope</p>
-<p>直接计算导数、使用导数（deltaloss&#x2F;delta-h）</p>
-<p>缺点：对求导计算缓慢，如果矩阵&#x2F;维度过大</p>
-<p>&#x3D;&#x3D;&#x3D;用一个方程表示梯度（反向传播 第六节中讲述）</p>
-<p><strong>Computing Gradients(计算梯度)</strong></p>
-<p>numeric&#x2F;analytic （计算出值&#x2F;分析）</p>
-<p>一般使用数字梯度来检验对解析梯度的推导</p>
-<p>（pytorch提供了一个函数gradcheck、实现相似的功能）</p>
+<h3 id="3-一对多"><a href="#3-一对多" class="headerlink" title="3.一对多"></a>3.一对多</h3><p>例如：分析图像生成字幕…</p>
+<p>输入0或者将前一步输出再输入</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0531.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image5.png"
                       alt="image"
                 ></p>
-<h3 id="gradient-descent梯度下降"><a href="#gradient-descent梯度下降" class="headerlink" title="gradient descent梯度下降"></a><u>gradient descent梯度下降</u></h3><p>包含的超参：</p>
-<p><u>1️⃣初始化权重的方法</u></p>
-<p><u>2️⃣循环次数：受计算预算和时间限制</u></p>
-<p><u>3️⃣学习率learning rate：</u></p>
-<p>较大：收敛较快</p>
-<p>较小：不容易数字爆炸、但时间较长</p>
-<p>梯度下降的feature：使用全部数据，当数据集较大时，不适用</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0532.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image6.png"
                       alt="image"
                 ></p>
-<h3 id="batch-gradient-descent（批量梯度下降）"><a href="#batch-gradient-descent（批量梯度下降）" class="headerlink" title="batch gradient descent（批量梯度下降）"></a><u>batch gradient descent（批量梯度下降）</u></h3><p>选择批量，进行求loss和计算梯度</p>
-<p>SGD随机梯度下降</p>
-<h3 id="stochastic-gradient-descentSGD随机梯度下降"><a href="#stochastic-gradient-descentSGD随机梯度下降" class="headerlink" title="stochastic gradient descentSGD随机梯度下降"></a><u>stochastic gradient descentSGD随机梯度下降</u></h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0533.PNG"
-                      alt="image"
-                ></p>
-<p>存在的问题：</p>
-<p><u>局部最小、鞍点&#x2F;收敛速度一方过大一方过小</u></p>
-<p><strong>更智能的方法：</strong></p>
-<h4 id="1-sgd-动量更新"><a href="#1-sgd-动量更新" class="headerlink" title="1.sgd+动量更新"></a>1.sgd+动量更新</h4><p>初始化相同、用梯度算出”dw”的值，用来更新速度向量，（想象球滚落）（类似于对梯度计算历史平均值）</p>
-<p>超参数：<strong>rho– decay rate</strong></p>
-<p><u>（当抵达局部最小&#x2F;鞍点，仍有残余速度去跳出局部，更平滑地处理高纬度问题）</u></p>
+<h2 id="Sequence-2-Sequence：多对一-一对多"><a href="#Sequence-2-Sequence：多对一-一对多" class="headerlink" title="Sequence 2 Sequence：多对一+一对多"></a>Sequence 2 Sequence：多对一+一对多</h2><p>类似于编码器＋译码器；</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0555.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image7.png"
                       alt="image"
                 ></p>
-<h4 id="2-Nesterov-动量更新"><a href="#2-Nesterov-动量更新" class="headerlink" title="2.Nesterov 动量更新"></a>2.Nesterov 动量更新</h4><p>如图</p>
-<p>“Look ahead”会对下一时刻的梯度进行预测</p>
+<h3 id="举例：character-level-language-model"><a href="#举例：character-level-language-model" class="headerlink" title="举例：character-level language model"></a>举例：character-level language model</h3><p>使用one-hot编码.</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0559.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image8.png"
                       alt="image"
                 ></p>
-<p>两者对比：</p>
+<h3 id="举例：取样的character-level-language-model"><a href="#举例：取样的character-level-language-model" class="headerlink" title="举例：取样的character-level language model"></a>举例：取样的character-level language model</h3><p>在测试时，每采样一个字符，反馈给模型，继续进行生成。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0557.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image9.png"
                       alt="image"
                 ></p>
-<p><u>sgd特征：1.可能会overshoot（到达底端后，会有反向动量存在，往回走一段距离，如下图）</u></p>
+<h3 id="单热向量-one-hot"><a href="#单热向量-one-hot" class="headerlink" title="单热向量 one-hot"></a>单热向量 one-hot</h3><p>单热向量的矩阵乘法只是从权重矩阵中提取一列，没有什么意义。</p>
+<p>所以，我们经常在输入层和隐藏层之间放置一个单独的嵌入层，用来进行之后的计算。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0560.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image10.png"
                       alt="image"
                 ></p>
-<h3 id="Adaptive-learning-rates自适应学习率"><a href="#Adaptive-learning-rates自适应学习率" class="headerlink" title="Adaptive learning rates自适应学习率"></a>Adaptive learning rates自适应学习率</h3><h4 id="1-AdaGrad算法"><a href="#1-AdaGrad算法" class="headerlink" title="1.AdaGrad算法"></a>1.AdaGrad算法</h4><p>（通过<strong>除以梯度</strong>，抑制&#x2F;提高运动速度）</p>
-<p><u>问题：grad—squared不断增加（趋于无限大），学习率不断下降，可能在达到结果前停止</u></p>
+<h2 id="时间截断反向传播：Truncated-Backpropagation-through-time"><a href="#时间截断反向传播：Truncated-Backpropagation-through-time" class="headerlink" title="时间截断反向传播：Truncated Backpropagation through time"></a>时间截断反向传播：Truncated Backpropagation through time</h2><p>取一个初始子集（10-100token），将其前序传递展开，求loss，然后通过初始块反向传播，对权重矩阵进行更新。</p>
+<p>永远向前携带隐藏层，但只能反向传播一些较小的步骤</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0561.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image11.png"
                       alt="image"
                 ></p>
-<h4 id="2-RMSprop（对AdaGrad的改善）"><a href="#2-RMSprop（对AdaGrad的改善）" class="headerlink" title="2.RMSprop（对AdaGrad的改善）"></a>2.RMSprop（对AdaGrad的改善）</h4><p>添加参数decay_rate 来降低grad_squared,  类似加入摩擦系数</p>
+<h2 id="使用举例："><a href="#使用举例：" class="headerlink" title="使用举例："></a>使用举例：</h2><h3 id="Image-Captioning"><a href="#Image-Captioning" class="headerlink" title="Image Captioning"></a>Image Captioning</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image12.png"
+                      alt="image"
+                ></p>
+<p>迁移学习。首先使用一个在imagenet预训练过的CNN模型，去掉最后两层。</p>
+<p>（x：输入，h：隐藏层，v：cnn输入的特征向量，每个对应不同的矩阵）</p>
+<p>使用[start]和[end]的token作为一次分析的开始指令与结束指令。</p>
+<h3 id="Visual-Q-uestion-Answering（VQA）"><a href="#Visual-Q-uestion-Answering（VQA）" class="headerlink" title="Visual Q uestion Answering（VQA）"></a>Visual Q uestion Answering（VQA）</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image13.png"
+                      alt="image"
+                ></p>
+<h3 id="Visual-Dialog-Conversations-about-images"><a href="#Visual-Dialog-Conversations-about-images" class="headerlink" title="Visual Dialog: Conversations about images"></a>Visual Dialog: Conversations about images</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image14.png"
+                      alt="image"
+                ></p>
+<h3 id="Visual-Language-Navigation-Go-to-the-living-room"><a href="#Visual-Language-Navigation-Go-to-the-living-room" class="headerlink" title="Visual Language Navigation: Go to the living room"></a>Visual Language Navigation: Go to the living room</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image15.png"
+                      alt="image"
+                ></p>
+<h2 id="梯度流"><a href="#梯度流" class="headerlink" title="梯度流"></a>梯度流</h2><p>以Vanilla RNN 举例。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0562.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image16.png"
                       alt="image"
                 ></p>
-<h3 id="Adam（RMSProp-动量）"><a href="#Adam（RMSProp-动量）" class="headerlink" title="Adam（RMSProp+动量）"></a>Adam（RMSProp+动量）</h3><p>——非常强大的优化算法，适用于不同的任务，超参的调整范围也较小</p>
-<p>将两种算法结合，存在问题：如果beta2趋于1，那么优化第一步可能走出很大一步（除以近似0的数）</p>
+<p>如果梯度&gt;1，最终会爆炸型增长；&lt;1，最终无限趋于零。</p>
+<h3 id="1-Gradient-clipping-梯度裁剪-：克服梯度爆炸"><a href="#1-Gradient-clipping-梯度裁剪-：克服梯度爆炸" class="headerlink" title="1.Gradient clipping 梯度裁剪 ：克服梯度爆炸"></a>1.Gradient clipping 梯度裁剪 ：克服梯度爆炸</h3><p>在反向传播时，检查梯度的范数，如果过大，将其裁剪，再继续反向传播</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0563.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image17.png"
                       alt="image"
                 ></p>
-<p>对其进行改善：添加<strong>Bias Corection（偏差校正）</strong>，让其更稳健。</p>
+<h3 id="2-Long-Short-Term-Memory-LSTM-：克服梯度消失"><a href="#2-Long-Short-Term-Memory-LSTM-：克服梯度消失" class="headerlink" title="2.Long Short Term Memory (LSTM)：克服梯度消失"></a>2.Long Short Term Memory (LSTM)：克服梯度消失</h3><p>在每个时间步使用两个向量：<br>$$<br>Cellstate(ct)+Hiddenstate(ht)<br>$$<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image18.png"
+                      alt="image"
+                ></p>
+<h3 id="如何作用的？"><a href="#如何作用的？" class="headerlink" title="如何作用的？"></a>如何作用的？</h3><p>使用四个gate（i&#x2F;f&#x2F;o&#x2F;g）来决定下一个LSTM状态。</p>
+<p>公式如图。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0564.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image19.png"
                       alt="image"
                 ></p>
-<h3 id="AdamW：Adam-Variant-with-Weight-Decay"><a href="#AdamW：Adam-Variant-with-Weight-Decay" class="headerlink" title="AdamW：Adam Variant with Weight Decay"></a>AdamW：Adam Variant with Weight Decay</h3><p>Source：<a class="link"   href="https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html" >https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>在每次epoch中，对权重进行衰减：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">moving_avg = alpha * moving_avg + (<span class="number">1</span>-alpha) * w.grad </span><br><span class="line"></span><br><span class="line">w = w - lr * moving_avg - lr * wd * w</span><br></pre></td></tr></table></figure></div>
-
+<p>对于LSTM，其四个门<strong>来源于h_{t-1}与x_{t}与权重矩阵W相乘，然后输出四个门</strong>。</p>
+<p>而反向梯度传播，<strong>只与f gate 进行乘法</strong>（如果f接近0，有可能破坏信息，接近1不可能破坏）， 解决了梯度消失的问题。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image20.png"
                       alt="image"
                 ></p>
-<h3 id="Learning-Rate-Decay-减少学习率"><a href="#Learning-Rate-Decay-减少学习率" class="headerlink" title="Learning Rate Decay 减少学习率"></a>Learning Rate Decay 减少学习率</h3><p>在某些固定点减少学习率。常见的方法如下：</p>
+<h2 id="多层-深度循环"><a href="#多层-深度循环" class="headerlink" title="多层&#x2F;深度循环"></a>多层&#x2F;深度循环</h2><p>将隐藏层作为序列输入至另一个RNN….</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image0568.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image21.png"
                       alt="image"
                 ></p>
-<h3 id="二阶优化方法：L-BFGS（准确但不实际）-BGFS-最常用"><a href="#二阶优化方法：L-BFGS（准确但不实际）-BGFS-最常用" class="headerlink" title="二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)"></a>二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)</h3><p>使用Hessian矩阵，可以使对学习率&#x2F;步长的选择更加合理。但数据量巨大，只适合低维优化问题</p>
-<p><img  
+<h2 id="GRU"><a href="#GRU" class="headerlink" title="GRU"></a>GRU</h2><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0567.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image22.png"
                       alt="image"
                 ></p>
-<h3 id="总结（对优化算法的比较）"><a href="#总结（对优化算法的比较）" class="headerlink" title="总结（对优化算法的比较）"></a>总结（对优化算法的比较）</h3><p><img  
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0566.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image23.png"
                       alt="image"
                 ></p>
 ]]></content>
@@ -285,95 +233,352 @@
       </tags>
   </entry>
   <entry>
-    <title>CS231N Lecture8 CNN经典架构</title>
-    <url>/2025/01/17/8%20CNN%E6%9E%B6%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="Lecture8-CNN经典架构"><a href="#Lecture8-CNN经典架构" class="headerlink" title="Lecture8 CNN经典架构"></a>Lecture8 CNN经典架构</h1><h3 id="Alexnet"><a href="#Alexnet" class="headerlink" title="Alexnet"></a>Alexnet</h3><p>input：227x227x3</p>
-<p>① CONV1: 96 11x11 filters at stride 4 pad 2.</p>
-<p>输出？W’ &#x3D; (W-k+2p)&#x2F;s +1&#x3D;55 [55x55x96]</p>
-<p>总参数？(11<em>11</em>3+1)<em>96 &#x3D; 35k 一层有：（输入通道</em>内核大小+偏差）</p>
-<p>浮点运算（乘法和加法）? （C_out<em>H’<em>W’）</em>(C_in</em>k*k)</p>
-<p>② POOL1:  3x3 filters at stride 2 pad 1</p>
-<p>输出？[27x27x96]向下取整</p>
-<p>浮点运算？(C_out<em>H’<em>W’)</em>(K</em>K)</p>
-<p>不改变通道数量</p>
+    <title>CS231N Lecture13 Attention</title>
+    <url>/2025/02/26/CS231N/13Attention/</url>
+    <content><![CDATA[<h1 id="Lecture13-Attention"><a href="#Lecture13-Attention" class="headerlink" title="Lecture13 Attention"></a>Lecture13 Attention</h1><h3 id="Attention-注意力机制"><a href="#Attention-注意力机制" class="headerlink" title="Attention 注意力机制"></a>Attention 注意力机制</h3><p><strong>第一时间步（单个）</strong></p>
+<p>1.计算 标量alignment scores（<strong>对齐分数</strong>），<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.65ex;" xmlns="http://www.w3.org/2000/svg" width="17.811ex" height="2.347ex" role="img" focusable="false" viewBox="0 -750 7872.5 1037.2"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path></g><g data-mml-node="TeXAtom" transform="translate(499,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(361,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(639,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g><g data-mml-node="mo" transform="translate(1522.6,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="msub" transform="translate(2578.3,0)"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="TeXAtom" transform="translate(523,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(529,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mi" transform="translate(890,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g></g><g data-mml-node="mo" transform="translate(4035.9,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="msub" transform="translate(4424.9,0)"><g data-mml-node="mi"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="TeXAtom" transform="translate(502,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(361,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(1139,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g><g data-mml-node="mo" transform="translate(6135.9,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="msub" transform="translate(6580.6,0)"><g data-mml-node="mi"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path></g><g data-mml-node="TeXAtom" transform="translate(609,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g><g data-mml-node="mo" transform="translate(7483.5,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container><strong>对每一个隐藏层打分</strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.372ex" height="1.357ex" role="img" focusable="false" viewBox="0 -442 1048.2 599.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path></g><g data-mml-node="TeXAtom" transform="translate(499,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mi" transform="translate(361,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></g></svg></mjx-container>.</p>
+<p>2.对<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.372ex" height="1.357ex" role="img" focusable="false" viewBox="0 -442 1048.2 599.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path></g><g data-mml-node="TeXAtom" transform="translate(499,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mi" transform="translate(361,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></g></svg></mjx-container>用<strong>softmax归一化</strong>，得到概率分布（<strong>注意力权重</strong>）。</p>
+<p>3.<strong>上下文向量</strong>通过<strong>线性</strong>计算得到:</p>
+<p><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -2.697ex;" xmlns="http://www.w3.org/2000/svg" width="13.408ex" height="4.847ex" role="img" focusable="false" viewBox="0 -950 5926.2 2142.2"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g><g data-mml-node="TeXAtom" transform="translate(466,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g></g><g data-mml-node="mo" transform="translate(1049,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="munder" transform="translate(2104.8,0)"><g data-mml-node="mo"><path data-c="2211" d="M60 948Q63 950 665 950H1267L1325 815Q1384 677 1388 669H1348L1341 683Q1320 724 1285 761Q1235 809 1174 838T1033 881T882 898T699 902H574H543H251L259 891Q722 258 724 252Q725 250 724 246Q721 243 460 -56L196 -356Q196 -357 407 -357Q459 -357 548 -357T676 -358Q812 -358 896 -353T1063 -332T1204 -283T1307 -196Q1328 -170 1348 -124H1388Q1388 -125 1381 -145T1356 -210T1325 -294L1267 -449L666 -450Q64 -450 61 -448Q55 -446 55 -439Q55 -437 57 -433L590 177Q590 178 557 222T452 366T322 544L56 909L55 924Q55 945 60 948Z"></path></g><g data-mml-node="TeXAtom" transform="translate(600,-1084.4) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(3715.5,0)"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="TeXAtom" transform="translate(562,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(361,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(639,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g><g data-mml-node="msub" transform="translate(1307.8,0)"><g data-mml-node="mi"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path></g><g data-mml-node="TeXAtom" transform="translate(609,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></g></g></svg></mjx-container></p>
+<p>4.<strong>解码器</strong>再对<strong>上下文向量</strong>解码:</p>
+<p><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="20.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 9113.4 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="TeXAtom" transform="translate(502,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g></g><g data-mml-node="mo" transform="translate(1085,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="msub" transform="translate(2140.8,0)"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path></g><g data-mml-node="TeXAtom" transform="translate(510,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D448" d="M107 637Q73 637 71 641Q70 643 70 649Q70 673 81 682Q83 683 98 683Q139 681 234 681Q268 681 297 681T342 682T362 682Q378 682 378 672Q378 670 376 658Q371 641 366 638H364Q362 638 359 638T352 638T343 637T334 637Q295 636 284 634T266 623Q265 621 238 518T184 302T154 169Q152 155 152 140Q152 86 183 55T269 24Q336 24 403 69T501 205L552 406Q599 598 599 606Q599 633 535 637Q511 637 511 648Q511 650 513 660Q517 676 519 679T529 683Q532 683 561 682T645 680Q696 680 723 681T752 682Q767 682 767 672Q767 650 759 642Q756 637 737 637Q666 633 648 597Q646 592 598 404Q557 235 548 205Q515 105 433 42T263 -22Q171 -22 116 34T60 167V183Q60 201 115 421Q164 622 164 628Q164 635 107 637Z"></path></g></g></g><g data-mml-node="mo" transform="translate(3243.2,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="msub" transform="translate(3632.2,0)"><g data-mml-node="mi"><path data-c="1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="TeXAtom" transform="translate(523,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(361,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(1139,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g><g data-mml-node="mo" transform="translate(5364.1,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="msub" transform="translate(5808.8,0)"><g data-mml-node="mi"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="TeXAtom" transform="translate(502,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(345,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(1123,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g><g data-mml-node="mo" transform="translate(7508.4,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="msub" transform="translate(7953.1,0)"><g data-mml-node="mi"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g><g data-mml-node="TeXAtom" transform="translate(466,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g></g><g data-mml-node="mo" transform="translate(8724.4,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
+<p>（这个过程是<strong>可微</strong>的！<strong>没有</strong>对注意力的监督——<u>对每个部分进行反向传播</u>）</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image1.png" alt="image"></p>
+<p><strong>第二时间步（向前传递）：</strong></p>
+<p>使用s1更新e、a值，生成c2、s2</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image2.png" alt="image"></p>
+<h3 id="举例：RNN-Attention"><a href="#举例：RNN-Attention" class="headerlink" title="举例：RNN+Attention"></a>举例：RNN+Attention</h3><p>实际上，Attention机制并不关注输入数据的时序性，所以输入数据<strong>可以为无时序性</strong></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image3.png" alt="image"></p>
+<h3 id="Attention-layer-注意层"><a href="#Attention-layer-注意层" class="headerlink" title="Attention layer 注意层"></a>Attention layer 注意层</h3><ul>
+<li><strong>将<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="3.298ex" height="2.059ex" role="img" focusable="false" viewBox="0 -705 1457.6 910"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="TeXAtom" transform="translate(523,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(529,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mi" transform="translate(890,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g></g></g></g></svg></mjx-container>用收缩的简单点积<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="4.971ex" height="1.927ex" role="img" focusable="false" viewBox="0 -694 2197.4 851.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path></g><g data-mml-node="mo" transform="translate(798.2,0)"><path data-c="22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path></g><g data-mml-node="msub" transform="translate(1298.4,0)"><g data-mml-node="mi"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="TeXAtom" transform="translate(605,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></g></svg></mjx-container>取代</strong>，简化运算；</li>
+<li>所得<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="1.794ex" height="1.357ex" role="img" focusable="false" viewBox="0 -442 793 599.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path></g><g data-mml-node="TeXAtom" transform="translate(499,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></g></svg></mjx-container>除以sqrt(D)，（如果存在一个e&gt;&gt;其他，在softmax中，其大小接近1而其他接近0）</li>
+<li><strong>允许多个query vectors（查询向量）</strong>.有一组query vectors、一组输入向量，对每个query vector生成输入向量的概率分布，从而<strong>计算相似度函数</strong>（<u>query vector与输入向量</u>）。输出：sum(aij*xj)</li>
+<li><strong>分离key和value。</strong>使用**可学习的关键矩阵W_{k}、可学习的值矩阵W_{v}**（而不是在操作内部将输入向量用于这两个不同函数）。使用可学习的矩阵，<u>将输入向量转化至两组新向量K、V中，将相似度的计算转化为矩阵乘法</u>。（使模型在使用输入数据时具有更大灵活性）</li>
+</ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image4.png" alt="image"></p>
+<p>具体流程如图：</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image5.png" alt="image"></p>
+<h3 id="General-attention-layer-–-used-in-LLMs-beyond"><a href="#General-attention-layer-–-used-in-LLMs-beyond" class="headerlink" title="General attention layer – used in LLMs + beyond"></a>General attention layer – used in LLMs + beyond</h3><h3 id="Self-Attention-Layer-自注意层"><a href="#Self-Attention-Layer-自注意层" class="headerlink" title="Self-Attention Layer 自注意层"></a>Self-Attention Layer 自注意层</h3><ul>
+<li><p><strong>不再输入query vectors</strong>，而是<strong>使用权重矩阵</strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.65ex;" xmlns="http://www.w3.org/2000/svg" width="16.175ex" height="2.347ex" role="img" focusable="false" viewBox="0 -750 7149.2 1037.2"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D44A" d="M436 683Q450 683 486 682T553 680Q604 680 638 681T677 682Q695 682 695 674Q695 670 692 659Q687 641 683 639T661 637Q636 636 621 632T600 624T597 615Q597 603 613 377T629 138L631 141Q633 144 637 151T649 170T666 200T690 241T720 295T759 362Q863 546 877 572T892 604Q892 619 873 628T831 637Q817 637 817 647Q817 650 819 660Q823 676 825 679T839 682Q842 682 856 682T895 682T949 681Q1015 681 1034 683Q1048 683 1048 672Q1048 666 1045 655T1038 640T1028 637Q1006 637 988 631T958 617T939 600T927 584L923 578L754 282Q586 -14 585 -15Q579 -22 561 -22Q546 -22 542 -17Q539 -14 523 229T506 480L494 462Q472 425 366 239Q222 -13 220 -15T215 -19Q210 -22 197 -22Q178 -22 176 -15Q176 -12 154 304T131 622Q129 631 121 633T82 637H58Q51 644 51 648Q52 671 64 683H76Q118 680 176 680Q301 680 313 683H323Q329 677 329 674T327 656Q322 641 318 637H297Q236 634 232 620Q262 160 266 136L501 550L499 587Q496 629 489 632Q483 636 447 637Q428 637 422 639T416 648Q416 650 418 660Q419 664 420 669T421 676T424 680T428 682T436 683Z"></path></g><g data-mml-node="TeXAtom" transform="translate(977,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path></g></g></g><g data-mml-node="mi" transform="translate(1586.3,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="884px" font-family="serif" font-style="italic">，</text></g><g data-mml-node="mi" transform="translate(2586.3,0)"><path data-c="1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path></g><g data-mml-node="mo" transform="translate(3655.1,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(4710.9,0)"><path data-c="1D44B" d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z"></path></g><g data-mml-node="msub" transform="translate(5562.9,0)"><g data-mml-node="mi"><path data-c="1D44A" d="M436 683Q450 683 486 682T553 680Q604 680 638 681T677 682Q695 682 695 674Q695 670 692 659Q687 641 683 639T661 637Q636 636 621 632T600 624T597 615Q597 603 613 377T629 138L631 141Q633 144 637 151T649 170T666 200T690 241T720 295T759 362Q863 546 877 572T892 604Q892 619 873 628T831 637Q817 637 817 647Q817 650 819 660Q823 676 825 679T839 682Q842 682 856 682T895 682T949 681Q1015 681 1034 683Q1048 683 1048 672Q1048 666 1045 655T1038 640T1028 637Q1006 637 988 631T958 617T939 600T927 584L923 578L754 282Q586 -14 585 -15Q579 -22 561 -22Q546 -22 542 -17Q539 -14 523 229T506 480L494 462Q472 425 366 239Q222 -13 220 -15T215 -19Q210 -22 197 -22Q178 -22 176 -15Q176 -12 154 304T131 622Q129 631 121 633T82 637H58Q51 644 51 648Q52 671 64 683H76Q118 680 176 680Q301 680 313 683H323Q329 677 329 674T327 656Q322 641 318 637H297Q236 634 232 620Q262 160 266 136L501 550L499 587Q496 629 489 632Q483 636 447 637Q428 637 422 639T416 648Q416 650 418 660Q419 664 420 669T421 676T424 680T428 682T436 683Z"></path></g><g data-mml-node="TeXAtom" transform="translate(977,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path></g></g></g></g></g></svg></mjx-container>.<img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image6.png" alt="image"></p>
+<h4 id="使用位置编码-Positional-encoding"><a href="#使用位置编码-Positional-encoding" class="headerlink" title="使用位置编码 Positional encoding"></a>使用位置编码 <u>Positional encoding</u></h4></li>
+</ul>
+<p>​				————恢复对排列的敏感性</p>
+<p>对每个输入向量x，添加<u>位置编码</u>。（有多种方法实现）</p>
+<p>例：可以使用一个pos函数，完成映射。</p>
+<p>pos函数应具有一些特性：</p>
+<p>1.它应该为每个时间步输出一个<strong>唯一的编码</strong>（单词在句子中的位置）</p>
+<p>2.在不同长度的句子中，<strong>任意两个时间步之间的距离应该是一致</strong>的。</p>
+<p>3.我们的模型可以毫不费力地<strong>推广</strong>到更长的句子。它的值是<strong>有界</strong>的。</p>
+<p>4.它必须是<strong>确定性</strong>的。</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image7.png" alt="image"></p>
+<h3 id="Mask-Self-Attention-Layer-掩码子注意层"><a href="#Mask-Self-Attention-Layer-掩码子注意层" class="headerlink" title="Mask Self-Attention Layer 掩码子注意层"></a>Mask Self-Attention Layer 掩码子注意层</h3><ul>
+<li>使用<u>负无穷大</u>， 将不注意的位置（非过去的位置）<strong>强制掩盖</strong>。</li>
+<li>允许我们在时间上<strong>并行化注意力</strong></li>
+<li><strong>不需要</strong>先计算<u>前一个时间步</u>的上下文向量</li>
+</ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image8.png" alt="image"></p>
+<h3 id="Multi-head-self-attention-layer-多头自注意层"><a href="#Multi-head-self-attention-layer-多头自注意层" class="headerlink" title="Multi-head self-attention layer 多头自注意层"></a>Multi-head self-attention layer 多头自注意层</h3><ul>
+<li>假设输入向量维数为D，将每个输入向量分裂成<u>相等边</u>的 h 个块 ，将 <u>h 个块放入平行的self-attention layer</u></li>
+<li>再将平行得到的输出连接</li>
+<li>两个需要设置的超参数：<ul>
+<li>Query dimension <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.65ex;" xmlns="http://www.w3.org/2000/svg" width="3.327ex" height="2.195ex" role="img" focusable="false" viewBox="0 -683 1470.3 970.2"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z"></path></g><g data-mml-node="TeXAtom" transform="translate(861,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path></g></g></g></g></g></svg></mjx-container>(<strong>内部的键向量</strong>)</li>
+<li>Number of heads H（想使用的<strong>头部数量</strong>）</li>
+<li>数据的输入/输出维度</li>
+</ul>
+</li>
+</ul>
+<h3 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h3><h4 id="CNN-with-self-Attention"><a href="#CNN-with-self-Attention" class="headerlink" title="CNN with self-Attention"></a>CNN with self-Attention</h4><p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image9.png" alt="image"></p>
+<h4 id="对比RNN与transformer"><a href="#对比RNN与transformer" class="headerlink" title="对比RNN与transformer"></a>对比RNN与transformer</h4><p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image10.png" alt="image"></p>
+<h4 id="ViTs-–-Vision-Transformers"><a href="#ViTs-–-Vision-Transformers" class="headerlink" title="ViTs – Vision Transformers"></a>ViTs – Vision Transformers</h4><p>将transformer应用于计算机视觉任务。</p>
+<h5 id="ViT的基本原理"><a href="#ViT的基本原理" class="headerlink" title="ViT的基本原理"></a>ViT的基本原理</h5><p>ViT的核心思想是将图像视为一组固定大小的块（patches），而不是直接在像素级别上进行操作。这个方法受到了 Transformer 在自然语言处理（NLP）任务中成功应用的启发。</p>
+<h5 id="1-图像分块（Patching）："><a href="#1-图像分块（Patching）：" class="headerlink" title="1. 图像分块（Patching）："></a>1. <strong>图像分块（Patching）：</strong></h5><ul>
+<li>输入的图像（例如一个大小为 224×224224 \times 224224×224 的 RGB 图像）会被切分成多个不重叠的小块，每个小块大小为 16×1616 \times 1616×16（假设为 224×224224 \times 224224×224 的图像，切分成 14x14 个块）。</li>
+<li>每个图像块被展平（flatten），然后将这些展平后的图像块转换成一个固定维度的向量（例如每个块为 768 维向量）。这些向量作为模型的输入。</li>
+</ul>
+<h5 id="2-线性嵌入（Linear-Embedding）："><a href="#2-线性嵌入（Linear-Embedding）：" class="headerlink" title="2. 线性嵌入（Linear Embedding）："></a>2. <strong>线性嵌入（Linear Embedding）：</strong></h5><ul>
+<li>每个图像块会通过一个线性变换（一个全连接层）来映射到一个高维的嵌入空间。这样，每个块就变成了一个向量，类似于 NLP 中单词的嵌入（word embedding）。</li>
+</ul>
+<h5 id="3-位置编码（Positional-Encoding）："><a href="#3-位置编码（Positional-Encoding）：" class="headerlink" title="3. 位置编码（Positional Encoding）："></a>3. <strong>位置编码（Positional Encoding）：</strong></h5><ul>
+<li>因为 Transformer 本身没有顺序信息，所以需要为每个图像块加上<strong>位置编码</strong>。这与NLP中的位置编码（position encoding）相似，目的是给模型提供图像块的位置顺序，以便它可以识别图像块在空间上的相对位置。</li>
+</ul>
+<h5 id="4-Transformer-Encoder："><a href="#4-Transformer-Encoder：" class="headerlink" title="4. Transformer Encoder："></a>4. <strong>Transformer Encoder：</strong></h5><ul>
+<li>在得到图像块的嵌入表示后，ViT使用标准的 Transformer 编码器（Encoder）来处理这些块。每个块的嵌入会通过多个 Transformer 层进行处理，类似于 NLP 中处理文本的方式。每个 Transformer 层包括：<ul>
+<li><strong>自注意力机制（Self-Attention）</strong>：模型可以在每一层计算各个图像块之间的依赖关系，从而理解图像中不同部分之间的关系。</li>
+<li><strong>前馈神经网络（Feedforward Network）</strong>：每个位置的嵌入会经过一个简单的全连接网络，增强模型的表达能力。</li>
+</ul>
+</li>
+</ul>
+<p>Transformer 中的自注意力机制允许模型捕获图像全局的上下文信息，而不仅仅是局部特征。</p>
+<h5 id="5-分类标记（Class-Token）："><a href="#5-分类标记（Class-Token）：" class="headerlink" title="5. 分类标记（Class Token）："></a>5. <strong>分类标记（Class Token）：</strong></h5><ul>
+<li>ViT 在输入序列的开始处添加了一个<strong>分类标记（class token）</strong>，它与其他图像块一起输入 Transformer。这个分类标记的输出向量将在最后作为图像的表示，用于分类任务。</li>
+<li>在最终的输出中，这个分类标记的向量会经过一个全连接层映射到类别空间，从而进行图像分类。</li>
+</ul>
+<ol start="6">
+<li><strong>输出：</strong></li>
+</ol>
+<ul>
+<li>Transformer 编码器通过多层自注意力和前馈神经网络处理图像块后，最终输出的分类标记向量将用于预测图像的类别。</li>
+</ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image13.png" alt="image"></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image14.png" alt="image"></p>
+<h3 id="Transformer-encoder-block-编码器块"><a href="#Transformer-encoder-block-编码器块" class="headerlink" title="Transformer encoder block 编码器块"></a>Transformer encoder block 编码器块</h3><ul>
+<li>是<u>大模型的基本块</u>（MLP multiple perceptron多个感知器）</li>
+<li>只有在<u>自注意层</u>，向量之间能够<strong>相互作用</strong>；其他层，对单个向量<strong>单独</strong>作用。</li>
+<li>高度<strong>可放缩、可平行</strong>，<strong>使用储存较大</strong></li>
+</ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image11.png" alt="image"></p>
+<h3 id="Transformer-decoder-block-解码器"><a href="#Transformer-decoder-block-解码器" class="headerlink" title="Transformer decoder block 解码器"></a>Transformer decoder block 解码器</h3><ul>
+<li><p>使用Masked self-attention，只与<strong>过去输入</strong>作用。</p>
+</li>
+<li><p>这里使用的Multi-head attention block <u>不是自注意层</u>。需要将编码器的输出 <strong>输入</strong>多头注意层。</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture13/image12.png" alt="image"></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CS231N</category>
+      </categories>
+      <tags>
+        <tag>计算机视觉</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS231N Lecture14 可视化与理解</title>
+    <url>/2025/02/27/CS231N/14%20%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<h1 id="Lecture14-Visualizing-Understand"><a href="#Lecture14-Visualizing-Understand" class="headerlink" title="Lecture14 Visualizing &amp;Understand"></a>Lecture14 Visualizing &amp;Understand</h1><p>可视化模型&amp;帮助理解</p>
+<h3 id="Visualizing-what-models-have-learned"><a href="#Visualizing-what-models-have-learned" class="headerlink" title="Visualizing what models have learned"></a>Visualizing what models have learned</h3><h4 id="Visualizing-filters-可视化过滤器"><a href="#Visualizing-filters-可视化过滤器" class="headerlink" title="Visualizing filters 可视化过滤器"></a>Visualizing filters 可视化过滤器</h4><p>对第一层过滤器使用有效，对更高层多通道图像<u>作用不大</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image1.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image1.png"
                       alt="image"
                 ></p>
-<p>总结规律：1.<u>池化的计算次数远小于卷积</u><br><u>2.主要的内存使用在早期卷积层</u><br><u>3.参数主要在全连接层中</u><br><u>4.主要的浮点运算在卷积层</u></p>
+<p>对更高层：将其切割为灰度图像，但效果不明显。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image2.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image2.png"
                       alt="image"
                 ></p>
-<h3 id="VGGNet"><a href="#VGGNet" class="headerlink" title="VGGNet"></a>VGGNet</h3><p><strong>设计规则</strong>：</p>
+<h4 id="Visualizing-final-layer-features-可视化最后一层的特征"><a href="#Visualizing-final-layer-features-可视化最后一层的特征" class="headerlink" title="Visualizing final layer features 可视化最后一层的特征"></a>Visualizing final layer features 可视化最后一层的特征</h4><h5 id="Near-neighbor-最近邻"><a href="#Near-neighbor-最近邻" class="headerlink" title="Near neighbor 最近邻"></a>Near neighbor 最近邻</h5><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image3.png"
+                      alt="image"
+                ></p>
+<h5 id="Dimensionality-Reduction-降维"><a href="#Dimensionality-Reduction-降维" class="headerlink" title="Dimensionality Reduction 降维"></a>Dimensionality Reduction 降维</h5><p>常见方法：PCA（主成分分析：<u>线性降维</u>）、t-SNE(<u>非线性降维算法</u>)（降低维度的同时，尽量保持原有结构）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image4.png"
+                      alt="image"
+                ></p>
+<h5 id="Visualizing-Activations-可视化激活操作"><a href="#Visualizing-Activations-可视化激活操作" class="headerlink" title="Visualizing Activations 可视化激活操作"></a>Visualizing Activations 可视化激活操作</h5><p>将图像的n个切片（每个切片对于一个conv层）可视化为灰度图像</p>
+<h3 id="Understanding-input-pixels"><a href="#Understanding-input-pixels" class="headerlink" title="Understanding input pixels"></a>Understanding input pixels</h3><h4 id="Maximally-Activating-Patches-最大激活补丁"><a href="#Maximally-Activating-Patches-最大激活补丁" class="headerlink" title="Maximally Activating Patches 最大激活补丁"></a>Maximally Activating Patches 最大激活补丁</h4><p>方法步骤</p>
 <ol>
-<li><ol>
-<li><ol>
-<li><strong>All conv 3x3 stride 1 pad 1</strong></li>
-<li><strong>All max pool 2x2 stride 2</strong></li>
-<li><strong>After pool, double channels.</strong></li>
-</ol>
+<li><p>选择层和通道：</p>
+<p>在 CNN 中，选择一个<u>特定的层</u>（例如，conv5）和一个<u>特定的通道</u>（例如，第 17 个通道）。每一层的输出通常是一个三维张量，包含多个通道，<u>每个通道对应不同的特征检测器</u>。</p>
 </li>
-<li></li>
-</ol>
+<li><p>输入图像并记录激活值：</p>
+<p>将大量图像输入到网络中，并记录<u>所选通道的激活值</u>。对于每张图像，网络会在该通道上生成一个<strong>激活图</strong>（activation map），表示该通道在<u>不同空间位置上的响应强度</u>。</p>
+</li>
+<li><p>识别最大化激活的 patches：</p>
+<p>对于每个图像，找到<u>激活图中值最高的位置</u>。这些位置对应于输入图像中<u>导致该通道最大激活</u>的 patches。</p>
+<p>提取这些 patches 并可视化它们。这些 patches 通常代表了该通道所检测的<strong>特定特征</strong>。</p>
 </li>
 </ol>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image3.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image5.png"
                       alt="image"
                 ></p>
-<p>为什么使用小卷积层？<u>三个3x3层与一个7x7层的概念域相等，计算更少，允许更多非线性计算。</u></p>
-<p>为什么双倍通道？<u>这样做之后，该层与上一层计算次数相同。</u></p>
-<h3 id="GoogleNet"><a href="#GoogleNet" class="headerlink" title="GoogleNet"></a>GoogleNet</h3><h4 id="1-Aggressive-Stem"><a href="#1-Aggressive-Stem" class="headerlink" title="1.Aggressive Stem"></a>1.Aggressive Stem</h4><p>用stem network在开始时采样，减小空间开销</p>
+<h4 id="找到关键像素：通过遮挡寻找（不常用）"><a href="#找到关键像素：通过遮挡寻找（不常用）" class="headerlink" title="找到关键像素：通过遮挡寻找（不常用）"></a>找到关键像素：通过遮挡寻找（不常用）</h4><p>使用<strong>掩码遮挡图像</strong>、移动掩码位置，观察<u>预测概率值的变化</u>。可以画出“显著图”saliency map。</p>
+<p>（可以用于判断是否在看正确的图像部分，而不是“作弊”，但计算成本很高）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image4.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image6.png"
                       alt="image"
                 ></p>
-<h4 id="2-Inception-Module-初始模块（主要组成）"><a href="#2-Inception-Module-初始模块（主要组成）" class="headerlink" title="2.Inception Module 初始模块（主要组成）"></a>2.Inception Module 初始模块（主要组成）</h4><p>使用并行处理，在同一时间进行多个卷积</p>
-<p>在卷积前使用池化，减少通道数量。</p>
+<h4 id="找到关键像素：通过反向传播寻找（常用）Saliency-via-backprop"><a href="#找到关键像素：通过反向传播寻找（常用）Saliency-via-backprop" class="headerlink" title="找到关键像素：通过反向传播寻找（常用）Saliency via backprop"></a>找到关键像素：通过反向传播寻找（常用）Saliency via backprop</h4><p>计算（非标准化）class score<u>相对于图像像素的梯度</u>，取绝对值和RGB通道上的最大值</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image5.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image7.png"
                       alt="image"
                 ></p>
-<h4 id="3-全局平均池化"><a href="#3-全局平均池化" class="headerlink" title="3.全局平均池化"></a>3.全局平均池化</h4><p>用全局平均池化取代全连接层，对通道求平均，减少元素总数，来摧毁空间。</p>
+<h4 id="显著图：发现偏见"><a href="#显著图：发现偏见" class="headerlink" title="显著图：发现偏见"></a>显著图：发现偏见</h4><p>如图，偏见为用背景有无雪来区分wolf&#x2F;dog</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image6.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image8.png"
                       alt="image"
                 ></p>
-<h3 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h3><h4 id="1-Residual-Block"><a href="#1-Residual-Block" class="headerlink" title="1.Residual Block"></a>1.Residual Block</h4><p>使深网络更好地模拟浅层网络，改善梯度流。</p>
+<h4 id="通过反向传播理解中间特征"><a href="#通过反向传播理解中间特征" class="headerlink" title="通过反向传播理解中间特征"></a>通过反向传播理解中间特征</h4><p>通过反向传播，找到哪个像素，对中间神经元影响最大。</p>
+<h5 id="guided-backprop"><a href="#guided-backprop" class="headerlink" title="guided backprop"></a>guided backprop</h5><p>将负的上游梯度和负的区域梯度都归零。这样操作得到的输出图更好看。</p>
+<p>能让我们找出影响神经元值的像素。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image7.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image9.png"
                       alt="image"
                 ></p>
-<h4 id="“Bottleneck-Block”："><a href="#“Bottleneck-Block”：" class="headerlink" title="“Bottleneck Block”："></a>“Bottleneck Block”：</h4><p>1x1收缩通道-3x3卷积-1x1扩张通道。</p>
-<p>增加了层数，但计算复杂度不变，减少误差。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image8.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image10.png"
                       alt="image"
                 ></p>
-<h4 id="2-使用了GoogleNet的向下采样以及全局平均池化的方法。"><a href="#2-使用了GoogleNet的向下采样以及全局平均池化的方法。" class="headerlink" title="2.使用了GoogleNet的向下采样以及全局平均池化的方法。"></a>2.使用了GoogleNet的<strong>向下采样</strong>以及<strong>全局平均池化</strong>的方法。</h4><h3 id="ResNeXt"><a href="#ResNeXt" class="headerlink" title="ResNeXt"></a>ResNeXt</h3><p>使用<strong>并行路径</strong>，计算成本与左侧相同。</p>
+<h5 id="使用梯度上升来可视化特征-Gradient-ascent"><a href="#使用梯度上升来可视化特征-Gradient-ascent" class="headerlink" title="使用梯度上升来可视化特征  Gradient ascent"></a>使用梯度上升来可视化特征  Gradient ascent</h5><h6 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h6><p>生成一个图片，让生成的图片能够<strong>最大激活神经元</strong>。</p>
+<p>其中，f(I)是<u>神经元的值</u>，R(I)是一个<u>图像正则器</u>，让生成的图片看上去更自然。I*是生成的图片。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image9.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image11.png"
                       alt="image"
                 ></p>
+<h6 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h6><ol>
+<li>初始化图片<strong>全为0</strong>。将图片前向运行通过网络，得到神经元的值。</li>
+<li>再<strong>反向传播</strong>，找到<u>使神经元值改变的图像像素</u></li>
+<li>在图片上对其<u>进行小的更新</u></li>
+<li>多次重复以上三步（与生成对抗性样本相似<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image12.png"
+                      alt="image"
+                ></li>
+</ol>
+<h6 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a><u>正则化</u></h6><p>为了让图片更自然、而不是生成对抗性样本，正则化很重要。</p>
+<p>正则化方法：</p>
+<h6 id="L2-norm（简单）"><a href="#L2-norm（简单）" class="headerlink" title="L2 norm（简单）"></a>L2 norm（简单）</h6><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image13.png"
+                      alt="image"
+                ></p>
+<h6 id="更好的正则方法：周期性优化"><a href="#更好的正则方法：周期性优化" class="headerlink" title="更好的正则方法：周期性优化"></a>更好的正则方法：周期性优化</h6><p>优化手段如下：</p>
+<p>(1)高斯模糊图像</p>
+<p>(2)将小梯度像素剪辑为0</p>
+<p>(3)将小梯度像素剪辑为0</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image14.png"
+                      alt="image"
+                ></p>
+<h6 id="在FC6进行优化"><a href="#在FC6进行优化" class="headerlink" title="在FC6进行优化"></a>在FC6进行优化</h6><p>在FC6进行优化，由于FC6是高层特征表示，能够生成更真实的图片。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image15.png"
+                      alt="image"
+                ></p>
+<h3 id="Style-transfer"><a href="#Style-transfer" class="headerlink" title="Style transfer"></a>Style transfer</h3><h4 id="Feature-Inversion-特征反演"><a href="#Feature-Inversion-特征反演" class="headerlink" title="Feature Inversion 特征反演"></a>Feature Inversion 特征反演</h4><ul>
+<li>给定一张输入图像，通过CNN前向传播，提取<u>某一层的特征表示向量</u></li>
+<li>从提取的特征表示出发，通过<strong>优化方法</strong>（如梯度下降）<strong>重建一张新的图像</strong>，使得这张新图像通过CNN前向传播后，能够生成与原始特征表示<u>尽可能接近</u>的特征。（从而帮助理解哪些特征被CNN表示&#x2F;抛弃）</li>
+<li>loss函数（此处）：给定图像特征表示与生成图像特征表示<strong>在L2范数上是否接近</strong></li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image16.png"
+                      alt="image"
+                ></p>
+<h4 id="DeepDream"><a href="#DeepDream" class="headerlink" title="DeepDream"></a>DeepDream</h4><p>尝试放大网络中某一层的神经元激活（放大图像特征），而不是生成图像。</p>
+<p>选择一张图和CNN的某一层：重复以下操作：</p>
+<ul>
+<li>向前传递，计算选定层数的激活（提取特征）</li>
+<li>将所选层的梯度设置为与其激活相等</li>
+<li>反向传播，计算图像上的梯度</li>
+<li>更新图像</li>
+</ul>
+<p>相当于最大化L2范数。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image17.png"
+                      alt="image"
+                ></p>
+<p>代码：<a href="https://github.com/google/deepdream">https://github.com/google/deepdream</a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image18.png"
+                      alt="image"
+                ></p>
+<p>运行结果：</p>
+<p>用于较低层：（倾向于寻找边缘）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image19.png"
+                      alt="image"
+                ></p>
+<p>用于较高层：（出现一些奇幻的形状）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image20.png"
+                      alt="image"
+                ></p>
+<h4 id="Texture-synthesis-纹理合成"><a href="#Texture-synthesis-纹理合成" class="headerlink" title="Texture synthesis 纹理合成"></a>Texture synthesis 纹理合成</h4><h5 id="Gram-Matrix-–利用CNN捕获局部纹理信息、丢弃空间信息"><a href="#Gram-Matrix-–利用CNN捕获局部纹理信息、丢弃空间信息" class="headerlink" title="Gram Matrix –利用CNN捕获局部纹理信息、丢弃空间信息"></a>Gram Matrix –利用CNN捕获局部纹理信息、丢弃空间信息</h5><ul>
+<li><p>选择某一层的<u>输出张量</u>C x H x W，将其看成H x W的网格，划分C维的向量</p>
+</li>
+<li><p>对两个C维向量外积，得到一个<strong>C x C矩阵</strong>。</p>
+</li>
+<li><p>对所有HW <strong>对向量求平均</strong>，得到Gram Matrix</p>
+<p>帮助我们理解：哪些特征在输入图像中相互关联（倾向于一起激活&#x2F;共同发生）</p>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image21.png"
+                      alt="image"
+                ></p>
+<h5 id="使用梯度上升，配合Gram-matrix算法"><a href="#使用梯度上升，配合Gram-matrix算法" class="headerlink" title="使用梯度上升，配合Gram matrix算法"></a>使用梯度上升，配合Gram matrix算法</h5><p>步骤：</p>
+<ol>
+<li>在imagenet上预训练CNN模型</li>
+<li>通过CNN向前运行输入纹理，记录<strong>每一层的激活情况</strong>；对每一层计算了形状为Ci × Hi × Wi的<strong>特征图</strong></li>
+<li>在每一层计算<strong>Gram矩阵</strong>，给出<strong>特征的外积</strong>(公式如图)</li>
+<li>利用随机噪声，初始化生成图像</li>
+<li>将生成的图像通过CNN传递，<u>计算每一层的Gram矩阵</u></li>
+<li>计算loss：<u>Gram矩阵间距离的加权和</u>（一般是比较欧几里得距离，并计算标量损失）</li>
+<li>反向传播，得到生成图像上的<strong>梯度</strong></li>
+<li><u>依据梯度对生成图像进行改变</u></li>
+<li>GOTO step 5</li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image22.png"
+                      alt="image"
+                ></p>
+<p>运行结果：（从更高层重建纹理，从输入纹理中恢复更大的特征）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image23.png"
+                      alt="image"
+                ></p>
+<h4 id="Neural-style-transfer-神经风格迁移"><a href="#Neural-style-transfer-神经风格迁移" class="headerlink" title="Neural style transfer 神经风格迁移"></a>Neural style transfer 神经风格迁移</h4><p>纹理生成＋特征提取，将一个图片的纹理风格与另一个图片的空间特征合并，得到新的图片。</p>
+<p>code：<a href="https://github.com/jcjohnson/neural-style">https://github.com/jcjohnson/neural-style</a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image24.png"
+                      alt="image"
+                ></p>
+<p>原理：</p>
+<p>从<u>content image</u>提取<strong>特征向量</strong>，从<u>style image</u>提取<strong>gram matrix</strong>，将两者结合，使用<strong>梯度上升</strong>来对生成的图像修改。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture14/image25.png"
+                      alt="image"
+                ></p>
+<p>可以通过调整比例来修改：1.调整<u>loss权重</u>（更多偏向style&#x2F;content）2.在运行之前调整style图像的大小<u>可以转移不同类型的特征</u></p>
 ]]></content>
       <categories>
         <category>CS231N</category>
@@ -384,7 +589,7 @@
   </entry>
   <entry>
     <title>CS231N Lecture5 神经网络</title>
-    <url>/2024/12/08/5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    <url>/2024/12/08/CS231N/5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<p>“线性分类器不够强大”</p>
 <p>Solution ①：</p>
 <h5 id="Feature-Transform-“特征变换”"><a href="#Feature-Transform-“特征变换”" class="headerlink" title="Feature Transform “特征变换”"></a>Feature Transform “特征变换”</h5><p>————需要考虑如何设计特征类型</p>
@@ -514,7 +719,7 @@
   </entry>
   <entry>
     <title>CS231N Lecture6 反向传播</title>
-    <url>/2024/12/10/6%20%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/</url>
+    <url>/2024/12/10/CS231N/6%20%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/</url>
     <content><![CDATA[<h1 id="Lecture6–反向传播"><a href="#Lecture6–反向传播" class="headerlink" title="Lecture6–反向传播"></a>Lecture6–反向传播</h1><p><em>如何为神经网络计算梯度？</em></p>
 <p>bad idea：在纸上推导</p>
 <p>better：计算图</p>
@@ -639,142 +844,93 @@
       </tags>
   </entry>
   <entry>
-    <title>CS231N-Lecture7 卷积神经网络</title>
-    <url>/2025/01/15/7%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
-    <content><![CDATA[<h1 id="Lecture7-卷积神经网络"><a href="#Lecture7-卷积神经网络" class="headerlink" title="Lecture7 卷积神经网络"></a>Lecture7 卷积神经网络</h1><p>前面存在的问题：并没有利用图像的空间结构（将其展开成向量）</p>
-<h2 id="1-Convolution-layer-卷积层"><a href="#1-Convolution-layer-卷积层" class="headerlink" title="1.Convolution layer 卷积层"></a>1.Convolution layer 卷积层</h2><p>超参数：<strong>（卷积层大小、层数、填充、步长）</strong></p>
-<p>构成：<strong>①输入三维张量</strong>（depth x width x height）</p>
-<p><strong>②权重矩阵 filter</strong>（也是三维）</p>
-<p>存在<strong>约束</strong>：filter与input的depth必须相同。（filter会覆盖input的整个深度）</p>
+    <title>CS231N Lecture8 CNN经典架构</title>
+    <url>/2025/01/17/CS231N/8%20CNN%E6%9E%B6%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="Lecture8-CNN经典架构"><a href="#Lecture8-CNN经典架构" class="headerlink" title="Lecture8 CNN经典架构"></a>Lecture8 CNN经典架构</h1><h3 id="Alexnet"><a href="#Alexnet" class="headerlink" title="Alexnet"></a>Alexnet</h3><p>input：227x227x3</p>
+<p>① CONV1: 96 11x11 filters at stride 4 pad 2.</p>
+<p>输出？W’ &#x3D; (W-k+2p)&#x2F;s +1&#x3D;55 [55x55x96]</p>
+<p>总参数？(11<em>11</em>3+1)<em>96 &#x3D; 35k 一层有：（输入通道</em>内核大小+偏差）</p>
+<p>浮点运算（乘法和加法）? （C_out<em>H’<em>W’）</em>(C_in</em>k*k)</p>
+<p>② POOL1:  3x3 filters at stride 2 pad 1</p>
+<p>输出？[27x27x96]向下取整</p>
+<p>浮点运算？(C_out<em>H’<em>W’)</em>(K</em>K)</p>
+<p>不改变通道数量</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image1.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image1.png"
                       alt="image"
                 ></p>
-<p>计算：</p>
-<p>将filter在输入张量上滑动，选定一块区域进行点积，再加上偏差，得到一个标量结果。对input所有可能的位置进行该操作。</p>
-<p>使用举例：</p>
+<p>总结规律：1.<u>池化的计算次数远小于卷积</u><br><u>2.主要的内存使用在早期卷积层</u><br><u>3.参数主要在全连接层中</u><br><u>4.主要的浮点运算在卷积层</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image2.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image2.png"
                       alt="image"
                 ></p>
-<h3 id="填充（padding）"><a href="#填充（padding）" class="headerlink" title="填充（padding）"></a><strong>填充（padding）</strong></h3><p><u>卷积时会造成像素损失，所以在图片周围进行填充，以减少损失（如下：0填充）</u></p>
-<p><strong><u>same padding</u></strong>(不改变空间大小)：将p设置为（k-1）&#x2F;2</p>
+<h3 id="VGGNet"><a href="#VGGNet" class="headerlink" title="VGGNet"></a>VGGNet</h3><p><strong>设计规则</strong>：</p>
+<ol>
+<li><ol>
+<li><ol>
+<li><strong>All conv 3x3 stride 1 pad 1</strong></li>
+<li><strong>All max pool 2x2 stride 2</strong></li>
+<li><strong>After pool, double channels.</strong></li>
+</ol>
+</li>
+<li></li>
+</ol>
+</li>
+</ol>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image3.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image3.png"
                       alt="image"
                 ></p>
-<h3 id="步长Stride"><a href="#步长Stride" class="headerlink" title="步长Stride"></a><strong><u>步长Stride</u></strong></h3><p>定义：<u>一次移动一个步长，会将概念域翻对应倍数。</u></p>
+<p>为什么使用小卷积层？<u>三个3x3层与一个7x7层的概念域相等，计算更少，允许更多非线性计算。</u></p>
+<p>为什么双倍通道？<u>这样做之后，该层与上一层计算次数相同。</u></p>
+<h3 id="GoogleNet"><a href="#GoogleNet" class="headerlink" title="GoogleNet"></a>GoogleNet</h3><h4 id="1-Aggressive-Stem"><a href="#1-Aggressive-Stem" class="headerlink" title="1.Aggressive Stem"></a>1.Aggressive Stem</h4><p>用stem network在开始时采样，减小空间开销</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image4.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image4.png"
                       alt="image"
                 ></p>
-<h3 id="概念域Receptive-Field"><a href="#概念域Receptive-Field" class="headerlink" title="概念域Receptive Field"></a>概念域Receptive Field</h3><p>定义：<u>输出张量的一个元素与input的局部区域对应，所对应的域即为概念域。</u></p>
+<h4 id="2-Inception-Module-初始模块（主要组成）"><a href="#2-Inception-Module-初始模块（主要组成）" class="headerlink" title="2.Inception Module 初始模块（主要组成）"></a>2.Inception Module 初始模块（主要组成）</h4><p>使用并行处理，在同一时间进行多个卷积</p>
+<p>在卷积前使用池化，减少通道数量。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image5.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image5.png"
                       alt="image"
                 ></p>
-<p>举例：<strong>1x1 卷积</strong></p>
-<p>对空间中每一个网格的特征向量操作，用来改变三维张量的通道维数。</p>
+<h4 id="3-全局平均池化"><a href="#3-全局平均池化" class="headerlink" title="3.全局平均池化"></a>3.全局平均池化</h4><p>用全局平均池化取代全连接层，对通道求平均，减少元素总数，来摧毁空间。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image6.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image6.png"
                       alt="image"
                 ></p>
-<p>举例：<strong>全连接层 （fully connected layer）</strong></p>
-<p>用来展开张量、破坏空间结构，得到一个向量输出。</p>
-<p>总结：</p>
+<h3 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h3><h4 id="1-Residual-Block"><a href="#1-Residual-Block" class="headerlink" title="1.Residual Block"></a>1.Residual Block</h4><p>使深网络更好地模拟浅层网络，改善梯度流。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image7.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image7.png"
                       alt="image"
                 ></p>
-<p>其他卷积：<strong>一维卷积</strong>：（例如处理音频数据）</p>
+<h4 id="“Bottleneck-Block”："><a href="#“Bottleneck-Block”：" class="headerlink" title="“Bottleneck Block”："></a>“Bottleneck Block”：</h4><p>1x1收缩通道-3x3卷积-1x1扩张通道。</p>
+<p>增加了层数，但计算复杂度不变，减少误差。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image8.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image8.png"
                       alt="image"
                 ></p>
-<p><strong>三维卷积</strong>：（例如处理点云数据）</p>
+<h4 id="2-使用了GoogleNet的向下采样以及全局平均池化的方法。"><a href="#2-使用了GoogleNet的向下采样以及全局平均池化的方法。" class="headerlink" title="2.使用了GoogleNet的向下采样以及全局平均池化的方法。"></a>2.使用了GoogleNet的<strong>向下采样</strong>以及<strong>全局平均池化</strong>的方法。</h4><h3 id="ResNeXt"><a href="#ResNeXt" class="headerlink" title="ResNeXt"></a>ResNeXt</h3><p>使用<strong>并行路径</strong>，计算成本与左侧相同。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image9.png"
-                      alt="image"
-                ></p>
-<h3 id="2-池化层-Pooling-layer：向下采样"><a href="#2-池化层-Pooling-layer：向下采样" class="headerlink" title="2.池化层 Pooling layer：向下采样"></a>2.池化层 Pooling layer：向下采样</h3><p>包含de超参：<strong>内核大小、步长、池化函数</strong></p>
-<p>举例：<strong>最大池化max pooling</strong></p>
-<p><u>空间维度减半</u></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image10.png"
-                      alt="image"
-                ></p>
-<h3 id="3-正则化"><a href="#3-正则化" class="headerlink" title="3.正则化"></a>3.正则化</h3><p>形成零均值和零平均单位方差，对数据处理，</p>
-<p>作用：<u>1.稳定加速神经网络的训练。</u></p>
-<p><u>改善梯度流动。</u></p>
-<p><u>允许更高的学习率，更快的收敛。</u></p>
-<p><u>更加鲁棒性</u>。</p>
-<p>一般<strong>放在全连接层后，非线性函数前</strong></p>
-<p>举例：①<strong>批正则化</strong>（xk-均值&#x2F;标准差）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image11.png"
-                      alt="image"
-                ></p>
-<p>N：<strong>批量参数</strong>（n个向量）</p>
-<p>D：<strong>向量维数</strong></p>
-<p>添加<strong>学习尺度、偏差bias</strong>两个参数，生成新的输出</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image12.png"
-                      alt="image"
-                ></p>
-<p>测试时：<u>所用的\mu和\thgma都是对训练中的值求平均（两个常数），归一化变成线性操作。</u></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image13.png"
-                      alt="image"
-                ></p>
-<p>存在问题：1.优化原理不清晰 2.训练&#x2F;测试时方法不同</p>
-<p>举例：<strong>②层标准化Layer Normalization</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image14.png"
-                      alt="image"
-                ></p>
-<p>举例：③<strong>实例归一化Instance Normalization</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image15.png"
-                      alt="image"
-                ></p>
-<p><strong>三者区别:</strong></p>
-<p>批正则：对批和空间正则</p>
-<p>层：对空间和通道正则</p>
-<p>实例：对通道正则</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image16.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture8/image9.png"
                       alt="image"
                 ></p>
 ]]></content>
@@ -787,7 +943,7 @@
   </entry>
   <entry>
     <title>CS231N Lecture10&amp;11 训练技巧</title>
-    <url>/2025/01/23/CS231N-10&amp;11/</url>
+    <url>/2025/01/23/CS231N/CS231N-10&amp;11/</url>
     <content><![CDATA[<h1 id="1-One-time-setup"><a href="#1-One-time-setup" class="headerlink" title="1.One time setup"></a>1.One time setup</h1><h2 id="1-Activation-Function激活函数及其特征"><a href="#1-Activation-Function激活函数及其特征" class="headerlink" title="1.Activation Function激活函数及其特征"></a>1.Activation Function激活函数及其特征</h2><h3 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h3><p>类似于“神经放电”，将数字压缩至[0,1]</p>
 <p>三个问题：①平滑的地方梯度消失，让学习过程更困难  （最严重的问题）</p>
 <p>​					②其输出一直为正，并不是以零中心对称的。存在非常不稳定的因素。（会导致梯度一直为正&#x2F;负）–使用小批量梯度，对这些梯度求平均得到最后的梯度，可以解决这个问题</p>
@@ -1115,209 +1271,408 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2025/02/08/%E5%85%A8%E6%A0%88%E5%B7%A5%E7%A8%8B--Protobuf/</url>
-    <content><![CDATA[]]></content>
+    <title>CS231N-Lecture7 卷积神经网络</title>
+    <url>/2025/01/15/CS231N/7%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<h1 id="Lecture7-卷积神经网络"><a href="#Lecture7-卷积神经网络" class="headerlink" title="Lecture7 卷积神经网络"></a>Lecture7 卷积神经网络</h1><p>前面存在的问题：并没有利用图像的空间结构（将其展开成向量）</p>
+<h2 id="1-Convolution-layer-卷积层"><a href="#1-Convolution-layer-卷积层" class="headerlink" title="1.Convolution layer 卷积层"></a>1.Convolution layer 卷积层</h2><p>超参数：<strong>（卷积层大小、层数、填充、步长）</strong></p>
+<p>构成：<strong>①输入三维张量</strong>（depth x width x height）</p>
+<p><strong>②权重矩阵 filter</strong>（也是三维）</p>
+<p>存在<strong>约束</strong>：filter与input的depth必须相同。（filter会覆盖input的整个深度）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image1.png"
+                      alt="image"
+                ></p>
+<p>计算：</p>
+<p>将filter在输入张量上滑动，选定一块区域进行点积，再加上偏差，得到一个标量结果。对input所有可能的位置进行该操作。</p>
+<p>使用举例：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image2.png"
+                      alt="image"
+                ></p>
+<h3 id="填充（padding）"><a href="#填充（padding）" class="headerlink" title="填充（padding）"></a><strong>填充（padding）</strong></h3><p><u>卷积时会造成像素损失，所以在图片周围进行填充，以减少损失（如下：0填充）</u></p>
+<p><strong><u>same padding</u></strong>(不改变空间大小)：将p设置为（k-1）&#x2F;2</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image3.png"
+                      alt="image"
+                ></p>
+<h3 id="步长Stride"><a href="#步长Stride" class="headerlink" title="步长Stride"></a><strong><u>步长Stride</u></strong></h3><p>定义：<u>一次移动一个步长，会将概念域翻对应倍数。</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image4.png"
+                      alt="image"
+                ></p>
+<h3 id="概念域Receptive-Field"><a href="#概念域Receptive-Field" class="headerlink" title="概念域Receptive Field"></a>概念域Receptive Field</h3><p>定义：<u>输出张量的一个元素与input的局部区域对应，所对应的域即为概念域。</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image5.png"
+                      alt="image"
+                ></p>
+<p>举例：<strong>1x1 卷积</strong></p>
+<p>对空间中每一个网格的特征向量操作，用来改变三维张量的通道维数。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image6.png"
+                      alt="image"
+                ></p>
+<p>举例：<strong>全连接层 （fully connected layer）</strong></p>
+<p>用来展开张量、破坏空间结构，得到一个向量输出。</p>
+<p>总结：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture7/image7.png"
+                      alt="image"
+                ></p>
+<p>其他卷积：<strong>一维卷积</strong>：（例如处理音频数据）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image8.png"
+                      alt="image"
+                ></p>
+<p><strong>三维卷积</strong>：（例如处理点云数据）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image9.png"
+                      alt="image"
+                ></p>
+<h3 id="2-池化层-Pooling-layer：向下采样"><a href="#2-池化层-Pooling-layer：向下采样" class="headerlink" title="2.池化层 Pooling layer：向下采样"></a>2.池化层 Pooling layer：向下采样</h3><p>包含de超参：<strong>内核大小、步长、池化函数</strong></p>
+<p>举例：<strong>最大池化max pooling</strong></p>
+<p><u>空间维度减半</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image10.png"
+                      alt="image"
+                ></p>
+<h3 id="3-正则化"><a href="#3-正则化" class="headerlink" title="3.正则化"></a>3.正则化</h3><p>形成零均值和零平均单位方差，对数据处理，</p>
+<p>作用：<u>1.稳定加速神经网络的训练。</u></p>
+<p><u>改善梯度流动。</u></p>
+<p><u>允许更高的学习率，更快的收敛。</u></p>
+<p><u>更加鲁棒性</u>。</p>
+<p>一般<strong>放在全连接层后，非线性函数前</strong></p>
+<p>举例：①<strong>批正则化</strong>（xk-均值&#x2F;标准差）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image11.png"
+                      alt="image"
+                ></p>
+<p>N：<strong>批量参数</strong>（n个向量）</p>
+<p>D：<strong>向量维数</strong></p>
+<p>添加<strong>学习尺度、偏差bias</strong>两个参数，生成新的输出</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image12.png"
+                      alt="image"
+                ></p>
+<p>测试时：<u>所用的\mu和\thgma都是对训练中的值求平均（两个常数），归一化变成线性操作。</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image13.png"
+                      alt="image"
+                ></p>
+<p>存在问题：1.优化原理不清晰 2.训练&#x2F;测试时方法不同</p>
+<p>举例：<strong>②层标准化Layer Normalization</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image14.png"
+                      alt="image"
+                ></p>
+<p>举例：③<strong>实例归一化Instance Normalization</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image15.png"
+                      alt="image"
+                ></p>
+<p><strong>三者区别:</strong></p>
+<p>批正则：对批和空间正则</p>
+<p>层：对空间和通道正则</p>
+<p>实例：对通道正则</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture7/image16.png"
+                      alt="image"
+                ></p>
+]]></content>
+      <categories>
+        <category>CS231N</category>
+      </categories>
+      <tags>
+        <tag>计算机视觉</tag>
+      </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2025/02/08/%E5%85%A8%E6%A0%88%E5%B7%A5%E7%A8%8B--gRPC/</url>
-    <content><![CDATA[<h4 id="Client-Server-model⭐"><a href="#Client-Server-model⭐" class="headerlink" title="Client-Server model⭐"></a>Client-Server model⭐</h4><p>Client-Server结构是一种经典的通信模型。它通常采取两层结构：</p>
+    <title>PyTorch101 --PyTorch基本框架</title>
+    <url>/2024/11/12/CS231N/PyTorch101/</url>
+    <content><![CDATA[<h3 id="一、Tensor-张量"><a href="#一、Tensor-张量" class="headerlink" title="一、Tensor 张量"></a>一、Tensor 张量</h3><p>定义：The number of dimensions is the <strong>rank</strong> of the tensor；例：tensor([1,2,3])的秩为1</p>
+<p>​		the <strong>shape</strong> of a tensor is a tuple of integers giving the size of the array along each dimension 例：tensor([1,2,3])的shape为[3]</p>
+<h4 id="1-构建-访问tensor"><a href="#1-构建-访问tensor" class="headerlink" title="1.构建&amp;访问tensor"></a>1.构建&amp;访问tensor</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">x=torch.tensor([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])<span class="comment">#构建tensor张量</span></span><br><span class="line">x.dim()<span class="comment">#返回纬度值</span></span><br><span class="line">x.shape<span class="comment">#返回：torch.Size([3,3]),可以当作turple使用</span></span><br><span class="line">x[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span><span class="comment">#赋值操作</span></span><br><span class="line">x[<span class="number">0</span>][<span class="number">0</span>].item()<span class="comment">#将PyTorch的标量转换为python标量</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="2-帮助构建tensor的函数"><a href="#2-帮助构建tensor的函数" class="headerlink" title="2.帮助构建tensor的函数"></a>2.帮助构建tensor的函数</h4><p>常用的函数有：</p>
 <ul>
-<li>服务器（Server）负责数据的处理。它有以下特征：<ul>
-<li>等待来自客户端的请求</li>
-<li>处理请求并传回结果</li>
-</ul>
+<li><pre><code class="python">- x=torch.zeros（*size） #全为0的tensor
+- x=torch.ones(*size)#全为1的tensor
+- x=torch.rand(*size)#为0-1随机数
+- x=torch.full（*size*， *fill_value*， ***， *out* *=* *None*， *dtype* *=* None， *layout* *=* *torch.strided*， *device* *=* *None*， *requires_grad* *=* *False*）#→ Tensor
+- x=torch.from_numpy( ndarray ) #→ Tensor
+- x=torch.arange( *start=0* , *end* , *step=1* , * , out=None , *dtype=None* , layout *=torch.strided* , *device=None* , *require_grad=False* )#→Tensor &lt;u&gt;#左闭右开区间&lt;/u&gt;（torch.range &lt;u&gt;#左闭右闭&lt;/u&gt;）
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">You can find a **full list of tensor creation operations** [in the documentation](https://www.google.com/url?q=https%3A%2F%2Fpytorch.org%2Fdocs%2Fstable%2Ftorch.html%23creation-ops).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 3.tensor的数据形式</span><br><span class="line"></span><br><span class="line">tensor会根据数字自动设定形式，你也可以为其赋予特定格式如：int16、uint8、float32等等。</span><br><span class="line"></span><br><span class="line">可以使用  .to( )来修改dtype，如：x0.to(torch.float32)</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">x1=torch.zeros_like(x0) #构建一个size和dtype与x0一样的</span><br><span class="line">x2=x0.new_zeros(4,5)#size自定，dtype和x0一样</span><br><span class="line">x3=torch.ones(6,7).to(x0)#和上一行相同</span><br></pre></td></tr></table></figure></div>
+</code></pre>
 </li>
-<li>客户端（Client）负责完成与用户的交互任务。它有以下特征：<ul>
-<li>发送请求</li>
-<li>等待直到收到响应</li>
 </ul>
-</li>
-</ul>
-<h4 id="IP-Address"><a href="#IP-Address" class="headerlink" title="IP Address"></a>IP Address</h4><p>IP Address(Internet Protocol address，网际协议地址)，是网际协议中用于标识发送或接受数据报的设<br>备的一串数字。</p>
-<p>当设备连接网络后，设备将被分配一个IP地址，对于一个具体的设备而言，IP地址是独一无二的。IP地<br>址有两个主要的功能：<strong>标识主机</strong>（用户在互联网上可以识别）和<strong>网络寻址</strong>（允许计算机通过互联网发送<br>和接受数据）</p>
-<p>常见的IP地址分为IPv4和IPv6两大类：</p>
+<p>常用的数据形式：</p>
 <ul>
-<li><p>IPv4：32位长，通常书写时以四组十进制数字组成，并以点分割，例如： 172.16.254.1 。</p>
-</li>
-<li><p>IPv6：128位长，通常书写时以八组十六进制数字组成，并以冒号分割，例如：</p>
-<p>2001:db8:0：1234:0:567:8:1 。</p>
-</li>
+<li><code>torch.float32</code>: Standard floating-point type; used to store learnable parameters, network activations, etc. Nearly all arithmetic is done using this type.</li>
+<li><code>torch.int64</code>: Typically used to store indices</li>
+<li><code>torch.bool</code>: Stores boolean values: 0 is false and 1 is true</li>
+<li><code>torch.float16</code>: Used for mixed-precision arithmetic, usually on NVIDIA GPUs with <a class="link"   href="https://www.google.com/url?q=https://www.nvidia.com/en-us/data-center/tensorcore/" >tensor cores <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>. You won’t need to worry about this datatype in this course.</li>
 </ul>
-<p>我们可以使用如下方法查询本机的IP地址：<br>windows： ipconfig<br>linux： ifconfig （可能需要使用 sudo apt-get install net-tools 进行安装）</p>
-<blockquote>
-<p><u>一个特殊的IP地址： 127.0.0.1</u><br>尽管现在有大量可用的 IP 地址，但为了防止编程冲突的特定目的，刻意保留一些地址，甚至是地址范围是很方便的。<br>127.0.0.1 就是其中一个。它表示的是<strong>主机环回地址</strong>，表示的是任何数据包都不应该离开计算机，计算机本身即为接收者。</p>
-<p>当我们需要在本地测试一些网站服务，或者只想在本地设备上运行只有本地设备可以访问的服务，就可以使用 127.0.0.1 。</p>
-</blockquote>
-<h4 id="Port"><a href="#Port" class="headerlink" title="Port"></a>Port</h4>]]></content>
+<h4 id="4-Tensor-Indexing"><a href="#4-Tensor-Indexing" class="headerlink" title="4.Tensor Indexing"></a>4.Tensor Indexing</h4><p>tensor也能进行“切片”，多维度也行</p>
+]]></content>
   </entry>
   <entry>
-    <title>CS231N Lecture12 RNN</title>
-    <url>/2025/02/24/CS231N/CS231N-Lecture12/</url>
-    <content><![CDATA[<h1 id="Lecture12-RNN"><a href="#Lecture12-RNN" class="headerlink" title="Lecture12 RNN"></a>Lecture12 RNN</h1><p>循环神经网络：以某种顺序的过程，处理顺序问题和非顺序的问题</p>
-<h2 id="隐藏层的更新"><a href="#隐藏层的更新" class="headerlink" title="隐藏层的更新"></a>隐藏层的更新</h2><p>如图，呈递归关系。</p>
-<p>注意：在每个时间步中，使用的f函数以及参数都是相同的。即一直使用相同的权重矩阵。其中x_{t}为当前时间步的输入向量。</p>
-<p><a href="#">h_{t}&#x3D;f_{W}(h_{t-1},x_{t})</a></p>
+    <title>CS231N Lecture3 线性分类器</title>
+    <url>/2024/11/19/CS231N/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="Linear-Classifiers–线性分类器"><a href="#Linear-Classifiers–线性分类器" class="headerlink" title="Linear Classifiers–线性分类器"></a>Linear Classifiers–线性分类器</h1><h3 id="一、如何理解线性分类器"><a href="#一、如何理解线性分类器" class="headerlink" title="一、如何理解线性分类器"></a>一、如何理解线性分类器</h3><h5 id="一、代数观点分析"><a href="#一、代数观点分析" class="headerlink" title="一、代数观点分析"></a>一、代数观点分析</h5><p>线性分类器：权重矩阵W和像素X之间的矩阵相乘，再加上b</p>
+<p><em>如果输入数据具有native vector form，可以将b合并至W矩阵中处理**（针对线性分类是好的方法，对于卷积并非）</em></p>
+<p><u>feature：预测也是线性的，放大&#x2F;缩小所有像素，会让所有预测值都放大&#x2F;缩小</u></p>
+<p>（如下图）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image1.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119183936618.png"
                       alt="image"
                 ></p>
-<h2 id="举例：Vanilla-RNN"><a href="#举例：Vanilla-RNN" class="headerlink" title="举例：Vanilla RNN"></a>举例：Vanilla RNN</h2><p>h_{t-1}乘以矩阵，x_{t}乘以另一个矩阵，然后使用tanh得到新状态，输出y_{t}是h_{t}的线性变换</p>
+<h5 id="二、视觉角度分析"><a href="#二、视觉角度分析" class="headerlink" title="二、视觉角度分析"></a>二、视觉角度分析</h5><p>另一种处理方法：<u>将权重矩阵reshape到跟输入图像一样，实现<strong>“template matching”</strong></u></p>
+<p>例：取每一行数字，组成2x2 shape（图像假设为2x2），同时b也分类。</p>
+<p><strong>“template matching”</strong>(模式匹配)</p>
+<p>按上述处理之后，每一行都是一个种类，当他们匹配上时，值会最大。有一种视觉上的模式匹配（如下图）</p>
+<p>（visual viewpoint）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image2.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119185407644.png"
                       alt="image"
                 ></p>
-<h2 id="用计算图来理解RNN："><a href="#用计算图来理解RNN：" class="headerlink" title="用计算图来理解RNN："></a>用计算图来理解RNN：</h2><h3 id="1-多对多"><a href="#1-多对多" class="headerlink" title="1.多对多"></a>1.多对多</h3><p>y-&gt;L 求loss（举例：可以应用交叉熵损失 ）再对每个时间步的loss求和得到最终的LOSS</p>
+<p><u>（缺点：对input图像的依赖严重，对其content（环境）依赖，旋转图片后无法识别）</u></p>
+<h5 id="三、几何观点"><a href="#三、几何观点" class="headerlink" title="三、几何观点"></a>三、几何观点</h5><p>可以认为，像素图像是一个高维欧几里得空间，每个种类都有对应的一个超平面，将空间切割。（如下图）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image3.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/image-20241119191101704.png"
                       alt="image"
                 ></p>
-<h3 id="2-多对一"><a href="#2-多对一" class="headerlink" title="2.多对一"></a>2.多对一</h3><p>例如：视频分类</p>
+<h3 id="二、如何选择矩阵W-——使用损失函数来量化评估W"><a href="#二、如何选择矩阵W-——使用损失函数来量化评估W" class="headerlink" title="二、如何选择矩阵W ——使用损失函数来量化评估W"></a>二、如何选择矩阵W ——使用损失函数来量化评估W</h3><h5 id="1️⃣loss：multi-class-SVM损失（图像分类）"><a href="#1️⃣loss：multi-class-SVM损失（图像分类）" class="headerlink" title="1️⃣loss：multi-class SVM损失（图像分类）"></a>1️⃣loss：multi-class SVM损失（图像分类）</h5><p>特征：如果一个种类被正确区分，那么改变预测分数，不再影响损失。（达到零损失）</p>
+<p>（如图，图中为铰链损失）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image4.png"
-                      alt="image"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0514.PNG"
+                      alt="\images\IMG_0514.PNG"
                 ></p>
-<h3 id="3-一对多"><a href="#3-一对多" class="headerlink" title="3.一对多"></a>3.一对多</h3><p>例如：分析图像生成字幕…</p>
-<p>输入0或者将前一步输出再输入</p>
+<h5 id="2️⃣Cross-Entropy-Loss（multinomial-logistic-regression）"><a href="#2️⃣Cross-Entropy-Loss（multinomial-logistic-regression）" class="headerlink" title="2️⃣Cross- Entropy Loss（multinomial logistic regression）"></a>2️⃣Cross- Entropy Loss（multinomial logistic regression）</h5><p>want to interpret raw classifier scores as probabilities.（使用概率来评分）</p>
+<p>使用softmax function 求概率 （重要工具）</p>
+<p><strong>对loss的计算：L &#x3D; -logP（Y&#x3D;y_{i}&#x2F;X&#x3D;x_{i}）</strong></p>
+<p>feature: 这个loss函数永远不会达到0️⃣损失</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image5.png"
-                      alt="image"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N-Lecture1/IMG_0522.PNG"
+                      alt="\images\IMG_0522.PNG"
                 ></p>
+<p>对预测值和理论值进行评估<strong>（Kullback-Leibler divergence）</strong></p>
+<p><strong>cross- Entropy：H（P,Q）&#x3D;H(p)+D_{KL}（P||Q）</strong></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image6.png"
-                      alt="image"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0523.PNG"
+                      alt="\images\IMG_0523.PNG"
                 ></p>
-<h2 id="Sequence-2-Sequence：多对一-一对多"><a href="#Sequence-2-Sequence：多对一-一对多" class="headerlink" title="Sequence 2 Sequence：多对一+一对多"></a>Sequence 2 Sequence：多对一+一对多</h2><p>类似于编码器＋译码器；</p>
+<h3 id="三、对矩阵进行优化"><a href="#三、对矩阵进行优化" class="headerlink" title="三、对矩阵进行优化"></a>三、对矩阵进行优化</h3><p>Regularization（正则化）—— prevent the model from doing too well</p>
+<p>lamda —— 控制正则化的超参</p>
+<p>公式如图</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image7.png"
-                      alt="image"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0516.PNG"
+                      alt="\images\IMG_0516.PNG"
                 ></p>
-<h3 id="举例：character-level-language-model"><a href="#举例：character-level-language-model" class="headerlink" title="举例：character-level language model"></a>举例：character-level language model</h3><p>使用one-hot编码.</p>
+<p>正则化简单实例：L2、L1、Elastic net（L1+L2）（如上图左下）</p>
+<p>正则化目的：1️⃣表达偏好</p>
+<p>​						2️⃣避免过拟合prefer simple models that generalize well</p>
+<p>​						3️⃣添加曲率改善优化adding curvature improve optimization</p>
+<p>举例说明正则化的作用：</p>
+<p>1️⃣比如可以通过调整正则化、考虑全局或者专注于一个参数</p>
+<p>如果有噪声或者很多特征,也适用。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0517.PNG"
+                      alt="images\IMG_0517.PNG"
+                ></p>
+<p>2️⃣</p>
+<p>避免过拟合。如图，曲线是添加正则化后，合理地减少了噪声干扰</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image8.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture1/IMG_0518.PNG"
                       alt="image"
                 ></p>
-<h3 id="举例：取样的character-level-language-model"><a href="#举例：取样的character-level-language-model" class="headerlink" title="举例：取样的character-level language model"></a>举例：取样的character-level language model</h3><p>在测试时，每采样一个字符，反馈给模型，继续进行生成。</p>
+]]></content>
+      <categories>
+        <category>CS231N</category>
+      </categories>
+      <tags>
+        <tag>计算机视觉</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS231N Lecture4 优化</title>
+    <url>/2024/12/07/CS231N/%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p>2️⃣ follow the slope</p>
+<p>直接计算导数、使用导数（deltaloss&#x2F;delta-h）</p>
+<p>缺点：对求导计算缓慢，如果矩阵&#x2F;维度过大</p>
+<p>&#x3D;&#x3D;&#x3D;用一个方程表示梯度（反向传播 第六节中讲述）</p>
+<p><strong>Computing Gradients(计算梯度)</strong></p>
+<p>numeric&#x2F;analytic （计算出值&#x2F;分析）</p>
+<p>一般使用数字梯度来检验对解析梯度的推导</p>
+<p>（pytorch提供了一个函数gradcheck、实现相似的功能）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image9.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0531.PNG"
                       alt="image"
                 ></p>
-<h3 id="单热向量-one-hot"><a href="#单热向量-one-hot" class="headerlink" title="单热向量 one-hot"></a>单热向量 one-hot</h3><p>单热向量的矩阵乘法只是从权重矩阵中提取一列，没有什么意义。</p>
-<p>所以，我们经常在输入层和隐藏层之间放置一个单独的嵌入层，用来进行之后的计算。</p>
+<h3 id="gradient-descent梯度下降"><a href="#gradient-descent梯度下降" class="headerlink" title="gradient descent梯度下降"></a><u>gradient descent梯度下降</u></h3><p>包含的超参：</p>
+<p><u>1️⃣初始化权重的方法</u></p>
+<p><u>2️⃣循环次数：受计算预算和时间限制</u></p>
+<p><u>3️⃣学习率learning rate：</u></p>
+<p>较大：收敛较快</p>
+<p>较小：不容易数字爆炸、但时间较长</p>
+<p>梯度下降的feature：使用全部数据，当数据集较大时，不适用</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image10.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0532.PNG"
                       alt="image"
                 ></p>
-<h2 id="时间截断反向传播：Truncated-Backpropagation-through-time"><a href="#时间截断反向传播：Truncated-Backpropagation-through-time" class="headerlink" title="时间截断反向传播：Truncated Backpropagation through time"></a>时间截断反向传播：Truncated Backpropagation through time</h2><p>取一个初始子集（10-100token），将其前序传递展开，求loss，然后通过初始块反向传播，对权重矩阵进行更新。</p>
-<p>永远向前携带隐藏层，但只能反向传播一些较小的步骤</p>
+<h3 id="batch-gradient-descent（批量梯度下降）"><a href="#batch-gradient-descent（批量梯度下降）" class="headerlink" title="batch gradient descent（批量梯度下降）"></a><u>batch gradient descent（批量梯度下降）</u></h3><p>选择批量，进行求loss和计算梯度</p>
+<p>SGD随机梯度下降</p>
+<h3 id="stochastic-gradient-descentSGD随机梯度下降"><a href="#stochastic-gradient-descentSGD随机梯度下降" class="headerlink" title="stochastic gradient descentSGD随机梯度下降"></a><u>stochastic gradient descentSGD随机梯度下降</u></h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0533.PNG"
+                      alt="image"
+                ></p>
+<p>存在的问题：</p>
+<p><u>局部最小、鞍点&#x2F;收敛速度一方过大一方过小</u></p>
+<p><strong>更智能的方法：</strong></p>
+<h4 id="1-sgd-动量更新"><a href="#1-sgd-动量更新" class="headerlink" title="1.sgd+动量更新"></a>1.sgd+动量更新</h4><p>初始化相同、用梯度算出”dw”的值，用来更新速度向量，（想象球滚落）（类似于对梯度计算历史平均值）</p>
+<p>超参数：<strong>rho– decay rate</strong></p>
+<p><u>（当抵达局部最小&#x2F;鞍点，仍有残余速度去跳出局部，更平滑地处理高纬度问题）</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image11.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0555.PNG"
                       alt="image"
                 ></p>
-<h2 id="使用举例："><a href="#使用举例：" class="headerlink" title="使用举例："></a>使用举例：</h2><h3 id="Image-Captioning"><a href="#Image-Captioning" class="headerlink" title="Image Captioning"></a>Image Captioning</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image12.png"
-                      alt="image"
-                ></p>
-<p>迁移学习。首先使用一个在imagenet预训练过的CNN模型，去掉最后两层。</p>
-<p>（x：输入，h：隐藏层，v：cnn输入的特征向量，每个对应不同的矩阵）</p>
-<p>使用[start]和[end]的token作为一次分析的开始指令与结束指令。</p>
-<h3 id="Visual-Q-uestion-Answering（VQA）"><a href="#Visual-Q-uestion-Answering（VQA）" class="headerlink" title="Visual Q uestion Answering（VQA）"></a>Visual Q uestion Answering（VQA）</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image13.png"
-                      alt="image"
-                ></p>
-<h3 id="Visual-Dialog-Conversations-about-images"><a href="#Visual-Dialog-Conversations-about-images" class="headerlink" title="Visual Dialog: Conversations about images"></a>Visual Dialog: Conversations about images</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image14.png"
-                      alt="image"
-                ></p>
-<h3 id="Visual-Language-Navigation-Go-to-the-living-room"><a href="#Visual-Language-Navigation-Go-to-the-living-room" class="headerlink" title="Visual Language Navigation: Go to the living room"></a>Visual Language Navigation: Go to the living room</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image15.png"
-                      alt="image"
-                ></p>
-<h2 id="梯度流"><a href="#梯度流" class="headerlink" title="梯度流"></a>梯度流</h2><p>以Vanilla RNN 举例。</p>
+<h4 id="2-Nesterov-动量更新"><a href="#2-Nesterov-动量更新" class="headerlink" title="2.Nesterov 动量更新"></a>2.Nesterov 动量更新</h4><p>如图</p>
+<p>“Look ahead”会对下一时刻的梯度进行预测</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image16.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0559.PNG"
                       alt="image"
                 ></p>
-<p>如果梯度&gt;1，最终会爆炸型增长；&lt;1，最终无限趋于零。</p>
-<h3 id="1-Gradient-clipping-梯度裁剪-：克服梯度爆炸"><a href="#1-Gradient-clipping-梯度裁剪-：克服梯度爆炸" class="headerlink" title="1.Gradient clipping 梯度裁剪 ：克服梯度爆炸"></a>1.Gradient clipping 梯度裁剪 ：克服梯度爆炸</h3><p>在反向传播时，检查梯度的范数，如果过大，将其裁剪，再继续反向传播</p>
+<p>两者对比：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image17.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0557.PNG"
                       alt="image"
                 ></p>
-<h3 id="2-Long-Short-Term-Memory-LSTM-：克服梯度消失"><a href="#2-Long-Short-Term-Memory-LSTM-：克服梯度消失" class="headerlink" title="2.Long Short Term Memory (LSTM)：克服梯度消失"></a>2.Long Short Term Memory (LSTM)：克服梯度消失</h3><p>在每个时间步使用两个向量：<br>$$<br>Cellstate(ct)+Hiddenstate(ht)<br>$$<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image18.png"
-                      alt="image"
-                ></p>
-<h3 id="如何作用的？"><a href="#如何作用的？" class="headerlink" title="如何作用的？"></a>如何作用的？</h3><p>使用四个gate（i&#x2F;f&#x2F;o&#x2F;g）来决定下一个LSTM状态。</p>
-<p>公式如图。</p>
+<p><u>sgd特征：1.可能会overshoot（到达底端后，会有反向动量存在，往回走一段距离，如下图）</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image19.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0560.PNG"
                       alt="image"
                 ></p>
-<p>对于LSTM，其四个门<strong>来源于h_{t-1}与x_{t}与权重矩阵W相乘，然后输出四个门</strong>。</p>
-<p>而反向梯度传播，<strong>只与f gate 进行乘法</strong>（如果f接近0，有可能破坏信息，接近1不可能破坏）， 解决了梯度消失的问题。</p>
+<h3 id="Adaptive-learning-rates自适应学习率"><a href="#Adaptive-learning-rates自适应学习率" class="headerlink" title="Adaptive learning rates自适应学习率"></a>Adaptive learning rates自适应学习率</h3><h4 id="1-AdaGrad算法"><a href="#1-AdaGrad算法" class="headerlink" title="1.AdaGrad算法"></a>1.AdaGrad算法</h4><p>（通过<strong>除以梯度</strong>，抑制&#x2F;提高运动速度）</p>
+<p><u>问题：grad—squared不断增加（趋于无限大），学习率不断下降，可能在达到结果前停止</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image20.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0561.PNG"
                       alt="image"
                 ></p>
-<h2 id="多层-深度循环"><a href="#多层-深度循环" class="headerlink" title="多层&#x2F;深度循环"></a>多层&#x2F;深度循环</h2><p>将隐藏层作为序列输入至另一个RNN….</p>
+<h4 id="2-RMSprop（对AdaGrad的改善）"><a href="#2-RMSprop（对AdaGrad的改善）" class="headerlink" title="2.RMSprop（对AdaGrad的改善）"></a>2.RMSprop（对AdaGrad的改善）</h4><p>添加参数decay_rate 来降低grad_squared,  类似加入摩擦系数</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image21.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0562.PNG"
                       alt="image"
                 ></p>
-<h2 id="GRU"><a href="#GRU" class="headerlink" title="GRU"></a>GRU</h2><p><img  
+<h3 id="Adam（RMSProp-动量）"><a href="#Adam（RMSProp-动量）" class="headerlink" title="Adam（RMSProp+动量）"></a>Adam（RMSProp+动量）</h3><p>——非常强大的优化算法，适用于不同的任务，超参的调整范围也较小</p>
+<p>将两种算法结合，存在问题：如果beta2趋于1，那么优化第一步可能走出很大一步（除以近似0的数）</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image22.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0563.PNG"
                       alt="image"
                 ></p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p><img  
+<p>对其进行改善：添加<strong>Bias Corection（偏差校正）</strong>，让其更稳健。</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture12/image23.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0564.PNG"
+                      alt="image"
+                ></p>
+<h3 id="AdamW：Adam-Variant-with-Weight-Decay"><a href="#AdamW：Adam-Variant-with-Weight-Decay" class="headerlink" title="AdamW：Adam Variant with Weight Decay"></a>AdamW：Adam Variant with Weight Decay</h3><p>Source：<a class="link"   href="https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html" >https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>在每次epoch中，对权重进行衰减：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">moving_avg = alpha * moving_avg + (<span class="number">1</span>-alpha) * w.grad </span><br><span class="line"></span><br><span class="line">w = w - lr * moving_avg - lr * wd * w</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image.png"
+                      alt="image"
+                ></p>
+<h3 id="Learning-Rate-Decay-减少学习率"><a href="#Learning-Rate-Decay-减少学习率" class="headerlink" title="Learning Rate Decay 减少学习率"></a>Learning Rate Decay 减少学习率</h3><p>在某些固定点减少学习率。常见的方法如下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image0568.png"
+                      alt="image"
+                ></p>
+<h3 id="二阶优化方法：L-BFGS（准确但不实际）-BGFS-最常用"><a href="#二阶优化方法：L-BFGS（准确但不实际）-BGFS-最常用" class="headerlink" title="二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)"></a>二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)</h3><p>使用Hessian矩阵，可以使对学习率&#x2F;步长的选择更加合理。但数据量巨大，只适合低维优化问题</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0567.PNG"
+                      alt="image"
+                ></p>
+<h3 id="总结（对优化算法的比较）"><a href="#总结（对优化算法的比较）" class="headerlink" title="总结（对优化算法的比较）"></a>总结（对优化算法的比较）</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0566.PNG"
                       alt="image"
                 ></p>
 ]]></content>

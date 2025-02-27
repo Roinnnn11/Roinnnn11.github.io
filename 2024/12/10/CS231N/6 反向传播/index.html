@@ -13,22 +13,37 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/11/12/pytorch101/"/>
+    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/10/cs231n/6 反向传播/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="一、Tensor 张量定义：The number of dimensions is the rank of the tensor；例：tensor([1,2,3])的秩为1 ​		the shape of a tensor is a tuple of integers giving the size of the array along each dimension 例：tensor([1,2,3">
+        <meta name="description" content="Lecture6–反向传播如何为神经网络计算梯度？ bad idea：在纸上推导 better：计算图 以svm  loss举例 蓝色节点：x与W的矩阵乘法 红色节点：铰链损失（针对SVMloss） 绿色：正则化项 相加得到L（loss）  Backpropagation 反向传播构成： 1.Forward pass “前向传递”计算输出值 2.backward pass “反向传递”计算每个参数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PyTorch101 --PyTorch基本框架">
-<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/11/12/PyTorch101/index.html">
+<meta property="og:title" content="CS231N Lecture6 反向传播">
+<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/10/CS231N/6%20%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一、Tensor 张量定义：The number of dimensions is the rank of the tensor；例：tensor([1,2,3])的秩为1 ​		the shape of a tensor is a tuple of integers giving the size of the array along each dimension 例：tensor([1,2,3">
+<meta property="og:description" content="Lecture6–反向传播如何为神经网络计算梯度？ bad idea：在纸上推导 better：计算图 以svm  loss举例 蓝色节点：x与W的矩阵乘法 红色节点：铰链损失（针对SVMloss） 绿色：正则化项 相加得到L（loss）  Backpropagation 反向传播构成： 1.Forward pass “前向传递”计算输出值 2.backward pass “反向传递”计算每个参数">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-12T04:59:05.702Z">
-<meta property="article:modified_time" content="2024-11-19T10:20:01.249Z">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image1.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image2.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image3.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image4.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image5.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image6.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image7.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image8.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image9.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image10.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image11.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image12.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image13.png">
+<meta property="article:published_time" content="2024-12-10T14:54:45.635Z">
+<meta property="article:modified_time" content="2025-01-20T15:25:51.686Z">
 <meta property="article:author" content="Roin">
+<meta property="article:tag" content="计算机视觉">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image1.png">
     
     
     <!--- Icon Part-->
@@ -40,7 +55,7 @@
     
     <title>
         
-            PyTorch101 --PyTorch基本框架 | Roin&#39;s BLOG
+            CS231N Lecture6 反向传播 | Roin&#39;s BLOG
         
     </title>
 
@@ -248,7 +263,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">14</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -274,7 +289,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">PyTorch101 --PyTorch基本框架</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CS231N Lecture6 反向传播</h1>
                 </div>
             
             </div>
@@ -295,26 +310,53 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-11-12 12:59:05</span>
-        <span class="mobile">2024-11-12 12:59:05</span>
+        <span class="desktop">2024-12-10 22:54:45</span>
+        <span class="mobile">2024-12-10 22:54:45</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-19 18:20:01</span>
-            <span class="mobile">2024-11-19 18:20:01</span>
+            <span class="desktop">2025-01-20 23:25:51</span>
+            <span class="mobile">2025-01-20 23:25:51</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
     
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/CS231N/">CS231N</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>428 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>701 Words</span>
         </span>
     
     
@@ -338,32 +380,121 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h3 id="一、Tensor-张量"><a href="#一、Tensor-张量" class="headerlink" title="一、Tensor 张量"></a>一、Tensor 张量</h3><p>定义：The number of dimensions is the <strong>rank</strong> of the tensor；例：tensor([1,2,3])的秩为1</p>
-<p>​		the <strong>shape</strong> of a tensor is a tuple of integers giving the size of the array along each dimension 例：tensor([1,2,3])的shape为[3]</p>
-<h4 id="1-构建-访问tensor"><a href="#1-构建-访问tensor" class="headerlink" title="1.构建&amp;访问tensor"></a>1.构建&amp;访问tensor</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x=torch.tensor([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])<span class="comment">#构建tensor张量</span></span><br><span class="line">x.dim()<span class="comment">#返回纬度值</span></span><br><span class="line">x.shape<span class="comment">#返回：torch.Size([3,3]),可以当作turple使用</span></span><br><span class="line">x[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span><span class="comment">#赋值操作</span></span><br><span class="line">x[<span class="number">0</span>][<span class="number">0</span>].item()<span class="comment">#将PyTorch的标量转换为python标量</span></span><br></pre></td></tr></table></figure></div>
-
-
-
-<h4 id="2-帮助构建tensor的函数"><a href="#2-帮助构建tensor的函数" class="headerlink" title="2.帮助构建tensor的函数"></a>2.帮助构建tensor的函数</h4><p>常用的函数有：</p>
-<ul>
-<li><pre><code class="python">- x=torch.zeros（*size） #全为0的tensor
-- x=torch.ones(*size)#全为1的tensor
-- x=torch.rand(*size)#为0-1随机数
-- x=torch.full（*size*， *fill_value*， ***， *out* *=* *None*， *dtype* *=* None， *layout* *=* *torch.strided*， *device* *=* *None*， *requires_grad* *=* *False*）#→ Tensor
-- x=torch.from_numpy( ndarray ) #→ Tensor
-- x=torch.arange( *start=0* , *end* , *step=1* , * , out=None , *dtype=None* , layout *=torch.strided* , *device=None* , *require_grad=False* )#→Tensor &lt;u&gt;#左闭右开区间&lt;/u&gt;（torch.range &lt;u&gt;#左闭右闭&lt;/u&gt;）
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">You can find a **full list of tensor creation operations** [in the documentation](https://www.google.com/url?q=https%3A%2F%2Fpytorch.org%2Fdocs%2Fstable%2Ftorch.html%23creation-ops).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 3.tensor的数据形式</span><br><span class="line"></span><br><span class="line">tensor会根据数字自动设定形式，你也可以为其赋予特定格式如：int16、uint8、float32等等。</span><br><span class="line"></span><br><span class="line">可以使用  .to( )来修改dtype，如：x0.to(torch.float32)</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">x1=torch.zeros_like(x0) #构建一个size和dtype与x0一样的</span><br><span class="line">x2=x0.new_zeros(4,5)#size自定，dtype和x0一样</span><br><span class="line">x3=torch.ones(6,7).to(x0)#和上一行相同</span><br></pre></td></tr></table></figure></div>
-</code></pre>
-</li>
-</ul>
-<p>常用的数据形式：</p>
-<ul>
-<li><code>torch.float32</code>: Standard floating-point type; used to store learnable parameters, network activations, etc. Nearly all arithmetic is done using this type.</li>
-<li><code>torch.int64</code>: Typically used to store indices</li>
-<li><code>torch.bool</code>: Stores boolean values: 0 is false and 1 is true</li>
-<li><code>torch.float16</code>: Used for mixed-precision arithmetic, usually on NVIDIA GPUs with <a class="link"   target="_blank" rel="noopener" href="https://www.google.com/url?q=https://www.nvidia.com/en-us/data-center/tensorcore/" >tensor cores <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>. You won’t need to worry about this datatype in this course.</li>
-</ul>
-<h4 id="4-Tensor-Indexing"><a href="#4-Tensor-Indexing" class="headerlink" title="4.Tensor Indexing"></a>4.Tensor Indexing</h4><p>tensor也能进行“切片”，多维度也行</p>
+            <h1 id="Lecture6–反向传播"><a href="#Lecture6–反向传播" class="headerlink" title="Lecture6–反向传播"></a>Lecture6–反向传播</h1><p><em>如何为神经网络计算梯度？</em></p>
+<p>bad idea：在纸上推导</p>
+<p>better：计算图</p>
+<p>以svm  loss举例</p>
+<p>蓝色节点：x与W的矩阵乘法</p>
+<p>红色节点：铰链损失（针对SVMloss）</p>
+<p>绿色：正则化项</p>
+<p>相加得到L（loss）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image1.png"
+                      alt="image"
+                ></p>
+<h2 id="Backpropagation-反向传播"><a href="#Backpropagation-反向传播" class="headerlink" title="Backpropagation 反向传播"></a>Backpropagation 反向传播</h2><p>构成：</p>
+<p>1<u>.Forward pass</u> “前向传递”计算输出值</p>
+<p>2.<u>backward pass</u> “反向传递”计算每个参数的导数</p>
+<p><u>下游梯度 &#x3D; 局部梯度 x 上游梯度</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image2.png"
+                      alt="image"
+                ></p>
+<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a><u>优点：</u></h5><p><u>将对梯度的计算<strong>模块化</strong>。不需要知道全局架构，只需要知道这个节点里对应的三个梯度数值（上游&#x2F;本地&#x2F;下游），从而推出<strong>全局梯度</strong>。</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image3.png"
+                      alt="image"
+                ></p>
+<h5 id="全局图be-like："><a href="#全局图be-like：" class="headerlink" title="全局图be like："></a>全局图be like：</h5><p>（trick: 蓝色框内为sigmoid函数，可以直接计算其local gradient得到简单表达式,跳过中间步骤)</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image4.png"
+                      alt="image"
+                ></p>
+<h3 id="梯度流动时一些有趣的pattern："><a href="#梯度流动时一些有趣的pattern：" class="headerlink" title="梯度流动时一些有趣的pattern："></a>梯度流动时一些有趣的pattern：</h3><p>加法：downstream gradient &#x3D; upstream gradient</p>
+<p>复制：downstream gradient &#x3D; sum(upstream gradient)</p>
+<p>乘法：“交换”downstream gradient &#x3D; other diwnstream gradient * upstream</p>
+<p>max：最大值downstream &#x3D; upstream，其余downstream&#x3D;0（不常见）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image5.png"
+                      alt="image"
+                ></p>
+<p>实际处理问题时，我们通常是对<strong>向量</strong>进行求梯度等操作（最后得到的loss仍然是标量）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image6.png"
+                      alt="image"
+                ></p>
+<p>由于只考虑upstream和downstream的关系，Jocobian矩阵将会是一个<em>非常大的稀疏矩阵</em>，<em>只有对角线上元素可能不为0</em>.所以在使用中，从来不会真正形成矩阵，而是对其<strong>隐式表达</strong>。</p>
+<p>如下图，对RELU函数，可以理解为：</p>
+<p>根据input符号，决定downstream是0还是具体值</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image7.png"
+                      alt="image"
+                ></p>
+<p>当使用的是<strong>tensor</strong>，更复杂了.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image8.png"
+                      alt="image"
+                ></p>
+<h3 id="简化求解反向传播"><a href="#简化求解反向传播" class="headerlink" title="简化求解反向传播"></a>简化求解反向传播</h3><p>推导：分解问题，尝试对每个x的导数求解</p>
+<p>如图，dL&#x2F;dx1,1 &#x3D; (dy&#x2F;dx1,1)(dL&#x2F;dy)</p>
+<p>计算dy&#x2F;dx1,1，发现其为第一行等于权重矩阵第一行，其余行为0的矩阵；</p>
+<p>所以，dL&#x2F;dx1,1等于权重第一行与dL&#x2F;dy第一行的内积；</p>
+<p>其他同理。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image9.png"
+                      alt="image"
+                ></p>
+<p>最后推得关系式如下：dL&#x2F;dx  &#x3D; (dL&#x2F;dy)wT</p>
+<p>（详细证明：<a class="link"   target="_blank" rel="noopener" href="http://cs231n.stanford.edu/handouts/linear-backprop.pdf%EF%BC%89" >http://cs231n.stanford.edu/handouts/linear-backprop.pdf） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image10.png"
+                      alt="image"
+                ></p>
+<h3 id="另一个观点：反向自动微分"><a href="#另一个观点：反向自动微分" class="headerlink" title="另一个观点：反向自动微分"></a>另一个观点：反向自动微分</h3><h5 id="反向自动微分"><a href="#反向自动微分" class="headerlink" title="反向自动微分"></a>反向自动微分</h5><p>认为jacobian矩阵可以累乘，最后得到一个标量。（对于所有的与求导&#x2F;微分相关的程序都有效，局限性小）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image11.png"
+                      alt="image"
+                ></p>
+<h5 id="前向自动微分"><a href="#前向自动微分" class="headerlink" title="前向自动微分"></a>前向自动微分</h5><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image12.png"
+                      alt="image"
+                ></p>
+<p><u>缺点：前向不被大框架支持；不好用</u></p>
+<h3 id="反向传播另一个功能：求高阶导数"><a href="#反向传播另一个功能：求高阶导数" class="headerlink" title="反向传播另一个功能：求高阶导数"></a>反向传播另一个功能：求高阶导数</h3><p>（比如计算hessian矩阵）</p>
+<p>使用反向传播扩展计算图。在计算loss之后，使用f2’计算梯度相对于x1的损失，用f1’计算loss相对于x0的损失（f1’\f2’是f的反向传递）</p>
+<p>再点积向量 v，就会得到v关于x的导数。</p>
+<p>再Backprop，可以得到x关于v的导数。</p>
+<p>（图中举例：二阶导数）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture6/image13.png"
+                      alt="image"
+                ></p>
 
         </div>
 
@@ -371,18 +502,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> PyTorch101 --PyTorch基本框架</li>
+        <li><strong>Title:</strong> CS231N Lecture6 反向传播</li>
         <li><strong>Author:</strong> Rongying Liu</li>
         <li><strong>Created at
-                :</strong> 2024-11-12 12:59:05</li>
+                :</strong> 2024-12-10 22:54:45</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-11-19 18:20:01
+                    :</strong> 2025-01-20 23:25:51
             </li>
         
         <li>
-            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2024/11/12/PyTorch101/
+            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/10/CS231N/6 反向传播/
         </li>
         <li>
             <strong>
@@ -401,6 +532,14 @@
         
 
         
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">#计算机视觉</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
 
         
 
@@ -410,13 +549,13 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2024/11/19/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8/"
+                        href="/2025/01/15/CS231N/7%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">CS231N Lecture3 线性分类器</span>
+                                <span class="post-nav-title-item">CS231N-Lecture7 卷积神经网络</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -426,10 +565,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/11/10/hello-world/"
+                        href="/2024/12/08/CS231N/5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Hello World</span>
+                                <span class="post-nav-title-item">CS231N Lecture5 神经网络</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -492,8 +631,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">PyTorch101 --PyTorch基本框架</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81Tensor-%E5%BC%A0%E9%87%8F"><span class="nav-text">一、Tensor 张量</span></a></li></ol>
+        <div class="page-title">CS231N Lecture6 反向传播</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture6%E2%80%93%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">Lecture6–反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagation-%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">Backpropagation 反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E6%B5%81%E5%8A%A8%E6%97%B6%E4%B8%80%E4%BA%9B%E6%9C%89%E8%B6%A3%E7%9A%84pattern%EF%BC%9A"><span class="nav-text">梯度流动时一些有趣的pattern：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8C%96%E6%B1%82%E8%A7%A3%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">简化求解反向传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%A7%82%E7%82%B9%EF%BC%9A%E5%8F%8D%E5%90%91%E8%87%AA%E5%8A%A8%E5%BE%AE%E5%88%86"><span class="nav-text">另一个观点：反向自动微分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%EF%BC%9A%E6%B1%82%E9%AB%98%E9%98%B6%E5%AF%BC%E6%95%B0"><span class="nav-text">反向传播另一个功能：求高阶导数</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>
@@ -526,11 +665,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        12 posts in total
+                        14 posts in total
                     </span>
                     
                         <span>
-                            7.2k words in total
+                            10.4k words in total
                         </span>
                     
                 </p>
