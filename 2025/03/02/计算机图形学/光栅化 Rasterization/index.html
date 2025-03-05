@@ -13,18 +13,31 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/archives/2025/02/"/>
+    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2025/03/02/计算机图形学/光栅化 rasterization/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="website">
+        <meta name="description" content="光栅化 RasterizationTriangles三角形的特质：  可分解其他多边形 保证平面性 明确界定的内部区域 好的数值插值方法  Sampling 采样：简单的光栅化方法实际上是将函数离散化的过程。 判断：如果像素中心在三角形内，则采样。   1.利用叉积：全正or全负，说明在三角形内部。P1QxP1P2,P2QxP2P0,P0QxP0P1（按逆&#x2F;顺时针顺序，否则会出错）  2">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/archives/2025/02/index.html">
+<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2025/03/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="光栅化 RasterizationTriangles三角形的特质：  可分解其他多边形 保证平面性 明确界定的内部区域 好的数值插值方法  Sampling 采样：简单的光栅化方法实际上是将函数离散化的过程。 判断：如果像素中心在三角形内，则采样。   1.利用叉积：全正or全负，说明在三角形内部。P1QxP1P2,P2QxP2P0,P0QxP0P1（按逆&#x2F;顺时针顺序，否则会出错）  2">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image1.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image2.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image3.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image4.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image5.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image6.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image7.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image8.png">
+<meta property="article:published_time" content="2025-03-02T04:57:51.372Z">
+<meta property="article:modified_time" content="2025-03-05T11:58:39.371Z">
 <meta property="article:author" content="Roin">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image1.png">
     
     
     <!--- Icon Part-->
@@ -36,7 +49,7 @@
     
     <title>
         
-            Archive: 2025/2 | Roin&#39;s BLOG
+            Roin&#39;s BLOG - 记录学习の一个小角落(o^^o).
         
     </title>
 
@@ -264,246 +277,290 @@
             <div class="main-content">
 
                 
-                    <div class="archive-container shadow-none hover:shadow-none sm:shadow-redefine sm:hover:shadow-redefine-hover">
-    
-<div class="archive-list-container">
-    
-        <section class="archive-item mb-spacing-unit last:mb-0">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2025</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">13</span>
-            </div>
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
             
-            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
-                
-                    
-                    
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-05'>
-                    
-                    <a href="/2025/03/05/CS231N/15%20%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl"></span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2025/03/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shading/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl"></span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-03'>
-                    
-                    <a href="/2025/03/03/CS231N/16%20segmentation/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl"></span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-02'>
-                    
-                    <a href="/2025/03/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl"></span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-27'>
-                    
-                    <a href="/2025/02/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%8F%98%E6%8D%A2Transformation/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">GAMES101 Transformation 变换</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2025/02/27/CS231N/14%20%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E7%90%86%E8%A7%A3/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">CS231N Lecture14 可视化与理解</span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-26'>
-                    
-                    <a href="/2025/02/26/CS231N/13Attention/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">CS231N Lecture13 Attention</span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-24'>
-                    
-                    <a href="/2025/02/24/CS231N/CS231N-Lecture12/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">CS231N Lecture12 RNN</span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-08'>
-                    
-                    <a href="/2025/02/08/%E5%85%A8%E6%A0%88%E5%B7%A5%E7%A8%8B--Protobuf/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl"></span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2025/02/08/%E5%85%A8%E6%A0%88%E5%B7%A5%E7%A8%8B--gRPC/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl"></span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-23'>
-                    
-                    <a href="/2025/01/23/CS231N/CS231N-10&11/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">CS231N Lecture10&amp;11 训练技巧</span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-17'>
-                    
-                    <a href="/2025/01/17/CS231N/8%20CNN%E6%9E%B6%E6%9E%84/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">CS231N Lecture8 CNN经典架构</span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-15'>
-                    
-                    <a href="/2025/01/15/CS231N/7%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">CS231N-Lecture7 卷积神经网络</span>
-                    </a>
-                    
-                
-                </li> <!-- Ensure the last item is properly closed -->
-            </ul>
-        </section>
-    
-        <section class="archive-item mb-spacing-unit last:mb-0">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">6</span>
-            </div>
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3"></h1>
+                </div>
             
-            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
-                
-                    
-                    
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-10'>
-                    
-                    <a href="/2024/12/10/CS231N/6%20%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">CS231N Lecture6 反向传播</span>
-                    </a>
-                    
-                
-                    
-                    
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/author.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Rongying Liu</span>
                         
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-08'>
-                    
-                    <a href="/2024/12/08/CS231N/5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">CS231N Lecture5 神经网络</span>
-                    </a>
-                    
-                
-                    
-                    
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">课程</span>
                         
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-07'>
-                    
-                    <a href="/2024/12/07/CS231N/%E4%BC%98%E5%8C%96/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">CS231N Lecture4 优化</span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-19'>
-                    
-                    <a href="/2024/11/19/CS231N/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">CS231N Lecture3 线性分类器</span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-12'>
-                    
-                    <a href="/2024/11/12/CS231N/PyTorch101/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">PyTorch101 --PyTorch基本框架</span>
-                    </a>
-                    
-                
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-10'>
-                    
-                    <a href="/2024/11/10/hello-world/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">Hello World</span>
-                    </a>
-                    
-                
-                </li> <!-- Ensure the last item is properly closed -->
-            </ul>
-        </section>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-03-02 12:57:51</span>
+        <span class="mobile">2025-03-02 12:57:51</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-03-05 19:58:39</span>
+            <span class="mobile">2025-03-05 19:58:39</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>421 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>1 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="光栅化-Rasterization"><a href="#光栅化-Rasterization" class="headerlink" title="光栅化 Rasterization"></a>光栅化 Rasterization</h1><h2 id="Triangles"><a href="#Triangles" class="headerlink" title="Triangles"></a>Triangles</h2><p>三角形的特质：</p>
+<ul>
+<li>可分解其他多边形</li>
+<li>保证平面性</li>
+<li>明确界定的内部区域</li>
+<li>好的数值插值方法</li>
+</ul>
+<h3 id="Sampling-采样：简单的光栅化方法"><a href="#Sampling-采样：简单的光栅化方法" class="headerlink" title="Sampling 采样：简单的光栅化方法"></a>Sampling 采样：简单的光栅化方法</h3><p>实际上是将函数离散化的过程。</p>
+<p>判断：如果像素中心在三角形内，则采样。  </p>
+<h4 id="1-利用叉积：全正or全负，说明在三角形内部。"><a href="#1-利用叉积：全正or全负，说明在三角形内部。" class="headerlink" title="1.利用叉积：全正or全负，说明在三角形内部。"></a>1.利用叉积：全正or全负，说明在三角形内部。</h4><p>P1QxP1P2,P2QxP2P0,P0QxP0P1（按逆&#x2F;顺时针顺序，否则会出错）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image1.png"
+                      alt="image-20250302155823165"
+                ></p>
+<h4 id="2-使用Bounding-Box-包围盒——排除bounding-box之外的点"><a href="#2-使用Bounding-Box-包围盒——排除bounding-box之外的点" class="headerlink" title="2.使用Bounding Box 包围盒——排除bounding box之外的点"></a>2.使用Bounding Box 包围盒——排除bounding box之外的点</h4><p>此处使用的是axis-aligned   bounding box，轴向包围盒（简称AABB）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image2.png"
+                      alt="image-20250302155823165"
+                ></p>
+<h4 id="3-Incremental-Triangle-Traversal"><a href="#3-Incremental-Triangle-Traversal" class="headerlink" title="3.Incremental Triangle Traversal"></a>3.Incremental Triangle Traversal</h4><p>对每一行生成AABB，然后判断box内像素是否在三角形内部。</p>
+<p>（更适用于钝角大倾斜细长的三角形，会更快）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image3.png"
+                      alt="image-20250302155823165"
+                ></p>
+<h2 id="Anti-aliasing-抗锯齿"><a href="#Anti-aliasing-抗锯齿" class="headerlink" title="Anti-aliasing 抗锯齿"></a>Anti-aliasing 抗锯齿</h2><h3 id="pre-filtering-先模糊再采样"><a href="#pre-filtering-先模糊再采样" class="headerlink" title="pre-filtering 先模糊再采样"></a>pre-filtering 先模糊再采样</h3><p>预备知识：傅里叶级数展开</p>
+<p>可以用一系列sin函数和cos函数，表示信号</p>
+<h4 id="概念：高通滤波"><a href="#概念：高通滤波" class="headerlink" title="概念：高通滤波"></a>概念：高通滤波</h4><p>过滤低频率波，只留下高频率波：得到结果为边缘</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image4.png"
+                      alt="image-20250302155823165"
+                ></p>
+<h4 id="基本知识：时域卷积-频率乘积"><a href="#基本知识：时域卷积-频率乘积" class="headerlink" title="基本知识：时域卷积&#x3D;&#x3D;频率乘积"></a>基本知识：时域卷积&#x3D;&#x3D;频率乘积</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image5.png"
+                      alt="image-20250302155823165"
+                ></p>
+<h4 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h4><p>将高频信号丢掉后，不会发生频谱混叠，只是损失了部分细节变得模糊，不改变图片。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image6.png"
+                      alt="image-20250302155823165"
+                ></p>
+<h4 id="实际操作："><a href="#实际操作：" class="headerlink" title="实际操作："></a>实际操作：</h4><p>1.用1-pixel box-blur对图片卷积，完成模糊</p>
+<p>可以将卷积操作看成平均操作，即对每个像素计算其在三角形中的面积</p>
+<p>2.再进行采样</p>
+<h3 id="Supersmapling-（MSAA）——改善对图片模糊操作"><a href="#Supersmapling-（MSAA）——改善对图片模糊操作" class="headerlink" title="Supersmapling （MSAA）——改善对图片模糊操作"></a>Supersmapling （MSAA）——改善对图片模糊操作</h3><ol>
+<li>在像素中进一步细分成nxn in pixel</li>
+<li>再对nxn的取样进行求平均，得到覆盖率</li>
+<li>进行采样</li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image7.png"
+                      alt="image-20250302155823165"
+                ></p>
+<p>代价：计算量变大</p>
+<p>其他方法：FXAA、TAA</p>
+<p>总结</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image8.png"
+                      alt="image-20250302155823165"
+                ></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> </li>
+        <li><strong>Author:</strong> Rongying Liu</li>
+        <li><strong>Created at
+                :</strong> 2025-03-02 12:57:51</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2025-03-05 19:58:39
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2025/03/02/计算机图形学/光栅化 Rasterization/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
 </div>
+
+            </div>
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2025/03/03/CS231N/16%20segmentation/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item"></span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2025/02/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%8F%98%E6%8D%A2Transformation/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">GAMES101 Transformation 变换</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div class="twikoo-container">
+        <script data-swup-reload-script
+                src='https://cdnjs.cloudflare.com/ajax/libs/twikoo/1.6.10/twikoo.all.min.js'
+        ></script>
+        <div id="twikoo-comment"></div>
+        <script data-swup-reload-script>
+            function loadTwikoo() {
+                twikoo.init({
+                    el: '#twikoo-comment',
+                    envId: 'https://twkioo-api-ruby.vercel.app/',
+                });
+            }
+
+            if ('true') {
+                const loadTwikooTimeout = setTimeout(() => {
+                    loadTwikoo();
+                    clearTimeout(loadTwikooTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadTwikoo);
+            }
+        </script>
+    </div>
+
+
+        
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title"></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%89%E6%A0%85%E5%8C%96-Rasterization"><span class="nav-text">光栅化 Rasterization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Triangles"><span class="nav-text">Triangles</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sampling-%E9%87%87%E6%A0%B7%EF%BC%9A%E7%AE%80%E5%8D%95%E7%9A%84%E5%85%89%E6%A0%85%E5%8C%96%E6%96%B9%E6%B3%95"><span class="nav-text">Sampling 采样：简单的光栅化方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anti-aliasing-%E6%8A%97%E9%94%AF%E9%BD%BF"><span class="nav-text">Anti-aliasing 抗锯齿</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pre-filtering-%E5%85%88%E6%A8%A1%E7%B3%8A%E5%86%8D%E9%87%87%E6%A0%B7"><span class="nav-text">pre-filtering 先模糊再采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Supersmapling-%EF%BC%88MSAA%EF%BC%89%E2%80%94%E2%80%94%E6%94%B9%E5%96%84%E5%AF%B9%E5%9B%BE%E7%89%87%E6%A8%A1%E7%B3%8A%E6%93%8D%E4%BD%9C"><span class="nav-text">Supersmapling （MSAA）——改善对图片模糊操作</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
 
                 
 
@@ -589,6 +646,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">

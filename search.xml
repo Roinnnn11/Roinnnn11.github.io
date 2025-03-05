@@ -1690,21 +1690,21 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image1.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image1.png"
                       alt="image"
                 ></p>
 <h3 id="仿射变换-Affine-Transformation"><a href="#仿射变换-Affine-Transformation" class="headerlink" title="仿射变换 Affine Transformation"></a>仿射变换 Affine Transformation</h3><h4 id="缩放变换Scale-（not-uniform-uniform）"><a href="#缩放变换Scale-（not-uniform-uniform）" class="headerlink" title="缩放变换Scale （not uniform&#x2F;uniform）"></a>缩放变换Scale （not uniform&#x2F;uniform）</h4><p>缩放某一比例，可以写成矩阵形式</p>
 <h4 id="反射Reflection-Matrix"><a href="#反射Reflection-Matrix" class="headerlink" title="反射Reflection Matrix"></a>反射Reflection Matrix</h4><h4 id="斜切-Shear-Matrix"><a href="#斜切-Shear-Matrix" class="headerlink" title="斜切 Shear Matrix"></a>斜切 Shear Matrix</h4><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image2.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image2.png"
                       alt="image"
                 ></p>
 <h4 id="旋转-Rotate-Matrix"><a href="#旋转-Rotate-Matrix" class="headerlink" title="旋转 Rotate Matrix"></a>旋转 Rotate Matrix</h4><p>默认绕原点逆时针旋转</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image3.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image3.png"
                       alt="image"
                 ></p>
 <h3 id="齐次坐标"><a href="#齐次坐标" class="headerlink" title="齐次坐标"></a>齐次坐标</h3><p>增加一个维度，解决了平移用矩阵表示的问题</p>
@@ -1716,13 +1716,13 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image4.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image4.png"
                       alt="image"
                 ></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image5.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image5.png"
                       alt="image"
                 ></p>
 <h2 id="3D-变换"><a href="#3D-变换" class="headerlink" title="3D 变换"></a>3D 变换</h2><p>先仿射变换，再平移！（先平移的话旋转中心点会改变）</p>
@@ -1731,7 +1731,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image6.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image6.png"
                       alt="image"
                 ></p>
 <h3 id="Rodrigue’s-Rotation-Formula"><a href="#Rodrigue’s-Rotation-Formula" class="headerlink" title="Rodrigue’s Rotation Formula"></a>Rodrigue’s Rotation Formula</h3><p>旋转轴n和旋转角$\alpha$， （如果该轴不在原点，先平移至原点，旋转完再平移回去）</p>
@@ -1747,21 +1747,21 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image7.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image7.png"
                       alt="image"
                 ></p>
-<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><h3 id="Camera-Transformation-ModelView-Trans"><a href="#Camera-Transformation-ModelView-Trans" class="headerlink" title="Camera Transformation&#x2F;ModelView Trans"></a>Camera Transformation&#x2F;ModelView Trans</h3><h4 id="Define-the-camera-对相机定义"><a href="#Define-the-camera-对相机定义" class="headerlink" title="Define the camera 对相机定义"></a>Define the camera 对相机定义</h4><ul>
-<li>Position $\hat{e}$ </li>
-<li>Look-at&#x2F;gaze direction $\hat{g}$</li>
-<li>Up direction $\hat{t}$</li>
+<h2 id="View-transformation-placing-camera"><a href="#View-transformation-placing-camera" class="headerlink" title="View transformation (placing camera)"></a>View transformation (placing camera)</h2><h3 id="Define-the-camera-对相机定义"><a href="#Define-the-camera-对相机定义" class="headerlink" title="Define the camera 对相机定义"></a>Define the camera 对相机定义</h3><ul>
+<li><u><strong>Position $\hat{e}$</strong></u> </li>
+<li><u><strong>Look-at&#x2F;gaze direction $\hat{g}$</strong></u></li>
+<li><u><strong>Up direction $\hat{t}$</strong></u></li>
 </ul>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image8.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image8.png"
                       alt="image"
                 ></p>
-<h4 id="相机的标准位置"><a href="#相机的标准位置" class="headerlink" title="相机的标准位置"></a>相机的标准位置</h4><p>——将相机一直变换至原点，Up at Y,look at -Z,让物体跟随相机变换</p>
+<h3 id="相机的标准位置"><a href="#相机的标准位置" class="headerlink" title="相机的标准位置"></a>相机的标准位置</h3><p>——将相机一直变换至原点，Up at Y,look at -Z,让物体跟随相机变换</p>
 <p>如何变换？</p>
 <ol>
 <li><p>先平移至原点</p>
@@ -1772,19 +1772,19 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image9.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image9.png"
                       alt="image"
                 ></p>
 </li>
 </ol>
-<h3 id="Projection-Transformation"><a href="#Projection-Transformation" class="headerlink" title="Projection Transformation"></a>Projection Transformation</h3><p>两种投影：视角投影vs正交投影</p>
+<h2 id="Projection-Transformation👇"><a href="#Projection-Transformation👇" class="headerlink" title="Projection Transformation👇"></a>Projection Transformation👇</h2><p>两种投影：视角投影vs正交投影</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image10.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image10.png"
                       alt="image"
                 ></p>
-<h4 id="Orthographic-Projection-正交投影"><a href="#Orthographic-Projection-正交投影" class="headerlink" title="Orthographic Projection 正交投影"></a>Orthographic Projection 正交投影</h4><p>简单的理解：</p>
+<h3 id="Orthographic-Projection-正交投影"><a href="#Orthographic-Projection-正交投影" class="headerlink" title="Orthographic Projection 正交投影"></a>Orthographic Projection 正交投影</h3><p>简单的理解：</p>
 <p>将z轴消除，将xy坐标成比例放入[-1,1]</p>
 <hr>
 <p>实际上：</p>
@@ -1792,24 +1792,46 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image11.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image11.png"
                       alt="image"
                 ></p>
-<h4 id="Perspective-Projection-透视投影"><a href="#Perspective-Projection-透视投影" class="headerlink" title="Perspective Projection 透视投影"></a>Perspective Projection 透视投影</h4><p>1.用任意点变换n倍（n未知）时，满足：<img  
+<h3 id="Perspective-Projection-透视投影"><a href="#Perspective-Projection-透视投影" class="headerlink" title="Perspective Projection 透视投影"></a>Perspective Projection 透视投影</h3><p>1.用任意点变换n倍（n未知）时，满足：<img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image12.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image12.png"
                       alt="image"
                 >从而推出变换矩阵$M_{persp \to ortho}$的值</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image13.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image13.png"
                       alt="image"
                 ></p>
 <p>2.再利用near面&#x2F;far面上点的深度z不变。计算出M矩阵第三行参数</p>
 <p>应为：<strong>（0,0,n+f,-nf）</strong></p>
-<p>3.最后，有：$$M_{persp} &#x3D; M_{ortho}M_{persp\to ortho}$$</p>
+<p>3.最后，有：$$M_{persp} &#x3D; M_{ortho}M_{persp\to ortho}$$，变换至标准立方体</p>
+<h4 id="定义视锥-–透视投影"><a href="#定义视锥-–透视投影" class="headerlink" title="定义视锥 –透视投影"></a>定义视锥 –透视投影</h4><p>用两个参数描述视锥：</p>
+<p><strong>长宽比 aspect ratio、垂直可视角度 fovY</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image14.png"
+                      alt="image"
+                ></p>
+<h2 id="Canonical-Cube-to-Screen-在屏幕上绘制"><a href="#Canonical-Cube-to-Screen-在屏幕上绘制" class="headerlink" title="Canonical Cube to Screen (在屏幕上绘制)"></a>Canonical Cube to Screen (在屏幕上绘制)</h2><h4 id="确定屏幕位置"><a href="#确定屏幕位置" class="headerlink" title="确定屏幕位置"></a>确定屏幕位置</h4><p>对像素位置定义：见图片右侧</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image15.png"
+                      alt="image"
+                ></p>
+<h4 id="Viewport-transform-视口变换——对x、y进行变换"><a href="#Viewport-transform-视口变换——对x、y进行变换" class="headerlink" title="Viewport transform 视口变换——对x、y进行变换"></a>Viewport transform 视口变换——对x、y进行变换</h4><p>缩放+平移：将[-1,1]的立体缩放变换至[width,height]，再平移使左下角为原点</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image16.png"
+                      alt="image"
+                ></p>
 ]]></content>
       <categories>
         <category>GAMES101</category>
@@ -1817,5 +1839,387 @@
       <tags>
         <tag>计算机图形学</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/03/05/CS231N/15%20%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/</url>
+    <content><![CDATA[<h1 id="Lecture15-Object-Detection"><a href="#Lecture15-Object-Detection" class="headerlink" title="Lecture15 Object Detection"></a>Lecture15 Object Detection</h1><p>物体检测：Classification+Localization(分类+定位)</p>
+<h3 id="多任务损失："><a href="#多任务损失：" class="headerlink" title="多任务损失："></a>多任务损失：</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image1.png"
+                      alt="image"
+                ></p>
+<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><p>使用滑动窗口来检测物体（将窗口内图片进行分类，k种类别or背景）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image2.png"
+                      alt="image"
+                ></p>
+<h2 id="R-CNN-Region-Based-CNN"><a href="#R-CNN-Region-Based-CNN" class="headerlink" title="R-CNN : Region-Based CNN"></a>R-CNN : Region-Based CNN</h2><p><u>存在的问题：运行过慢</u></p>
+<p>将<strong>选择的区域</strong>（RoI : region of Interest）作为input，<strong>扭曲</strong>后<strong>再进入Conv Net</strong>进行分类。</p>
+<p>扭曲时使用四个参数：（超参数）</p>
+<p><u><strong>tx，ty对其大小进行改变；tw、th对其进行放缩。</strong></u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image3.png"
+                      alt="image"
+                ></p>
+<p>测试时的步骤如下：</p>
+<p>（第三步可以选择的策略：对背景&#x2F;每个种类设置预设值，或者采用前k个提议；使用验证集来测试，并不包含在训练过程）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image4.png"
+                      alt="image"
+                ></p>
+<h3 id="比较边界框：Intersection-over-Union-IoU"><a href="#比较边界框：Intersection-over-Union-IoU" class="headerlink" title="比较边界框：Intersection over Union(IoU)"></a>比较边界框：Intersection over Union(IoU)</h3><p>得到比值（类似于交集&#x2F;并集）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image5.png"
+                      alt="image"
+                ></p>
+<h3 id="去除重叠边界框：-Non-Max-Suppression-NMS-非最大抑制"><a href="#去除重叠边界框：-Non-Max-Suppression-NMS-非最大抑制" class="headerlink" title="去除重叠边界框： Non-Max Suppression(NMS 非最大抑制)"></a>去除重叠边界框： Non-Max Suppression(NMS 非最大抑制)</h3><p>一个简单的贪婪算法：<u>将具有高重叠的框删去</u>（例如高于0.7的IoU）</p>
+<p>具体步骤：</p>
+<p>1.选择次高分数的框</p>
+<p>2.测定与该框<strong>IoU大于阈值</strong>的其他框，并<strong>删去</strong></p>
+<p>3.重复第一步</p>
+<p><u>存在问题：当图片中确实有很多高重叠对象，无法识别</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image6.png"
+                      alt="image"
+                ></p>
+<h2 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h2><p>存在的问题：主要花费时间在region proposal上</p>
+<p>步骤：</p>
+<ol>
+<li><strong>Run whole image through ConvNet</strong> 将图片通过卷积层（没有全连接层，被称为backbone network），得到卷积后的<strong>特征图</strong>（Image features map） ——主要的计算发生在backbone</li>
+<li>使用 <strong>Region proposal method</strong>（如selective search），得到原始输入（image）上的区域，再对<strong>特征图</strong>对应区域<strong>裁剪&amp;调整大小</strong></li>
+<li>在裁剪得到的区域上运行<strong>Pre-Region Network</strong> (轻量级CNN网络) , 输出分类分数和边界框变换（Class+bbox，可以由不同结构网络得到）</li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image7.png"
+                      alt="image"
+                ></p>
+<h2 id="Cropping-Features-裁剪特征"><a href="#Cropping-Features-裁剪特征" class="headerlink" title="Cropping Features 裁剪特征"></a>Cropping Features 裁剪特征</h2><h3 id="1-Rol-Pool-：RoI池化"><a href="#1-Rol-Pool-：RoI池化" class="headerlink" title="1.Rol Pool ：RoI池化"></a>1.Rol Pool ：RoI池化</h3><p>例如：将 RoI 划分为2x2的网格，每个子区域相等；再对子区域进行最大池化；之后可以传入cnn进行前向or反向传播</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image8.png"
+                      alt="image"
+                ></p>
+<h3 id="2-Rol-Align"><a href="#2-Rol-Align" class="headerlink" title="2.Rol Align"></a>2.Rol Align</h3><p>使输入特征和输出特征更好地对齐。</p>
+<p>步骤：1.对每个子区域用<u>双线性插值采样</u>；</p>
+<p>2.对随机点 (x,y) ，其<u>特征是附近四个子区域单元的线性组合</u>：（如图中公式）（可微操作）</p>
+<p>3.对<u>每个子区域进行最大池化</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image9.png"
+                      alt="image"
+                ></p>
+<h2 id="Faster-R-CNN：Make-CNN-do-proposals"><a href="#Faster-R-CNN：Make-CNN-do-proposals" class="headerlink" title="Faster R-CNN：Make CNN do proposals!"></a>Faster R-CNN：Make CNN do proposals!</h2><p>放弃选择性搜索的启发式算法，训练神经网络来proposal.</p>
+<p><u>不同之处：将特征图传入RPN中，来获取proposals</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image10.png"
+                      alt="image"
+                ></p>
+<h3 id="Region-Proposal-Network（RPN）"><a href="#Region-Proposal-Network（RPN）" class="headerlink" title="Region Proposal Network（RPN）"></a>Region Proposal Network（RPN）</h3><p>1.对每个点使用<strong>固定尺寸的anchor box</strong>，predict 这个anchor box<strong>是否包含一个物体</strong>（通过<u>binary classification</u>）</p>
+<p>2.对于positive的方框，还要<strong>预测从锚点到ground truth方框的修正</strong>（每像素回归4个数字）</p>
+<p>3.在实践中，<strong>使用k个不同大小的锚框</strong>，根据“objectness”得分<strong>对 Kx20x15 个框进行排序</strong>，<strong>取前 300 个</strong>作为我们的提案</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image11.png"
+                      alt="image"
+                ></p>
+<h3 id="loss"><a href="#loss" class="headerlink" title="loss"></a>loss</h3><p>这个模型有四个loss；</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image12.png"
+                      alt="image"
+                ></p>
+<h3 id="忽略的细节"><a href="#忽略的细节" class="headerlink" title="忽略的细节"></a>忽略的细节</h3><p>如何确定锚点？</p>
+<p>如何采样正样本？</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image13.png"
+                      alt="image"
+                ></p>
+<h4 id="fast-R-CNN分为两个阶段"><a href="#fast-R-CNN分为两个阶段" class="headerlink" title="fast R-CNN分为两个阶段"></a>fast R-CNN分为两个阶段</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image14.png"
+                      alt="image"
+                ></p>
+<h2 id="Single-Stage-Object-Detection"><a href="#Single-Stage-Object-Detection" class="headerlink" title="Single-Stage Object Detection"></a>Single-Stage Object Detection</h2><p>在每个网格单元内：</p>
+<p>- 从<strong>每个 B个基本框</strong>回归到<strong>具有5 个数字的最终框</strong>：（dx、dy、dh、dw、confidence）</p>
+<p>- 预测<strong>每个 C类的分数</strong>（包括背景作为一个类）</p>
+<p>- 看起来很像 RPN，但是<strong>特定于类别</strong>的！</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image15.png"
+                      alt="image"
+                ></p>
+<h3 id="YOLO"><a href="#YOLO" class="headerlink" title="YOLO"></a>YOLO</h3><p>输出：一组边界框（bounding boxes），每个框都有一个置信度值和与之对应的类标签。</p>
+<p>主要步骤：</p>
+<p>1.首先将输入图像划分成一个S x S的网格。每个网格单元负责检测该区域内的物体。</p>
+<p>2.每个网格单元预测多个边界框（通常是B个），每个框包含以下信息：</p>
+<ul>
+<li>物体的<strong>位置</strong>（通过边界框的中心坐标、宽度和高度表示）</li>
+<li><strong>置信度</strong>（表示该框包含物体的概率，且与框的准确性相关）</li>
+</ul>
+<p>3.每个网格单元还预测类概率：每个框与特定类别的匹配程度</p>
+<p>损失：YOLO采用复合损失函数进行训练，主要包括：</p>
+<ul>
+<li><strong>定位损失</strong>：用于衡量预测边界框与真实边界框之间的差距（通常采用均方误差来计算）。</li>
+<li><strong>置信度损失</strong>：用于衡量预测的置信度与实际框是否包含物体的差异。</li>
+<li><strong>类别损失</strong>：用于衡量预测的类别概率与实际类别之间的差距。</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image16.png"
+                      alt="image"
+                ></p>
+<h2 id="衡量模型指标"><a href="#衡量模型指标" class="headerlink" title="衡量模型指标"></a>衡量模型指标</h2><h3 id="1-Mean-Average-Precision-mAP-平均精度"><a href="#1-Mean-Average-Precision-mAP-平均精度" class="headerlink" title="1.Mean Average Precision (mAP 平均精度)"></a>1.Mean Average Precision (mAP 平均精度)</h3><p> <u>对精度和召回率都有权衡</u></p>
+<p>计算步骤：</p>
+<p>1.在测试集上使用模型</p>
+<p>2.对每个类别，计算AP（Average Precision）:</p>
+<p>​	a. 对每次检测：</p>
+<p>​		1.如果与GT box的IoU值＞0.5，认为positive，否则negative</p>
+<p>​		2.在PR曲线上画点</p>
+<p>​	b.<strong>AP &#x3D; PR曲线下的面积</strong></p>
+<p>3.计算<strong>AP平均值</strong>，得到mAP</p>
+<p>4.“COCO mAP”:对不同值的IoU（0.5,0.55,0.6…,0.95）计算mAP，最终取平均</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image17.png"
+                      alt="image"
+                ></p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/03/03/CS231N/16%20segmentation/</url>
+    <content><![CDATA[<h1 id="Segmentation"><a href="#Segmentation" class="headerlink" title="Segmentation"></a>Segmentation</h1><h2 id="Semantic-Segmentation-语义分割"><a href="#Semantic-Segmentation-语义分割" class="headerlink" title="Semantic Segmentation 语义分割"></a>Semantic Segmentation 语义分割</h2><p>定义：对图片的<strong>每一个像素</strong>进行分类</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20250303190021532.png"
+                      alt="image-20250303190021532"
+                ></p>
+<h3 id="1-Fully-Convolutional"><a href="#1-Fully-Convolutional" class="headerlink" title="1.Fully Convolutional"></a>1.Fully Convolutional</h3><h4 id="初始想法"><a href="#初始想法" class="headerlink" title="初始想法"></a>初始想法</h4><ul>
+<li>只用conv层搭建神经网络（不使用全连接or池化层）</li>
+<li>在最后一层，使输出通道数与预测类别相等。</li>
+<li>将输出解释为每个类别的得分，用类似softmax对每个像素处理，得到概率分布。</li>
+<li>其loss：可以对每个像素使用cross-entropy</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20250303190608781.png"
+                      alt="image-20250303190608781"
+                ></p>
+<p>问题：</p>
+<ol>
+<li>需要很多层conv，才能让receptive field足够大</li>
+<li>对高分辨率图片，计算量很大</li>
+</ol>
+<h4 id="更多使用（改进）"><a href="#更多使用（改进）" class="headerlink" title="更多使用（改进）"></a>更多使用（改进）</h4><p>在网络中使用downsampling和upsampling，下采样让receptive field更快扩大</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20250303192042270.png"
+                      alt="image-20250303192042270"
+                ></p>
+<h3 id="上采样的一些方法"><a href="#上采样的一些方法" class="headerlink" title="上采样的一些方法"></a>上采样的一些方法</h3><h4 id="Nearest-Neighbor-Unpooling"><a href="#Nearest-Neighbor-Unpooling" class="headerlink" title="Nearest Neighbor Unpooling"></a>Nearest Neighbor Unpooling</h4><p>将元素进行复制，填充到该大小的矩阵上去。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20250303192558901.png"
+                      alt="image-20250303192558901"
+                ></p>
+<h4 id="Bilinear-Interpolation-双插值"><a href="#Bilinear-Interpolation-双插值" class="headerlink" title="Bilinear Interpolation 双插值"></a>Bilinear Interpolation 双插值</h4><p>比起nearest neighbor，其上采样<u>更加平滑</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20250303192728813.png"
+                      alt="image-20250303192728813"
+                > </p>
+<h4 id="Bicubic-Interpolation-三次插值"><a href="#Bicubic-Interpolation-三次插值" class="headerlink" title="Bicubic Interpolation 三次插值"></a>Bicubic Interpolation 三次插值</h4><p>也可以用来在<u>神经网络内重新采样</u>or<u>调整特征图大小</u></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20250303193023589.png"
+                      alt="image-20250303193023589"
+                ></p>
+<h4 id="Max-Unpooling"><a href="#Max-Unpooling" class="headerlink" title="Max Unpooling"></a>Max Unpooling</h4><p>将pooling层与unpooling层配对；</p>
+<p>记住max pooling时<strong>取值的位置</strong>，在unpooling时放回至<strong>原来的位置</strong>；</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20250303193234054.png"
+                      alt="image-20250303193234054"
+                ></p>
+<h4 id="Learnable-Upsampling-Transposed-Convolution"><a href="#Learnable-Upsampling-Transposed-Convolution" class="headerlink" title="Learnable Upsampling: Transposed Convolution"></a>Learnable Upsampling: Transposed Convolution</h4><ul>
+<li>根据input大小和预期output大小，设定filter参数；</li>
+<li>滤波器的移动步幅决定了输出特征图的尺寸。例如，步幅为2意味着滤波器在输出特征图上每移动2个像素，输入特征图上移动1个像素。</li>
+<li>重叠区域的值会被累加</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20250303194521307.png"
+                      alt="image-20250303194521307"
+                ></p>
+<p><u>为什么叫做转置卷积？</u></p>
+<p>因为可以用矩阵的转置运算来表示：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20250303195030001.png"
+                      alt="image-20250303195030001"
+                ></p>
+<h2 id="Instance-Segmentation-实例分割"><a href="#Instance-Segmentation-实例分割" class="headerlink" title="Instance Segmentation 实例分割"></a>Instance Segmentation 实例分割</h2><p>定义：检测图片中物体，并识别属于物体的像素</p>
+<p>方法：先进行物体检测，再对每个物体进行分割</p>
+<h3 id="Mask-R-CNN"><a href="#Mask-R-CNN" class="headerlink" title="Mask R-CNN"></a>Mask R-CNN</h3><p>对每个预测对象，进行实例分割</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20250303200430950.png"
+                      alt="image-20250303200430950"
+                ></p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/03/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shading/</url>
+    <content><![CDATA[<h2 id="Z-Buffer-深度缓存"><a href="#Z-Buffer-深度缓存" class="headerlink" title="Z-Buffer 深度缓存"></a>Z-Buffer 深度缓存</h2><p>对所有三角形遍历，存储最近的像素：</p>
+<p>​	使用frame buffer存储色彩值</p>
+<p>​	使用z buffer存储深度</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://uploader.shimo.im/f/9AyHD1kcEAzPMQAc.PNG!thumbnail?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NDExNDM3MDAsImZpbGVHVUlEIjoiUjEzamRYV2VPMmZhMTBrNSIsImlhdCI6MTc0MTE0MzQwMCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOjk2MDAwMjA5fQ.iGlNfm1xyKxc57L6XwllpfnczY6clUQdesJ3a8iurMo"
+                      alt="img"
+                ></p>
+<h2 id="Shading-着色"><a href="#Shading-着色" class="headerlink" title="Shading 着色"></a>Shading 着色</h2><p>三个部分：Specular highlights高光、Diffuse reflection漫反射和 Ambient lighting环境光</p>
+<p>输入变量：</p>
+<ul>
+<li>视线方向v</li>
+<li>表面法线n</li>
+<li>光源方向I</li>
+<li>表面参数：颜色、亮度…</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20250305124355059.png"
+                      alt="image-20250305124355059"
+                ></p>
+<h3 id="Diffuse-Reflection-漫反射"><a href="#Diffuse-Reflection-漫反射" class="headerlink" title="Diffuse Reflection 漫反射"></a>Diffuse Reflection 漫反射</h3><p>接收的光线能量与光照角度有关。</p>
+<h4 id="Lambertian（Diffuse）Shading"><a href="#Lambertian（Diffuse）Shading" class="headerlink" title="Lambertian（Diffuse）Shading"></a>Lambertian（Diffuse）Shading</h4><p>光的能量与距离平方成反比；乘以max（0，夹角cos值）；</p>
+<p>$k_{d}$漫反射系数 ，可以定义为三维RGB向量，成为固有色</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\28712\AppData\Roaming\Typora\typora-user-images\image-20250305130433242.png"
+                      alt="image-20250305130433242"
+                ></p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/03/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/</url>
+    <content><![CDATA[<h1 id="光栅化-Rasterization"><a href="#光栅化-Rasterization" class="headerlink" title="光栅化 Rasterization"></a>光栅化 Rasterization</h1><h2 id="Triangles"><a href="#Triangles" class="headerlink" title="Triangles"></a>Triangles</h2><p>三角形的特质：</p>
+<ul>
+<li>可分解其他多边形</li>
+<li>保证平面性</li>
+<li>明确界定的内部区域</li>
+<li>好的数值插值方法</li>
+</ul>
+<h3 id="Sampling-采样：简单的光栅化方法"><a href="#Sampling-采样：简单的光栅化方法" class="headerlink" title="Sampling 采样：简单的光栅化方法"></a>Sampling 采样：简单的光栅化方法</h3><p>实际上是将函数离散化的过程。</p>
+<p>判断：如果像素中心在三角形内，则采样。  </p>
+<h4 id="1-利用叉积：全正or全负，说明在三角形内部。"><a href="#1-利用叉积：全正or全负，说明在三角形内部。" class="headerlink" title="1.利用叉积：全正or全负，说明在三角形内部。"></a>1.利用叉积：全正or全负，说明在三角形内部。</h4><p>P1QxP1P2,P2QxP2P0,P0QxP0P1（按逆&#x2F;顺时针顺序，否则会出错）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image1.png"
+                      alt="image-20250302155823165"
+                ></p>
+<h4 id="2-使用Bounding-Box-包围盒——排除bounding-box之外的点"><a href="#2-使用Bounding-Box-包围盒——排除bounding-box之外的点" class="headerlink" title="2.使用Bounding Box 包围盒——排除bounding box之外的点"></a>2.使用Bounding Box 包围盒——排除bounding box之外的点</h4><p>此处使用的是axis-aligned   bounding box，轴向包围盒（简称AABB）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image2.png"
+                      alt="image-20250302155823165"
+                ></p>
+<h4 id="3-Incremental-Triangle-Traversal"><a href="#3-Incremental-Triangle-Traversal" class="headerlink" title="3.Incremental Triangle Traversal"></a>3.Incremental Triangle Traversal</h4><p>对每一行生成AABB，然后判断box内像素是否在三角形内部。</p>
+<p>（更适用于钝角大倾斜细长的三角形，会更快）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image3.png"
+                      alt="image-20250302155823165"
+                ></p>
+<h2 id="Anti-aliasing-抗锯齿"><a href="#Anti-aliasing-抗锯齿" class="headerlink" title="Anti-aliasing 抗锯齿"></a>Anti-aliasing 抗锯齿</h2><h3 id="pre-filtering-先模糊再采样"><a href="#pre-filtering-先模糊再采样" class="headerlink" title="pre-filtering 先模糊再采样"></a>pre-filtering 先模糊再采样</h3><p>预备知识：傅里叶级数展开</p>
+<p>可以用一系列sin函数和cos函数，表示信号</p>
+<h4 id="概念：高通滤波"><a href="#概念：高通滤波" class="headerlink" title="概念：高通滤波"></a>概念：高通滤波</h4><p>过滤低频率波，只留下高频率波：得到结果为边缘</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image4.png"
+                      alt="image-20250302155823165"
+                ></p>
+<h4 id="基本知识：时域卷积-频率乘积"><a href="#基本知识：时域卷积-频率乘积" class="headerlink" title="基本知识：时域卷积&#x3D;&#x3D;频率乘积"></a>基本知识：时域卷积&#x3D;&#x3D;频率乘积</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image5.png"
+                      alt="image-20250302155823165"
+                ></p>
+<h4 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h4><p>将高频信号丢掉后，不会发生频谱混叠，只是损失了部分细节变得模糊，不改变图片。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image6.png"
+                      alt="image-20250302155823165"
+                ></p>
+<h4 id="实际操作："><a href="#实际操作：" class="headerlink" title="实际操作："></a>实际操作：</h4><p>1.用1-pixel box-blur对图片卷积，完成模糊</p>
+<p>可以将卷积操作看成平均操作，即对每个像素计算其在三角形中的面积</p>
+<p>2.再进行采样</p>
+<h3 id="Supersmapling-（MSAA）——改善对图片模糊操作"><a href="#Supersmapling-（MSAA）——改善对图片模糊操作" class="headerlink" title="Supersmapling （MSAA）——改善对图片模糊操作"></a>Supersmapling （MSAA）——改善对图片模糊操作</h3><ol>
+<li>在像素中进一步细分成nxn in pixel</li>
+<li>再对nxn的取样进行求平均，得到覆盖率</li>
+<li>进行采样</li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image7.png"
+                      alt="image-20250302155823165"
+                ></p>
+<p>代价：计算量变大</p>
+<p>其他方法：FXAA、TAA</p>
+<p>总结</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/image8.png"
+                      alt="image-20250302155823165"
+                ></p>
+]]></content>
   </entry>
 </search>

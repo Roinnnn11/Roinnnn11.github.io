@@ -13,39 +13,40 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/07/cs231n/优化/"/>
+    <link rel="canonical" href="https://github.com/Roinnnn11/Roinnnn11.github.io/2025/03/05/cs231n/15 目标检测/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="2️⃣ follow the slope 直接计算导数、使用导数（deltaloss&#x2F;delta-h） 缺点：对求导计算缓慢，如果矩阵&#x2F;维度过大 &#x3D;&#x3D;&#x3D;用一个方程表示梯度（反向传播 第六节中讲述） Computing Gradients(计算梯度) numeric&#x2F;analytic （计算出值&#x2F;分析） 一般使用数字梯度来检验对解">
+        <meta name="description" content="Lecture15 Object Detection物体检测：Classification+Localization(分类+定位) 多任务损失： 滑动窗口使用滑动窗口来检测物体（将窗口内图片进行分类，k种类别or背景）  R-CNN : Region-Based CNN存在的问题：运行过慢 将选择的区域（RoI : region of Interest）作为input，扭曲后再进入Conv Net">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CS231N Lecture4 优化">
-<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/07/CS231N/%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2025/03/05/CS231N/15%20%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="2️⃣ follow the slope 直接计算导数、使用导数（deltaloss&#x2F;delta-h） 缺点：对求导计算缓慢，如果矩阵&#x2F;维度过大 &#x3D;&#x3D;&#x3D;用一个方程表示梯度（反向传播 第六节中讲述） Computing Gradients(计算梯度) numeric&#x2F;analytic （计算出值&#x2F;分析） 一般使用数字梯度来检验对解">
+<meta property="og:description" content="Lecture15 Object Detection物体检测：Classification+Localization(分类+定位) 多任务损失： 滑动窗口使用滑动窗口来检测物体（将窗口内图片进行分类，k种类别or背景）  R-CNN : Region-Based CNN存在的问题：运行过慢 将选择的区域（RoI : region of Interest）作为input，扭曲后再进入Conv Net">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0531.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0532.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0533.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0555.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0559.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0557.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0560.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0561.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0562.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0563.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0564.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image0568.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0567.PNG">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0566.PNG">
-<meta property="article:published_time" content="2024-12-07T11:14:49.409Z">
-<meta property="article:modified_time" content="2025-01-20T15:30:42.769Z">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image1.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image2.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image3.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image4.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image5.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image6.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image7.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image8.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image9.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image10.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image11.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image12.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image13.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image14.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image15.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image16.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image17.png">
+<meta property="article:published_time" content="2025-03-05T11:32:28.466Z">
+<meta property="article:modified_time" content="2025-03-05T11:54:10.907Z">
 <meta property="article:author" content="Roin">
-<meta property="article:tag" content="计算机视觉">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0531.PNG">
+<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image1.png">
     
     
     <!--- Icon Part-->
@@ -57,7 +58,7 @@
     
     <title>
         
-            CS231N Lecture4 优化 | Roin&#39;s BLOG
+            Roin&#39;s BLOG - 记录学习の一个小角落(o^^o).
         
     </title>
 
@@ -291,7 +292,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CS231N Lecture4 优化</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3"></h1>
                 </div>
             
             </div>
@@ -312,58 +313,31 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-12-07 19:14:49</span>
-        <span class="mobile">2024-12-07 19:14:49</span>
+        <span class="desktop">2025-03-05 19:32:28</span>
+        <span class="mobile">2025-03-05 19:32:28</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-01-20 23:30:42</span>
-            <span class="mobile">2025-01-20 23:30:42</span>
+            <span class="desktop">2025-03-05 19:54:10</span>
+            <span class="mobile">2025-03-05 19:54:10</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
     
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/CS231N/">CS231N</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>705 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.2k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 Mins</span>
         </span>
     
     
@@ -382,133 +356,170 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <p>2️⃣ follow the slope</p>
-<p>直接计算导数、使用导数（deltaloss&#x2F;delta-h）</p>
-<p>缺点：对求导计算缓慢，如果矩阵&#x2F;维度过大</p>
-<p>&#x3D;&#x3D;&#x3D;用一个方程表示梯度（反向传播 第六节中讲述）</p>
-<p><strong>Computing Gradients(计算梯度)</strong></p>
-<p>numeric&#x2F;analytic （计算出值&#x2F;分析）</p>
-<p>一般使用数字梯度来检验对解析梯度的推导</p>
-<p>（pytorch提供了一个函数gradcheck、实现相似的功能）</p>
+            <h1 id="Lecture15-Object-Detection"><a href="#Lecture15-Object-Detection" class="headerlink" title="Lecture15 Object Detection"></a>Lecture15 Object Detection</h1><p>物体检测：Classification+Localization(分类+定位)</p>
+<h3 id="多任务损失："><a href="#多任务损失：" class="headerlink" title="多任务损失："></a>多任务损失：</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image1.png"
+                      alt="image"
+                ></p>
+<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><p>使用滑动窗口来检测物体（将窗口内图片进行分类，k种类别or背景）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0531.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image2.png"
                       alt="image"
                 ></p>
-<h3 id="gradient-descent梯度下降"><a href="#gradient-descent梯度下降" class="headerlink" title="gradient descent梯度下降"></a><u>gradient descent梯度下降</u></h3><p>包含的超参：</p>
-<p><u>1️⃣初始化权重的方法</u></p>
-<p><u>2️⃣循环次数：受计算预算和时间限制</u></p>
-<p><u>3️⃣学习率learning rate：</u></p>
-<p>较大：收敛较快</p>
-<p>较小：不容易数字爆炸、但时间较长</p>
-<p>梯度下降的feature：使用全部数据，当数据集较大时，不适用</p>
+<h2 id="R-CNN-Region-Based-CNN"><a href="#R-CNN-Region-Based-CNN" class="headerlink" title="R-CNN : Region-Based CNN"></a>R-CNN : Region-Based CNN</h2><p><u>存在的问题：运行过慢</u></p>
+<p>将<strong>选择的区域</strong>（RoI : region of Interest）作为input，<strong>扭曲</strong>后<strong>再进入Conv Net</strong>进行分类。</p>
+<p>扭曲时使用四个参数：（超参数）</p>
+<p><u><strong>tx，ty对其大小进行改变；tw、th对其进行放缩。</strong></u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0532.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image3.png"
                       alt="image"
                 ></p>
-<h3 id="batch-gradient-descent（批量梯度下降）"><a href="#batch-gradient-descent（批量梯度下降）" class="headerlink" title="batch gradient descent（批量梯度下降）"></a><u>batch gradient descent（批量梯度下降）</u></h3><p>选择批量，进行求loss和计算梯度</p>
-<p>SGD随机梯度下降</p>
-<h3 id="stochastic-gradient-descentSGD随机梯度下降"><a href="#stochastic-gradient-descentSGD随机梯度下降" class="headerlink" title="stochastic gradient descentSGD随机梯度下降"></a><u>stochastic gradient descentSGD随机梯度下降</u></h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0533.PNG"
-                      alt="image"
-                ></p>
-<p>存在的问题：</p>
-<p><u>局部最小、鞍点&#x2F;收敛速度一方过大一方过小</u></p>
-<p><strong>更智能的方法：</strong></p>
-<h4 id="1-sgd-动量更新"><a href="#1-sgd-动量更新" class="headerlink" title="1.sgd+动量更新"></a>1.sgd+动量更新</h4><p>初始化相同、用梯度算出”dw”的值，用来更新速度向量，（想象球滚落）（类似于对梯度计算历史平均值）</p>
-<p>超参数：<strong>rho– decay rate</strong></p>
-<p><u>（当抵达局部最小&#x2F;鞍点，仍有残余速度去跳出局部，更平滑地处理高纬度问题）</u></p>
+<p>测试时的步骤如下：</p>
+<p>（第三步可以选择的策略：对背景&#x2F;每个种类设置预设值，或者采用前k个提议；使用验证集来测试，并不包含在训练过程）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0555.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image4.png"
                       alt="image"
                 ></p>
-<h4 id="2-Nesterov-动量更新"><a href="#2-Nesterov-动量更新" class="headerlink" title="2.Nesterov 动量更新"></a>2.Nesterov 动量更新</h4><p>如图</p>
-<p>“Look ahead”会对下一时刻的梯度进行预测</p>
+<h3 id="比较边界框：Intersection-over-Union-IoU"><a href="#比较边界框：Intersection-over-Union-IoU" class="headerlink" title="比较边界框：Intersection over Union(IoU)"></a>比较边界框：Intersection over Union(IoU)</h3><p>得到比值（类似于交集&#x2F;并集）</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0559.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image5.png"
                       alt="image"
                 ></p>
-<p>两者对比：</p>
+<h3 id="去除重叠边界框：-Non-Max-Suppression-NMS-非最大抑制"><a href="#去除重叠边界框：-Non-Max-Suppression-NMS-非最大抑制" class="headerlink" title="去除重叠边界框： Non-Max Suppression(NMS 非最大抑制)"></a>去除重叠边界框： Non-Max Suppression(NMS 非最大抑制)</h3><p>一个简单的贪婪算法：<u>将具有高重叠的框删去</u>（例如高于0.7的IoU）</p>
+<p>具体步骤：</p>
+<p>1.选择次高分数的框</p>
+<p>2.测定与该框<strong>IoU大于阈值</strong>的其他框，并<strong>删去</strong></p>
+<p>3.重复第一步</p>
+<p><u>存在问题：当图片中确实有很多高重叠对象，无法识别</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0557.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image6.png"
                       alt="image"
                 ></p>
-<p><u>sgd特征：1.可能会overshoot（到达底端后，会有反向动量存在，往回走一段距离，如下图）</u></p>
+<h2 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h2><p>存在的问题：主要花费时间在region proposal上</p>
+<p>步骤：</p>
+<ol>
+<li><strong>Run whole image through ConvNet</strong> 将图片通过卷积层（没有全连接层，被称为backbone network），得到卷积后的<strong>特征图</strong>（Image features map） ——主要的计算发生在backbone</li>
+<li>使用 <strong>Region proposal method</strong>（如selective search），得到原始输入（image）上的区域，再对<strong>特征图</strong>对应区域<strong>裁剪&amp;调整大小</strong></li>
+<li>在裁剪得到的区域上运行<strong>Pre-Region Network</strong> (轻量级CNN网络) , 输出分类分数和边界框变换（Class+bbox，可以由不同结构网络得到）</li>
+</ol>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0560.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image7.png"
                       alt="image"
                 ></p>
-<h3 id="Adaptive-learning-rates自适应学习率"><a href="#Adaptive-learning-rates自适应学习率" class="headerlink" title="Adaptive learning rates自适应学习率"></a>Adaptive learning rates自适应学习率</h3><h4 id="1-AdaGrad算法"><a href="#1-AdaGrad算法" class="headerlink" title="1.AdaGrad算法"></a>1.AdaGrad算法</h4><p>（通过<strong>除以梯度</strong>，抑制&#x2F;提高运动速度）</p>
-<p><u>问题：grad—squared不断增加（趋于无限大），学习率不断下降，可能在达到结果前停止</u></p>
+<h2 id="Cropping-Features-裁剪特征"><a href="#Cropping-Features-裁剪特征" class="headerlink" title="Cropping Features 裁剪特征"></a>Cropping Features 裁剪特征</h2><h3 id="1-Rol-Pool-：RoI池化"><a href="#1-Rol-Pool-：RoI池化" class="headerlink" title="1.Rol Pool ：RoI池化"></a>1.Rol Pool ：RoI池化</h3><p>例如：将 RoI 划分为2x2的网格，每个子区域相等；再对子区域进行最大池化；之后可以传入cnn进行前向or反向传播</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0561.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image8.png"
                       alt="image"
                 ></p>
-<h4 id="2-RMSprop（对AdaGrad的改善）"><a href="#2-RMSprop（对AdaGrad的改善）" class="headerlink" title="2.RMSprop（对AdaGrad的改善）"></a>2.RMSprop（对AdaGrad的改善）</h4><p>添加参数decay_rate 来降低grad_squared,  类似加入摩擦系数</p>
+<h3 id="2-Rol-Align"><a href="#2-Rol-Align" class="headerlink" title="2.Rol Align"></a>2.Rol Align</h3><p>使输入特征和输出特征更好地对齐。</p>
+<p>步骤：1.对每个子区域用<u>双线性插值采样</u>；</p>
+<p>2.对随机点 (x,y) ，其<u>特征是附近四个子区域单元的线性组合</u>：（如图中公式）（可微操作）</p>
+<p>3.对<u>每个子区域进行最大池化</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0562.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image9.png"
                       alt="image"
                 ></p>
-<h3 id="Adam（RMSProp-动量）"><a href="#Adam（RMSProp-动量）" class="headerlink" title="Adam（RMSProp+动量）"></a>Adam（RMSProp+动量）</h3><p>——非常强大的优化算法，适用于不同的任务，超参的调整范围也较小</p>
-<p>将两种算法结合，存在问题：如果beta2趋于1，那么优化第一步可能走出很大一步（除以近似0的数）</p>
+<h2 id="Faster-R-CNN：Make-CNN-do-proposals"><a href="#Faster-R-CNN：Make-CNN-do-proposals" class="headerlink" title="Faster R-CNN：Make CNN do proposals!"></a>Faster R-CNN：Make CNN do proposals!</h2><p>放弃选择性搜索的启发式算法，训练神经网络来proposal.</p>
+<p><u>不同之处：将特征图传入RPN中，来获取proposals</u></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0563.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image10.png"
                       alt="image"
                 ></p>
-<p>对其进行改善：添加<strong>Bias Corection（偏差校正）</strong>，让其更稳健。</p>
+<h3 id="Region-Proposal-Network（RPN）"><a href="#Region-Proposal-Network（RPN）" class="headerlink" title="Region Proposal Network（RPN）"></a>Region Proposal Network（RPN）</h3><p>1.对每个点使用<strong>固定尺寸的anchor box</strong>，predict 这个anchor box<strong>是否包含一个物体</strong>（通过<u>binary classification</u>）</p>
+<p>2.对于positive的方框，还要<strong>预测从锚点到ground truth方框的修正</strong>（每像素回归4个数字）</p>
+<p>3.在实践中，<strong>使用k个不同大小的锚框</strong>，根据“objectness”得分<strong>对 Kx20x15 个框进行排序</strong>，<strong>取前 300 个</strong>作为我们的提案</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0564.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image11.png"
                       alt="image"
                 ></p>
-<h3 id="AdamW：Adam-Variant-with-Weight-Decay"><a href="#AdamW：Adam-Variant-with-Weight-Decay" class="headerlink" title="AdamW：Adam Variant with Weight Decay"></a>AdamW：Adam Variant with Weight Decay</h3><p>Source：<a class="link"   target="_blank" rel="noopener" href="https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html" >https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>在每次epoch中，对权重进行衰减：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">moving_avg = alpha * moving_avg + (<span class="number">1</span>-alpha) * w.grad </span><br><span class="line"></span><br><span class="line">w = w - lr * moving_avg - lr * wd * w</span><br></pre></td></tr></table></figure></div>
-
+<h3 id="loss"><a href="#loss" class="headerlink" title="loss"></a>loss</h3><p>这个模型有四个loss；</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image12.png"
                       alt="image"
                 ></p>
-<h3 id="Learning-Rate-Decay-减少学习率"><a href="#Learning-Rate-Decay-减少学习率" class="headerlink" title="Learning Rate Decay 减少学习率"></a>Learning Rate Decay 减少学习率</h3><p>在某些固定点减少学习率。常见的方法如下：</p>
+<h3 id="忽略的细节"><a href="#忽略的细节" class="headerlink" title="忽略的细节"></a>忽略的细节</h3><p>如何确定锚点？</p>
+<p>如何采样正样本？</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/image0568.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image13.png"
                       alt="image"
                 ></p>
-<h3 id="二阶优化方法：L-BFGS（准确但不实际）-BGFS-最常用"><a href="#二阶优化方法：L-BFGS（准确但不实际）-BGFS-最常用" class="headerlink" title="二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)"></a>二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)</h3><p>使用Hessian矩阵，可以使对学习率&#x2F;步长的选择更加合理。但数据量巨大，只适合低维优化问题</p>
+<h4 id="fast-R-CNN分为两个阶段"><a href="#fast-R-CNN分为两个阶段" class="headerlink" title="fast R-CNN分为两个阶段"></a>fast R-CNN分为两个阶段</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image14.png"
+                      alt="image"
+                ></p>
+<h2 id="Single-Stage-Object-Detection"><a href="#Single-Stage-Object-Detection" class="headerlink" title="Single-Stage Object Detection"></a>Single-Stage Object Detection</h2><p>在每个网格单元内：</p>
+<p>- 从<strong>每个 B个基本框</strong>回归到<strong>具有5 个数字的最终框</strong>：（dx、dy、dh、dw、confidence）</p>
+<p>- 预测<strong>每个 C类的分数</strong>（包括背景作为一个类）</p>
+<p>- 看起来很像 RPN，但是<strong>特定于类别</strong>的！</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0567.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image15.png"
                       alt="image"
                 ></p>
-<h3 id="总结（对优化算法的比较）"><a href="#总结（对优化算法的比较）" class="headerlink" title="总结（对优化算法的比较）"></a>总结（对优化算法的比较）</h3><p><img  
+<h3 id="YOLO"><a href="#YOLO" class="headerlink" title="YOLO"></a>YOLO</h3><p>输出：一组边界框（bounding boxes），每个框都有一个置信度值和与之对应的类标签。</p>
+<p>主要步骤：</p>
+<p>1.首先将输入图像划分成一个S x S的网格。每个网格单元负责检测该区域内的物体。</p>
+<p>2.每个网格单元预测多个边界框（通常是B个），每个框包含以下信息：</p>
+<ul>
+<li>物体的<strong>位置</strong>（通过边界框的中心坐标、宽度和高度表示）</li>
+<li><strong>置信度</strong>（表示该框包含物体的概率，且与框的准确性相关）</li>
+</ul>
+<p>3.每个网格单元还预测类概率：每个框与特定类别的匹配程度</p>
+<p>损失：YOLO采用复合损失函数进行训练，主要包括：</p>
+<ul>
+<li><strong>定位损失</strong>：用于衡量预测边界框与真实边界框之间的差距（通常采用均方误差来计算）。</li>
+<li><strong>置信度损失</strong>：用于衡量预测的置信度与实际框是否包含物体的差异。</li>
+<li><strong>类别损失</strong>：用于衡量预测的类别概率与实际类别之间的差距。</li>
+</ul>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture2/IMG_0566.PNG"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image16.png"
+                      alt="image"
+                ></p>
+<h2 id="衡量模型指标"><a href="#衡量模型指标" class="headerlink" title="衡量模型指标"></a>衡量模型指标</h2><h3 id="1-Mean-Average-Precision-mAP-平均精度"><a href="#1-Mean-Average-Precision-mAP-平均精度" class="headerlink" title="1.Mean Average Precision (mAP 平均精度)"></a>1.Mean Average Precision (mAP 平均精度)</h3><p> <u>对精度和召回率都有权衡</u></p>
+<p>计算步骤：</p>
+<p>1.在测试集上使用模型</p>
+<p>2.对每个类别，计算AP（Average Precision）:</p>
+<p>​	a. 对每次检测：</p>
+<p>​		1.如果与GT box的IoU值＞0.5，认为positive，否则negative</p>
+<p>​		2.在PR曲线上画点</p>
+<p>​	b.<strong>AP &#x3D; PR曲线下的面积</strong></p>
+<p>3.计算<strong>AP平均值</strong>，得到mAP</p>
+<p>4.“COCO mAP”:对不同值的IoU（0.5,0.55,0.6…,0.95）计算mAP，最终取平均</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image17.png"
                       alt="image"
                 ></p>
 
@@ -518,18 +529,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> CS231N Lecture4 优化</li>
+        <li><strong>Title:</strong> </li>
         <li><strong>Author:</strong> Rongying Liu</li>
         <li><strong>Created at
-                :</strong> 2024-12-07 19:14:49</li>
+                :</strong> 2025-03-05 19:32:28</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-01-20 23:30:42
+                    :</strong> 2025-03-05 19:54:10
             </li>
         
         <li>
-            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2024/12/07/CS231N/优化/
+            <strong>Link:</strong> https://github.com/Roinnnn11/Roinnnn11.github.io/2025/03/05/CS231N/15 目标检测/
         </li>
         <li>
             <strong>
@@ -548,43 +559,20 @@
         
 
         
-            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">#计算机视觉</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
 
         
 
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/12/08/CS231N/5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">CS231N Lecture5 神经网络</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/11/19/CS231N/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8/"
+                        href="/2025/03/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shading/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">CS231N Lecture3 线性分类器</span>
+                                <span class="post-nav-title-item"></span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -647,8 +635,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">CS231N Lecture4 优化</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-text">gradient descent梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#batch-gradient-descent%EF%BC%88%E6%89%B9%E9%87%8F%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%89"><span class="nav-text">batch gradient descent（批量梯度下降）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stochastic-gradient-descentSGD%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-text">stochastic gradient descentSGD随机梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adaptive-learning-rates%E8%87%AA%E9%80%82%E5%BA%94%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="nav-text">Adaptive learning rates自适应学习率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adam%EF%BC%88RMSProp-%E5%8A%A8%E9%87%8F%EF%BC%89"><span class="nav-text">Adam（RMSProp+动量）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AdamW%EF%BC%9AAdam-Variant-with-Weight-Decay"><span class="nav-text">AdamW：Adam Variant with Weight Decay</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Rate-Decay-%E5%87%8F%E5%B0%91%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="nav-text">Learning Rate Decay 减少学习率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E9%98%B6%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%9AL-BFGS%EF%BC%88%E5%87%86%E7%A1%AE%E4%BD%86%E4%B8%8D%E5%AE%9E%E9%99%85%EF%BC%89-BGFS-%E6%9C%80%E5%B8%B8%E7%94%A8"><span class="nav-text">二阶优化方法：L-BFGS（准确但不实际）&#x2F;BGFS(最常用)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%88%E5%AF%B9%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E7%9A%84%E6%AF%94%E8%BE%83%EF%BC%89"><span class="nav-text">总结（对优化算法的比较）</span></a></li></ol>
+        <div class="page-title"></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture15-Object-Detection"><span class="nav-text">Lecture15 Object Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%BB%BB%E5%8A%A1%E6%8D%9F%E5%A4%B1%EF%BC%9A"><span class="nav-text">多任务损失：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-text">滑动窗口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R-CNN-Region-Based-CNN"><span class="nav-text">R-CNN : Region-Based CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E8%BE%B9%E7%95%8C%E6%A1%86%EF%BC%9AIntersection-over-Union-IoU"><span class="nav-text">比较边界框：Intersection over Union(IoU)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E9%99%A4%E9%87%8D%E5%8F%A0%E8%BE%B9%E7%95%8C%E6%A1%86%EF%BC%9A-Non-Max-Suppression-NMS-%E9%9D%9E%E6%9C%80%E5%A4%A7%E6%8A%91%E5%88%B6"><span class="nav-text">去除重叠边界框： Non-Max Suppression(NMS 非最大抑制)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fast-R-CNN"><span class="nav-text">Fast R-CNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cropping-Features-%E8%A3%81%E5%89%AA%E7%89%B9%E5%BE%81"><span class="nav-text">Cropping Features 裁剪特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Rol-Pool-%EF%BC%9ARoI%E6%B1%A0%E5%8C%96"><span class="nav-text">1.Rol Pool ：RoI池化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Rol-Align"><span class="nav-text">2.Rol Align</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Faster-R-CNN%EF%BC%9AMake-CNN-do-proposals"><span class="nav-text">Faster R-CNN：Make CNN do proposals!</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Region-Proposal-Network%EF%BC%88RPN%EF%BC%89"><span class="nav-text">Region Proposal Network（RPN）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loss"><span class="nav-text">loss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%BD%E7%95%A5%E7%9A%84%E7%BB%86%E8%8A%82"><span class="nav-text">忽略的细节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Single-Stage-Object-Detection"><span class="nav-text">Single-Stage Object Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#YOLO"><span class="nav-text">YOLO</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A1%E9%87%8F%E6%A8%A1%E5%9E%8B%E6%8C%87%E6%A0%87"><span class="nav-text">衡量模型指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Mean-Average-Precision-mAP-%E5%B9%B3%E5%9D%87%E7%B2%BE%E5%BA%A6"><span class="nav-text">1.Mean Average Precision (mAP 平均精度)</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>

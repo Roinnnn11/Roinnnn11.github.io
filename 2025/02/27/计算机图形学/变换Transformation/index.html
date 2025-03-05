@@ -25,25 +25,28 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Transformation 变换2D 变换线性变换 ——使用矩阵  仿射变换 Affine Transformation缩放变换Scale （not uniform&#x2F;uniform）缩放某一比例，可以写成矩阵形式 反射Reflection Matrix斜切 Shear Matrix 旋转 Rotate Matrix默认绕原点逆时针旋转  齐次坐标增加一个维度，解决了平移用矩阵表示的问题">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image1.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image2.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image3.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image4.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image5.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image6.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image7.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image8.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image9.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image10.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image11.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image12.png">
-<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image13.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image1.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image2.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image3.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image4.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image5.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image6.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image7.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image8.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image9.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image10.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image11.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image12.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image13.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image14.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image15.png">
+<meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image16.png">
 <meta property="article:published_time" content="2025-02-27T09:22:31.189Z">
-<meta property="article:modified_time" content="2025-03-02T04:54:01.005Z">
+<meta property="article:modified_time" content="2025-03-05T11:56:37.643Z">
 <meta property="article:author" content="Roin">
 <meta property="article:tag" content="计算机图形学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image1.png">
+<meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image1.png">
     
     
     <!--- Icon Part-->
@@ -263,7 +266,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">15</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">19</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -303,7 +306,7 @@
                     <div class="author flex items-center">
                         <span class="name text-default-text-color text-lg font-semibold">Rongying Liu</span>
                         
-                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">算法</span>
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">课程</span>
                         
                     </div>
                     <div class="meta-info">
@@ -317,8 +320,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-03-02 12:54:01</span>
-            <span class="mobile">2025-03-02 12:54:01</span>
+            <span class="desktop">2025-03-05 19:56:37</span>
+            <span class="mobile">2025-03-05 19:56:37</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -356,7 +359,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>518 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>623 Words</span>
         </span>
     
     
@@ -384,21 +387,21 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image1.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image1.png"
                       alt="image"
                 ></p>
 <h3 id="仿射变换-Affine-Transformation"><a href="#仿射变换-Affine-Transformation" class="headerlink" title="仿射变换 Affine Transformation"></a>仿射变换 Affine Transformation</h3><h4 id="缩放变换Scale-（not-uniform-uniform）"><a href="#缩放变换Scale-（not-uniform-uniform）" class="headerlink" title="缩放变换Scale （not uniform&#x2F;uniform）"></a>缩放变换Scale （not uniform&#x2F;uniform）</h4><p>缩放某一比例，可以写成矩阵形式</p>
 <h4 id="反射Reflection-Matrix"><a href="#反射Reflection-Matrix" class="headerlink" title="反射Reflection Matrix"></a>反射Reflection Matrix</h4><h4 id="斜切-Shear-Matrix"><a href="#斜切-Shear-Matrix" class="headerlink" title="斜切 Shear Matrix"></a>斜切 Shear Matrix</h4><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image2.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image2.png"
                       alt="image"
                 ></p>
 <h4 id="旋转-Rotate-Matrix"><a href="#旋转-Rotate-Matrix" class="headerlink" title="旋转 Rotate Matrix"></a>旋转 Rotate Matrix</h4><p>默认绕原点逆时针旋转</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image3.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image3.png"
                       alt="image"
                 ></p>
 <h3 id="齐次坐标"><a href="#齐次坐标" class="headerlink" title="齐次坐标"></a>齐次坐标</h3><p>增加一个维度，解决了平移用矩阵表示的问题</p>
@@ -410,13 +413,13 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image4.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image4.png"
                       alt="image"
                 ></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image5.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image5.png"
                       alt="image"
                 ></p>
 <h2 id="3D-变换"><a href="#3D-变换" class="headerlink" title="3D 变换"></a>3D 变换</h2><p>先仿射变换，再平移！（先平移的话旋转中心点会改变）</p>
@@ -425,7 +428,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image6.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image6.png"
                       alt="image"
                 ></p>
 <h3 id="Rodrigue’s-Rotation-Formula"><a href="#Rodrigue’s-Rotation-Formula" class="headerlink" title="Rodrigue’s Rotation Formula"></a>Rodrigue’s Rotation Formula</h3><p>旋转轴n和旋转角$\alpha$， （如果该轴不在原点，先平移至原点，旋转完再平移回去）</p>
@@ -441,21 +444,21 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image7.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image7.png"
                       alt="image"
                 ></p>
-<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><h3 id="Camera-Transformation-ModelView-Trans"><a href="#Camera-Transformation-ModelView-Trans" class="headerlink" title="Camera Transformation&#x2F;ModelView Trans"></a>Camera Transformation&#x2F;ModelView Trans</h3><h4 id="Define-the-camera-对相机定义"><a href="#Define-the-camera-对相机定义" class="headerlink" title="Define the camera 对相机定义"></a>Define the camera 对相机定义</h4><ul>
-<li>Position $\hat{e}$ </li>
-<li>Look-at&#x2F;gaze direction $\hat{g}$</li>
-<li>Up direction $\hat{t}$</li>
+<h2 id="View-transformation-placing-camera"><a href="#View-transformation-placing-camera" class="headerlink" title="View transformation (placing camera)"></a>View transformation (placing camera)</h2><h3 id="Define-the-camera-对相机定义"><a href="#Define-the-camera-对相机定义" class="headerlink" title="Define the camera 对相机定义"></a>Define the camera 对相机定义</h3><ul>
+<li><u><strong>Position $\hat{e}$</strong></u> </li>
+<li><u><strong>Look-at&#x2F;gaze direction $\hat{g}$</strong></u></li>
+<li><u><strong>Up direction $\hat{t}$</strong></u></li>
 </ul>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image8.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image8.png"
                       alt="image"
                 ></p>
-<h4 id="相机的标准位置"><a href="#相机的标准位置" class="headerlink" title="相机的标准位置"></a>相机的标准位置</h4><p>——将相机一直变换至原点，Up at Y,look at -Z,让物体跟随相机变换</p>
+<h3 id="相机的标准位置"><a href="#相机的标准位置" class="headerlink" title="相机的标准位置"></a>相机的标准位置</h3><p>——将相机一直变换至原点，Up at Y,look at -Z,让物体跟随相机变换</p>
 <p>如何变换？</p>
 <ol>
 <li><p>先平移至原点</p>
@@ -466,19 +469,19 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image9.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image9.png"
                       alt="image"
                 ></p>
 </li>
 </ol>
-<h3 id="Projection-Transformation"><a href="#Projection-Transformation" class="headerlink" title="Projection Transformation"></a>Projection Transformation</h3><p>两种投影：视角投影vs正交投影</p>
+<h2 id="Projection-Transformation👇"><a href="#Projection-Transformation👇" class="headerlink" title="Projection Transformation👇"></a>Projection Transformation👇</h2><p>两种投影：视角投影vs正交投影</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image10.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image10.png"
                       alt="image"
                 ></p>
-<h4 id="Orthographic-Projection-正交投影"><a href="#Orthographic-Projection-正交投影" class="headerlink" title="Orthographic Projection 正交投影"></a>Orthographic Projection 正交投影</h4><p>简单的理解：</p>
+<h3 id="Orthographic-Projection-正交投影"><a href="#Orthographic-Projection-正交投影" class="headerlink" title="Orthographic Projection 正交投影"></a>Orthographic Projection 正交投影</h3><p>简单的理解：</p>
 <p>将z轴消除，将xy坐标成比例放入[-1,1]</p>
 <hr>
 <p>实际上：</p>
@@ -486,24 +489,46 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image11.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image11.png"
                       alt="image"
                 ></p>
-<h4 id="Perspective-Projection-透视投影"><a href="#Perspective-Projection-透视投影" class="headerlink" title="Perspective Projection 透视投影"></a>Perspective Projection 透视投影</h4><p>1.用任意点变换n倍（n未知）时，满足：<img  
+<h3 id="Perspective-Projection-透视投影"><a href="#Perspective-Projection-透视投影" class="headerlink" title="Perspective Projection 透视投影"></a>Perspective Projection 透视投影</h3><p>1.用任意点变换n倍（n未知）时，满足：<img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image12.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image12.png"
                       alt="image"
                 >从而推出变换矩阵$M_{persp \to ortho}$的值</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/image13.png"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image13.png"
                       alt="image"
                 ></p>
 <p>2.再利用near面&#x2F;far面上点的深度z不变。计算出M矩阵第三行参数</p>
 <p>应为：<strong>（0,0,n+f,-nf）</strong></p>
-<p>3.最后，有：$$M_{persp} &#x3D; M_{ortho}M_{persp\to ortho}$$</p>
+<p>3.最后，有：$$M_{persp} &#x3D; M_{ortho}M_{persp\to ortho}$$，变换至标准立方体</p>
+<h4 id="定义视锥-–透视投影"><a href="#定义视锥-–透视投影" class="headerlink" title="定义视锥 –透视投影"></a>定义视锥 –透视投影</h4><p>用两个参数描述视锥：</p>
+<p><strong>长宽比 aspect ratio、垂直可视角度 fovY</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image14.png"
+                      alt="image"
+                ></p>
+<h2 id="Canonical-Cube-to-Screen-在屏幕上绘制"><a href="#Canonical-Cube-to-Screen-在屏幕上绘制" class="headerlink" title="Canonical Cube to Screen (在屏幕上绘制)"></a>Canonical Cube to Screen (在屏幕上绘制)</h2><h4 id="确定屏幕位置"><a href="#确定屏幕位置" class="headerlink" title="确定屏幕位置"></a>确定屏幕位置</h4><p>对像素位置定义：见图片右侧</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image15.png"
+                      alt="image"
+                ></p>
+<h4 id="Viewport-transform-视口变换——对x、y进行变换"><a href="#Viewport-transform-视口变换——对x、y进行变换" class="headerlink" title="Viewport transform 视口变换——对x、y进行变换"></a>Viewport transform 视口变换——对x、y进行变换</h4><p>缩放+平移：将[-1,1]的立体缩放变换至[width,height]，再平移使左下角为原点</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/Roinnnn11/Markdown_PNG/raw/main/GAMES101/Transformation/image16.png"
+                      alt="image"
+                ></p>
 
         </div>
 
@@ -518,7 +543,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-03-02 12:54:01
+                    :</strong> 2025-03-05 19:56:37
             </li>
         
         <li>
@@ -554,6 +579,21 @@
 
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2025/03/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item"></span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
                 
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
@@ -626,7 +666,7 @@
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">GAMES101 Transformation 变换</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Transformation-%E5%8F%98%E6%8D%A2"><span class="nav-text">Transformation 变换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2D-%E5%8F%98%E6%8D%A2"><span class="nav-text">2D 变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2-Affine-Transformation"><span class="nav-text">仿射变换 Affine Transformation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87"><span class="nav-text">齐次坐标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-%E5%8F%98%E6%8D%A2"><span class="nav-text">3D 变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC-%E2%80%94%E2%80%94%E7%BB%95%E6%9F%90%E8%BD%B4%E6%97%8B%E8%BD%AC"><span class="nav-text">旋转 ——绕某轴旋转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rodrigue%E2%80%99s-Rotation-Formula"><span class="nav-text">Rodrigue’s Rotation Formula</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E6%AE%8A%E6%80%A7%E8%B4%A8%EF%BC%9A"><span class="nav-text">旋转矩阵的特殊性质：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-text">View</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Camera-Transformation-ModelView-Trans"><span class="nav-text">Camera Transformation&#x2F;ModelView Trans</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Projection-Transformation"><span class="nav-text">Projection Transformation</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Transformation-%E5%8F%98%E6%8D%A2"><span class="nav-text">Transformation 变换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2D-%E5%8F%98%E6%8D%A2"><span class="nav-text">2D 变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2-Affine-Transformation"><span class="nav-text">仿射变换 Affine Transformation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87"><span class="nav-text">齐次坐标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-%E5%8F%98%E6%8D%A2"><span class="nav-text">3D 变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC-%E2%80%94%E2%80%94%E7%BB%95%E6%9F%90%E8%BD%B4%E6%97%8B%E8%BD%AC"><span class="nav-text">旋转 ——绕某轴旋转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rodrigue%E2%80%99s-Rotation-Formula"><span class="nav-text">Rodrigue’s Rotation Formula</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E6%AE%8A%E6%80%A7%E8%B4%A8%EF%BC%9A"><span class="nav-text">旋转矩阵的特殊性质：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View-transformation-placing-camera"><span class="nav-text">View transformation (placing camera)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-the-camera-%E5%AF%B9%E7%9B%B8%E6%9C%BA%E5%AE%9A%E4%B9%89"><span class="nav-text">Define the camera 对相机定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E6%9C%BA%E7%9A%84%E6%A0%87%E5%87%86%E4%BD%8D%E7%BD%AE"><span class="nav-text">相机的标准位置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Projection-Transformation%F0%9F%91%87"><span class="nav-text">Projection Transformation👇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Orthographic-Projection-%E6%AD%A3%E4%BA%A4%E6%8A%95%E5%BD%B1"><span class="nav-text">Orthographic Projection 正交投影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Perspective-Projection-%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1"><span class="nav-text">Perspective Projection 透视投影</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Canonical-Cube-to-Screen-%E5%9C%A8%E5%B1%8F%E5%B9%95%E4%B8%8A%E7%BB%98%E5%88%B6"><span class="nav-text">Canonical Cube to Screen (在屏幕上绘制)</span></a></li></ol></li></ol>
 
     </div>
 </div>
@@ -659,11 +699,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        15 posts in total
+                        19 posts in total
                     </span>
                     
                         <span>
-                            10.9k words in total
+                            13.3k words in total
                         </span>
                     
                 </p>
