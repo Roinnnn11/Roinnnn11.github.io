@@ -20,7 +20,7 @@
     
         <meta name="description" content="Lecture15 Object Detection物体检测：Classification+Localization(分类+定位) 多任务损失： 滑动窗口使用滑动窗口来检测物体（将窗口内图片进行分类，k种类别or背景）  R-CNN : Region-Based CNN存在的问题：运行过慢 将选择的区域（RoI : region of Interest）作为input，扭曲后再进入Conv Net">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="CS231N Lecture15 目标检测">
 <meta property="og:url" content="https://github.com/Roinnnn11/Roinnnn11.github.io/2025/03/05/CS231N/15%20%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Lecture15 Object Detection物体检测：Classification+Localization(分类+定位) 多任务损失： 滑动窗口使用滑动窗口来检测物体（将窗口内图片进行分类，k种类别or背景）  R-CNN : Region-Based CNN存在的问题：运行过慢 将选择的区域（RoI : region of Interest）作为input，扭曲后再进入Conv Net">
@@ -43,8 +43,9 @@
 <meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image16.png">
 <meta property="og:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image17.png">
 <meta property="article:published_time" content="2025-03-05T11:32:28.466Z">
-<meta property="article:modified_time" content="2025-03-05T11:54:10.907Z">
+<meta property="article:modified_time" content="2025-03-05T12:01:03.951Z">
 <meta property="article:author" content="Roin">
+<meta property="article:tag" content="计算机视觉">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://github.com/Roinnnn11/Markdown_PNG/raw/main/CS231N/CS231N-Lecture15/image1.png">
     
@@ -58,7 +59,7 @@
     
     <title>
         
-            Roin&#39;s BLOG - 记录学习の一个小角落(o^^o).
+            CS231N Lecture15 目标检测 | Roin&#39;s BLOG
         
     </title>
 
@@ -292,7 +293,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3"></h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CS231N Lecture15 目标检测</h1>
                 </div>
             
             </div>
@@ -320,13 +321,40 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-03-05 19:54:10</span>
-            <span class="mobile">2025-03-05 19:54:10</span>
+            <span class="desktop">2025-03-05 20:01:03</span>
+            <span class="mobile">2025-03-05 20:01:03</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
     
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/CS231N/">CS231N</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -529,14 +557,14 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> </li>
+        <li><strong>Title:</strong> CS231N Lecture15 目标检测</li>
         <li><strong>Author:</strong> Rongying Liu</li>
         <li><strong>Created at
                 :</strong> 2025-03-05 19:32:28</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-03-05 19:54:10
+                    :</strong> 2025-03-05 20:01:03
             </li>
         
         <li>
@@ -558,6 +586,14 @@
             </div>
         
 
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">#计算机视觉</a>&nbsp;
+                    </li>
+                
+            </ul>
         
 
         
@@ -635,7 +671,7 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title"></div>
+        <div class="page-title">CS231N Lecture15 目标检测</div>
         <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture15-Object-Detection"><span class="nav-text">Lecture15 Object Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%BB%BB%E5%8A%A1%E6%8D%9F%E5%A4%B1%EF%BC%9A"><span class="nav-text">多任务损失：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-text">滑动窗口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R-CNN-Region-Based-CNN"><span class="nav-text">R-CNN : Region-Based CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E8%BE%B9%E7%95%8C%E6%A1%86%EF%BC%9AIntersection-over-Union-IoU"><span class="nav-text">比较边界框：Intersection over Union(IoU)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E9%99%A4%E9%87%8D%E5%8F%A0%E8%BE%B9%E7%95%8C%E6%A1%86%EF%BC%9A-Non-Max-Suppression-NMS-%E9%9D%9E%E6%9C%80%E5%A4%A7%E6%8A%91%E5%88%B6"><span class="nav-text">去除重叠边界框： Non-Max Suppression(NMS 非最大抑制)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fast-R-CNN"><span class="nav-text">Fast R-CNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cropping-Features-%E8%A3%81%E5%89%AA%E7%89%B9%E5%BE%81"><span class="nav-text">Cropping Features 裁剪特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Rol-Pool-%EF%BC%9ARoI%E6%B1%A0%E5%8C%96"><span class="nav-text">1.Rol Pool ：RoI池化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Rol-Align"><span class="nav-text">2.Rol Align</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Faster-R-CNN%EF%BC%9AMake-CNN-do-proposals"><span class="nav-text">Faster R-CNN：Make CNN do proposals!</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Region-Proposal-Network%EF%BC%88RPN%EF%BC%89"><span class="nav-text">Region Proposal Network（RPN）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loss"><span class="nav-text">loss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%BD%E7%95%A5%E7%9A%84%E7%BB%86%E8%8A%82"><span class="nav-text">忽略的细节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Single-Stage-Object-Detection"><span class="nav-text">Single-Stage Object Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#YOLO"><span class="nav-text">YOLO</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A1%E9%87%8F%E6%A8%A1%E5%9E%8B%E6%8C%87%E6%A0%87"><span class="nav-text">衡量模型指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Mean-Average-Precision-mAP-%E5%B9%B3%E5%9D%87%E7%B2%BE%E5%BA%A6"><span class="nav-text">1.Mean Average Precision (mAP 平均精度)</span></a></li></ol></li></ol></li></ol>
 
     </div>

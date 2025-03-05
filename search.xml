@@ -1841,7 +1841,7 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>CS231N Lecture15 目标检测</title>
     <url>/2025/03/05/CS231N/15%20%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/</url>
     <content><![CDATA[<h1 id="Lecture15-Object-Detection"><a href="#Lecture15-Object-Detection" class="headerlink" title="Lecture15 Object Detection"></a>Lecture15 Object Detection</h1><p>物体检测：Classification+Localization(分类+定位)</p>
 <h3 id="多任务损失："><a href="#多任务损失：" class="headerlink" title="多任务损失："></a>多任务损失：</h3><p><img  
@@ -2010,6 +2010,12 @@
                       alt="image"
                 ></p>
 ]]></content>
+      <categories>
+        <category>CS231N</category>
+      </categories>
+      <tags>
+        <tag>计算机视觉</tag>
+      </tags>
   </entry>
   <entry>
     <title></title>
@@ -2142,7 +2148,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
+    <title>GAMES101 Rasterization 光栅化</title>
     <url>/2025/03/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%85%89%E6%A0%85%E5%8C%96%20Rasterization/</url>
     <content><![CDATA[<h1 id="光栅化-Rasterization"><a href="#光栅化-Rasterization" class="headerlink" title="光栅化 Rasterization"></a>光栅化 Rasterization</h1><h2 id="Triangles"><a href="#Triangles" class="headerlink" title="Triangles"></a>Triangles</h2><p>三角形的特质：</p>
 <ul>
@@ -2221,5 +2227,11 @@
                       alt="image-20250302155823165"
                 ></p>
 ]]></content>
+      <categories>
+        <category>GAMES101</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+      </tags>
   </entry>
 </search>
